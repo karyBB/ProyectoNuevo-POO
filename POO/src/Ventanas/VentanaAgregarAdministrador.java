@@ -103,17 +103,19 @@ public class VentanaAgregarAdministrador extends JFrame {
 		btnAgregar.setBackground(SystemColor.controlHighlight);
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//si los campos de texto estan vacios
+				
+				//validacion de rut, correo, telefono y campos vacios
 				if(!textFieldNombre.getText().isEmpty() && !textFieldRut.getText().isEmpty()
 						&& !textFieldCorreo.getText().isEmpty()
 						&& !textFieldTelefono.getText().isEmpty()&& !textFieldDireccion.getText().isEmpty())
 				{
-				
-				if(empresa.esNumerico(textField))
+				if(empresa.esNumerico(textFieldRut.getText()))
+				{
 				if(empresa.verificarEmail(textFieldCorreo.getText()))
 				{
 				if(empresa.verificarTelefono(textFieldTelefono.getText()))
 					{
+					//Se agrega el administrador
 					empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
 				      
 					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Su contraseña es\n"+
@@ -130,7 +132,9 @@ public class VentanaAgregarAdministrador extends JFrame {
 				}
 				else
 					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el correo","Error",0);
-					
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el rut","Error",0);
 				    	
 				}else{
 					
