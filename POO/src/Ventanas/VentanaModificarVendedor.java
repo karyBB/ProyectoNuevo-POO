@@ -92,28 +92,30 @@ public class VentanaModificarVendedor extends JFrame {
 				
 				
 				if(!textFieldNombre.getText().isEmpty())
-				{
 					empresa.modificarNombreVendedor(vendedor,textFieldNombre.getText());
-				}
+
 				if(!textFieldDireccion.getText().isEmpty())
-				{
 					empresa.modificarDireccionVendedor(vendedor, textFieldDireccion.getText());
-				}
+
 				if(!textFieldCorreo.getText().isEmpty())
 				{
-					empresa.modificarCorreoVendedor(vendedor, textFieldCorreo.getText());
+					if(empresa.verificarEmail(textFieldCorreo.getText()))
+						empresa.modificarCorreoVendedor(vendedor, textFieldCorreo.getText());
+					else
+						JOptionPane.showMessageDialog(VentanaModificarVendedor.this,"Ingresó mal el correo","Error",0);
 				}
+				
 				if(!textFieldTelefono.getText().isEmpty())
 				{
-					empresa.modificarTelefonoVendedor(vendedor, textFieldTelefono.getText());
+					if(empresa.verificarTelefono(textFieldTelefono.getText()))
+						empresa.modificarTelefonoVendedor(vendedor, textFieldTelefono.getText());
+					else
+						JOptionPane.showMessageDialog(VentanaModificarVendedor.this,"Ingresó mal algun campo","Error",0);
+
 				}
-				if(!textFieldClave.getText().isEmpty())
-				{
-					empresa.modificarTelefonoVendedor(vendedor, textFieldClave.getText());
-				}
-				JOptionPane.showMessageDialog(VentanaModificarVendedor.this,"Vendedor\n"+
-						vendedor.getNombre()+" sus datos han sido modificados","DATOS MODIFICADOS",1);
 				
+				if(!textFieldClave.getText().isEmpty())
+					empresa.modificarTelefonoVendedor(vendedor, textFieldClave.getText());
 			}
 		});
 		button.setFont(new Font("Consolas", Font.PLAIN, 13));
