@@ -29,7 +29,7 @@ public class VentanaDepartamento extends JFrame {
 	private JTextField txtDepartamento;
 	private DefaultListModel<Departamento> departamentos;
 	
-	public VentanaDepartamento(Empresa empresa,Proyecto proyecto,VentanaVendedor ventanaAnterior) {
+	public VentanaDepartamento(Empresa empresa,Proyecto proyecto,Object ventanaAnterior) {
 		departamentos = new DefaultListModel<Departamento>();
 		ListaDepartamentos listadepartamento =proyecto.getListaDepartamentos();
 		
@@ -89,7 +89,7 @@ public class VentanaDepartamento extends JFrame {
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				ventanaAnterior.setVisible(true);
+				((VentanaVendedor)ventanaAnterior).setVisible(true);
 			}
 		});
 		btnRegresar.setFont(new Font("Consolas", Font.PLAIN, 13));
