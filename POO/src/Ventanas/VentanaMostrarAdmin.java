@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import Clases.Administrador;
+import Clases.CrearPDF;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -71,8 +72,7 @@ public class VentanaMostrarAdmin extends JFrame {
 				btnArchivoPdf.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-							CrearPDF ingreso = new CrearPDF(admin);
-							
+						new CrearPDF(admin);							
 							
 							}
 					
