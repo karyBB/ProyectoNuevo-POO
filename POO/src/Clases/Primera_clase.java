@@ -3,9 +3,7 @@ import Ventanas.VentanaIngreso;
 
 /*gestion de propiedades
 Programado por Karina Bernal
-               Catalina Ordenes
-               Antonio Muñoz
-
+             
  */
 
 public class Primera_clase {
