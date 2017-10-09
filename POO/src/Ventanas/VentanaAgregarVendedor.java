@@ -92,29 +92,43 @@ public class VentanaAgregarVendedor extends JFrame {
 		btnAgregar.setBackground(SystemColor.controlHighlight);
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//si los campos de texto estan vacios
+				//validaciones de rut, telefono, correo y campos vacios
 				if(!textFieldNombre.getText().isEmpty() && !textFieldRut.getText().isEmpty()
 						&& !textFieldCorreo.getText().isEmpty()
 						&& !textFieldTelefono.getText().isEmpty()&& !textFieldDireccion.getText().isEmpty())
 				{
+				if(empresa.esNumerico(textFieldRut.getText()))
+				{
+				if(empresa.verificarEmail(textFieldCorreo.getText()))
+				{
+				if(empresa.verificarTelefono(textFieldTelefono.getText()))	
+				{
+					empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText());
+					empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
+			        
 					
-						empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText());
-						empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
-				        
-						
-						JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Su contraseña es\n"+
-								textFieldClave.getText(),"Datos ingresados correctamente",1);
+					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Su contraseña es\n"+
+							textFieldClave.getText(),"Datos ingresados correctamente",1);
 					
-				    	
-				}else{			
-					
-					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal algun campo","Error",0);
+					textFieldNombre.setEditable(false);
+					textFieldRut.setEditable(false);
+					textFieldCorreo.setEditable(false);
+					textFieldDireccion.setEditable(false);
+					textFieldTelefono.setEditable(false);
 				}
-				textFieldNombre.setEditable(false);
-				textFieldRut.setEditable(false);
-				textFieldCorreo.setEditable(false);
-				textFieldDireccion.setEditable(false);
-				textFieldTelefono.setEditable(false);	
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal el telefono","Error",0);
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal el correo","Error",0);
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal el rut","Error",0);   	
+				   	
+				}else			
+					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal algun campo","Error",0);
+				
+					
 				
 			}
 		});
