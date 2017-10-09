@@ -1,5 +1,5 @@
 package Clases;
-public class Proyecto {
+public class Proyecto implements Cloneable {
 
 	private String id;
 	private String nombre;
@@ -119,7 +119,10 @@ public class Proyecto {
 	public void setTotaldepartamentos(int totaldepartamentos) {
 		this.totaldepartamentos = totaldepartamentos;
 	}
-	
+	public Proyecto clone() throws CloneNotSupportedException  {
+		
+		  return (Proyecto) super.clone();
+		 }
 	@Override
 	public String toString()
 	{

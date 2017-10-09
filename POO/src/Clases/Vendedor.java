@@ -30,6 +30,9 @@ public class Vendedor extends Persona {
 
 
 	
+	
+	
+	
 	public String[] getDepartamentos() {
 		return departamentos;
 	}

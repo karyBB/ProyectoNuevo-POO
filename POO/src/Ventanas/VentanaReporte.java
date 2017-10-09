@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,8 +15,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import Clases.Administrador;
 import Clases.CrearReporteEnExcel;
+import Clases.Empresa;
+import Clases.ListaAdministradores;
 import Clases.ListaProyectos;
+import Clases.ListaVendedores;
+import Clases.Proyecto;
+import Clases.Vendedor;
 
 public class VentanaReporte extends JFrame {
 
@@ -23,7 +31,8 @@ public class VentanaReporte extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public VentanaReporte(final ListaProyectos proyectos, final VentanaAdministrador ventanaAnterior) {
+
+	public VentanaReporte( Empresa empresa,int seleccionado, final VentanaAdministrador ventanaAnterior) throws CloneNotSupportedException {
 	setTitle("Ventana de reporte");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,26 +44,38 @@ public class VentanaReporte extends JFrame {
 		contentPane.setLayout(null);
 		setResizable(false);
 		
-		JPanel panelProy = new JPanel();
-		panelProy.setBackground(new Color(51, 204, 153));
-		panelProy.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Información proyectos registrados :", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, new java.awt.Font("Century Gothic", Font.PLAIN, 14), new Color(255, 255, 255)));
-		panelProy.setBounds(8, 10, 350, 360);
-		contentPane.add(panelProy);
-		panelProy.setLayout(null);
+		JPanel panelDatos = new JPanel();
+		panelDatos.setBackground(new Color(51, 204, 153));
+		panelDatos.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Información Datos registrados :", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, new java.awt.Font("Century Gothic", Font.PLAIN, 14), new Color(255, 255, 255)));
+		panelDatos.setBounds(8, 10, 350, 360);
+		contentPane.add(panelDatos);
+		panelDatos.setLayout(null);
 		
-		final JTextArea datosProy = new JTextArea();
-		datosProy.setBounds(1, 1, 338, 331);
-		datosProy.setBackground(new Color(255, 255, 255));
-		panelProy.add(datosProy);
-		datosProy.setLineWrap(true); 
-		datosProy.setWrapStyleWord(true);
+		final JTextArea datos = new JTextArea();
+		datos.setBounds(1, 1, 338, 331);
+		datos.setBackground(new Color(255, 255, 255));
+		panelDatos.add(datos);
+		datos.setLineWrap(true); 
+		datos.setWrapStyleWord(true);
 		
-		JScrollPane scrollLateral = new JScrollPane(datosProy);
+		JScrollPane scrollLateral = new JScrollPane(datos);
 		scrollLateral.setBounds(5, 22, 340, 333);
-		panelProy.add(scrollLateral);
+		panelDatos.add(scrollLateral);
+		
 		
 		//Generar reporte
-				mostrarEnJTextArea(datosProy,proyectos);
+		
+		        
+				
+		       
+		        
+		       
+				if(seleccionado==0)
+				mostrarEnJTextAreaProyecto(datos,empresa);
+			 if(seleccionado==1)
+				mostrarEnJTextAreaVendedor(datos,empresa);
+				 if(seleccionado==2)
+					mostrarEnJTextAreaAdministrador(datos,empresa);
 				
 				//Regresa a la ventana anterior
 				JButton btnAtras = new JButton("ATRAS");
@@ -67,11 +88,6 @@ public class VentanaReporte extends JFrame {
 				});
 				btnAtras.setBounds(268, 376, 90, 23);
 				contentPane.add(btnAtras);
-		
-		
-				
-				
-				
 				
 				
 				//Se crea un .xls con los datos de los proyecto
@@ -80,31 +96,84 @@ public class VentanaReporte extends JFrame {
 				btnCrearArchivoXls.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						//implementar despues un JFileChooser para elegir ruta y nombre archivo
-						try {
-							CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(proyectos);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
+						     if (seleccionado==0)
+						     {
+						    	 ListaProyectos proyectos;
+								
+									try {
+										proyectos = empresa.clonarProyectos();
+										CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(empresa,proyectos);
+									} catch (IOException | CloneNotSupportedException e) {
+										e.printStackTrace();
+									}
+								
+						     }
+						     if(seleccionado==2)
+						     {
+						    	 ListaAdministradores administradores;
+								
+									try {
+										administradores = empresa.clonarAdministradores();
+										
+											CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(empresa,administradores);
+										
+									} catch (CloneNotSupportedException | IOException e) {
+										e.printStackTrace();
+									}
+								
+
+							}}
 				});
 				btnCrearArchivoXls.setBounds(8, 376, 137, 23);
 				contentPane.add(btnCrearArchivoXls);
 			}
 		
 	//muestra los datos por pantalla
-	private void mostrarEnJTextArea(JTextArea datosProy, ListaProyectos proyecto)
+	private void mostrarEnJTextAreaProyecto(JTextArea datosProy,Empresa empresa)
 	{
 		int j = 1;
 		
-		for (int i = 0; i < proyecto.size(); i++)
+		for (int i = 0; i < empresa.sizeProyecto(); i++)
 		{
-			datosProy.append("["+j+"] Proyecto \r\nID : "+proyecto.getPosProyecto(i).getId()+
-			"\r\nNOMBRE : "+proyecto.getPosProyecto(i).getNombre()+"\r\nDIRECCION : "+proyecto.getPosProyecto(i).getDireccion()+
-			"\r\nCIUDAD: "+proyecto.getPosProyecto(i).getCiudadUbicacion()+"\r\nNOMBRE ENCARGADO : "+proyecto.getPosProyecto(i).getNombreEncargado()+ 
-			"\r\nTOTAL PISOS : "+proyecto.getPosProyecto(i).getTotalPisos()+"\r\n\r\n");
+			Proyecto proyecto=empresa.obtenerProyecto(i);
+			datosProy.append("["+j+"] Proyecto \r\nID : "+proyecto.getId()+
+			"\r\nNOMBRE : "+proyecto.getNombre()+"\r\nDIRECCION : "+proyecto.getDireccion()+
+			"\r\nCIUDAD: "+proyecto.getCiudadUbicacion()+"\r\nNOMBRE ENCARGADO : "+proyecto.getNombreEncargado()+ 
+			"\r\nTOTAL PISOS : "+proyecto.getTotalPisos()+"\r\n\r\n");
 			j++;
 		}
 	}
+	private void mostrarEnJTextAreaVendedor(JTextArea datoVendedor,Empresa empresa)
+	{
+		int j = 1;
+		String rut=null;
+		for (int i = 0; i < empresa.sizeVendedores(); i++)
+		{
+			Vendedor vendedores=empresa.obtenerVendedor(rut);
+			datoVendedor.append("["+j+"] VENDEDOR \r\nNOMBRE : "+vendedores.getNombre()+
+			"\r\nRUT : "+vendedores.getRut()+"\r\nDIRECCION : "+vendedores.getDireccion()+
+			"\r\nTELEFONO: "+vendedores.getTelefono()+"\r\nCORREO : "+vendedores.getCorreo()+"\r\n\r\n");
+			j++;
+			rut=vendedores.getRut();
+		}
+	}
+	private void mostrarEnJTextAreaAdministrador(JTextArea datoAdministrador,Empresa empresa)
+	{
+		int j = 1;
+		String rut=null;
+		for (int i = 0; i < empresa.sizeVendedores(); i++)
+		{
+			Administrador administradores=empresa.obtenerAdministrador(rut);
+			datoAdministrador.append("["+j+"] VENDEDOR \r\nNOMBRE : "+administradores.getNombre()+
+			"\r\nRut : "+administradores.getRut()+"\r\nDIRECCION : "+administradores.getDireccion()+
+			"\r\nTELEFONO: "+administradores.getTelefono()+"\r\nCORREO : "+administradores.getCorreo()+
+			"\r\nCARGO: "+administradores.getCargo()+"\r\n\r\n");
+			j++;
+			rut=administradores.getRut();
+		}
+	}
+	 
+
 }
 		
 

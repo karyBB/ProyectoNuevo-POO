@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public abstract class ListaPersonas 
 {
-
+  
 	
 
 	//verifica que tenga la composicion correcta de un correo valido
@@ -71,9 +71,11 @@ public abstract class ListaPersonas
 	    return numerico;
 	}
 	
-	public abstract boolean  agregar(Object persona); 
 	
-	public abstract boolean modificarNombre(Object persona,String cambiar);
+	
+	public abstract Object buscarNombre(String nombre);
+
+	public abstract Object buscarClave(String clave);
 
 	public abstract boolean modificarDireccion(Object persona,String cambiar);
 
@@ -83,7 +85,7 @@ public abstract class ListaPersonas
 	
 	public abstract boolean modificarClave(Object persona,String cambiar);
 	
-	public abstract boolean eliminar(Object persona);
+
 	
 
 

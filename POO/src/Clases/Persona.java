@@ -1,7 +1,7 @@
 package Clases;
 /*clase abstract no sabemos si es admin,usuario o cliente */
 /*clase padre de admin*/
-public abstract class Persona {
+public abstract class Persona  {
 	//tienen que ser protect 
 	protected String nombre;
 	protected String rut;
@@ -9,6 +9,8 @@ public abstract class Persona {
 	protected String correo;
 	protected String telefono;
 	protected String clave;
+	
+	
 	
 /*constructor*/
 	
@@ -81,5 +83,6 @@ public abstract class Persona {
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+	
 	
 }

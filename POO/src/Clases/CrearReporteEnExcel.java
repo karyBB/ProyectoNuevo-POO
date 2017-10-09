@@ -16,8 +16,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CrearReporteEnExcel {
 
-    public CrearReporteEnExcel(ListaProyectos proyectos) throws IOException{
-        HSSFWorkbook libro = new HSSFWorkbook();
+    public CrearReporteEnExcel(Empresa empresa,ListaProyectos proyectos) throws IOException{
+        if(proyectos!=null) {
+    	HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet();	
         libro.setSheetName(0, "Proyectos");
         
@@ -45,7 +46,7 @@ public class CrearReporteEnExcel {
 
         //Se llenan las columnas con los datos de los proyectos
         int i=0;
-        while (proyectos.getPosProyecto(i)!=null) {
+        while (empresa.obtenerProyecto(i)!=null) {
             HSSFRow datosFila = hoja.createRow(i + 1);
             String id = proyectos.getPosProyecto(i).getId();
             String nombre = proyectos.getPosProyecto(i).getNombre();
@@ -77,6 +78,72 @@ public class CrearReporteEnExcel {
             
     }//Fin Constructor
     
+    }
+    public CrearReporteEnExcel(Empresa empresa,ListaAdministradores administradores) throws IOException{
+        if(administradores!=null) {
+    	HSSFWorkbook libro = new HSSFWorkbook();
+        HSSFSheet hoja = libro.createSheet();	
+        libro.setSheetName(0, "Proyectos");
+        
+        
+        String[] cabeceras = new String[]{"NOMBRE","RUT","DIRECCION","CORREO","TELEFONO","CARGO"};
+        
+        CellStyle estiloCabecera = libro.createCellStyle();
+        Font tipoLetra = libro.createFont();
+        tipoLetra.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        estiloCabecera.setFont(tipoLetra);
+
+        CellStyle estilo = libro.createCellStyle();
+        estilo.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+        estilo.setFillPattern(CellStyle.SOLID_FOREGROUND);
+
+        //Se agregan en la cabecera los datos contenidos en el arreglo de string cabeceras y ademas se le da un estilo a la letra
+        
+        HSSFRow cabeceraFila = hoja.createRow((short)0);
+        for (int i = 0; i < cabeceras.length; ++i) {
+            String cabecera = cabeceras[i];
+            HSSFCell cell = cabeceraFila.createCell(i);
+            cell.setCellStyle(estiloCabecera);
+            cell.setCellValue(cabecera);
+        }
+
+        //Se llenan las columnas con los datos de los proyectos
+        int i=0;
+        String rut=null;
+        while (empresa.obtenerAdministrador(rut)!=null) {
+            HSSFRow datosFila = hoja.createRow(i + 1);
+            String nombre = administradores.obtener(rut).getNombre();
+            String rut1 = administradores.obtener(rut).getRut();
+            String direccion = administradores.obtener(rut).getDireccion();
+            String correo = administradores.obtener(rut).getCorreo();
+            String telefono = administradores.obtener(rut).getTelefono();
+            String cargo = administradores.obtener(rut).getCargo();
+            rut=rut1;
+           
+            
+            //Se agrega el dato especifico del proyecto en cada celda
+        
+            datosFila.createCell(0).setCellValue(nombre);
+            datosFila.createCell(1).setCellValue(rut1);
+            datosFila.createCell(2).setCellValue(direccion);
+            datosFila.createCell(3).setCellValue(correo);
+            datosFila.createCell(4).setCellValue(telefono);
+            datosFila.createCell(5).setCellValue(cargo);
+         
+            
+            //Ajusta el tamaño de la celda
+            
+            hoja.autoSizeColumn(i);
+           i++; 
+        }
+        
+        //Se llama al metodo para guardar archivo
+        
+        guardarArchivoXLS(libro);
+            
+    }//Fin Constructor
+    
+    }
     
     /**
      *	Metodo que guarda el archivo .xls el cualquier parte que el administrador indique.
@@ -105,5 +172,6 @@ public class CrearReporteEnExcel {
             JOptionPane.showMessageDialog(null,"Error al guardar el archivo!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     
 }//Fin Clase

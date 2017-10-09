@@ -84,10 +84,10 @@ public class VentanaInicial extends JFrame {
 		contentPane.add(paneltipoUsuario);
 		paneltipoUsuario.setLayout(null);
 		
-		String[] tipoUsuario = {"Administrador","Usuario"};
+		String[] tipoUsuario = {"Administrador","Vendedor"};
 		
 		final JComboBox comboBoxtipoUsuario = new JComboBox(tipoUsuario);
-		comboBoxtipoUsuario.setModel(new DefaultComboBoxModel(new String[] {"Usuario", "Administrador"}));
+		comboBoxtipoUsuario.setModel(new DefaultComboBoxModel(new String[] {"Vendedor", "Administrador"}));
 		comboBoxtipoUsuario.setBounds(61, 27, 105, 25);
 		paneltipoUsuario.add(comboBoxtipoUsuario);
 		comboBoxtipoUsuario.setFont(new Font("Consolas", Font.PLAIN, 10));
@@ -141,8 +141,8 @@ public class VentanaInicial extends JFrame {
 							JOptionPane.showMessageDialog(VentanaInicial.this,"Contraseña incorrecta","Error",0);
 				}	
 				
-				//SI ES TIPO USUARIO
-				if(tipoUsuario.equals("Usuario"))
+				//SI ES TIPO Vendedor
+				if(tipoUsuario.equals("Vendedor"))
 				{	
 					
 					empresa.buscarNombreVendedor(usuarioField.getText());

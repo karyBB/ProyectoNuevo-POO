@@ -137,10 +137,10 @@ public class VentanaModificarVendedor extends JFrame {
 		BotonVolver.setBounds(311, 337, 146, 49);
 		contentPane.add(BotonVolver);
 		
-		JLabel lblModificarVendedor = new JLabel("Modificar Vendedor"+vendedor.getRut());
+		JLabel lblModificarVendedor = new JLabel("Modificar Vendedor "+vendedor.getRut());
 		lblModificarVendedor.setForeground(Color.WHITE);
 		lblModificarVendedor.setFont(new Font("Cambria", Font.PLAIN, 17));
-		lblModificarVendedor.setBounds(203, 11, 181, 26);
+		lblModificarVendedor.setBounds(203, 11, 289, 26);
 		contentPane.add(lblModificarVendedor);
 		
 		textFieldClave = new JTextField();

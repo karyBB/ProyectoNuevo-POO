@@ -48,19 +48,19 @@ public class VentanaModificarProyecto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!textFieldNombre.getText().isEmpty())
 				{
-					empresa.getListaProyectos().modificarNombre(proyecto, textFieldNombre.getText());
+					empresa.modificarNombreProyecto(proyecto, textFieldNombre.getText());
 				}
 				if(!textFieldDireccion.getText().isEmpty())
 				{
-					empresa.getListaProyectos().modificarDireccionProy(proyecto,textFieldDireccion.getText() );
+					empresa.modificarDireccionProyecto(proyecto,textFieldDireccion.getText() );
 				}
 				if(!textFieldCiudad.getText().isEmpty())
 				{
-					empresa.getListaProyectos().modificarCiudad(proyecto, textFieldCiudad.getText());
+					empresa.modificarCiudadProyecto(proyecto, textFieldCiudad.getText());
 				}
 				if(!textFieldNomEnc.getText().isEmpty())
 				{
-					empresa.getListaProyectos().modificarNombreEncargado(proyecto,textFieldNomEnc.getText());
+					empresa.modificarNombreEncProyecto(proyecto,textFieldNomEnc.getText());
 				}
 				JOptionPane.showMessageDialog(VentanaModificarProyecto.this,"Proyecto\n"+
 						proyecto.getNombre()+"datos han sido modificados","DATOS MODIFICADOS",1);

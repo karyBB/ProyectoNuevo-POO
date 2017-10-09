@@ -6,7 +6,7 @@ package Clases;
 	import java.util.regex.Pattern;
 	
 	import javax.swing.JPasswordField;
-	public class ListaAdministradores extends ListaPersonas {
+	public class ListaAdministradores extends ListaPersonas implements Lista {
 	
 		private HashMap<String,Administrador> administradores;
 		
@@ -17,11 +17,18 @@ package Clases;
 			archivo.cargarArchivoTextoAdministrador(ListaAdministradores.this);
 			 
 		}
+        public ListaAdministradores() {
+			
+			administradores =new HashMap<String,Administrador>();	
+			
+			 
+		}
 		
 	//metodos
 		
 		
-		 public Administrador crearAdministrador(String nombre,String rut ,String direccion ,String correo,String telefono,String cargo,String clave)
+		
+		public Administrador crear(String nombre,String rut ,String direccion ,String correo,String telefono,String cargo,String clave)
 		    {
 		    	Administrador administrador=new Administrador(nombre,rut,direccion,correo,telefono,clave ,cargo);
 		    	return administrador;
@@ -87,8 +94,22 @@ package Clases;
 	 }
 	 
 	 
-	 
-	 
+	 public ListaAdministradores clone() throws CloneNotSupportedException {
+			
+			Administrador admin=new Administrador();
+			ListaAdministradores listaAdministradores=new ListaAdministradores();
+			String rut=null;
+			for (Entry<String, Administrador> e: administradores.entrySet())
+			 {
+				if(!e.getValue().getRut().equals(rut))	{
+				admin=e.getValue().clone();
+				listaAdministradores.agregarSinArchivo(admin);
+				rut=admin.getRut();
+				 }
+			}
+              return listaAdministradores;
+			 }
+		 
 	 
 	//modificar los datos del administrador 
 	    public boolean modificarNombre(Object administradorModificar,String nuevoNombre)
@@ -269,8 +290,18 @@ package Clases;
 	}
 	
 	    
+	public Administrador obtener(String rut)
+	{															
+		for (Entry<String, Administrador> e: administradores.entrySet())
+		 {
+			 if(!e.getValue().getRut().equals(rut))
+				 return e.getValue();
+			 
+		  }		
+		return null;			
+	}
 	
-	   
+	
 	 //retorna true si el admnistrador se encuentra en la lista de administradores y false si no 
 		public boolean existe(Object  administrador)
 		{
@@ -303,6 +334,10 @@ package Clases;
 			
 			return null;
 		}
+
+	
+
+		
 	
 		
 	

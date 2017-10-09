@@ -71,12 +71,11 @@ public class VentanaAgregarProyecto extends JFrame {
 						&& !textFieldNpisos.getText().isEmpty()&& !textFieldNombreEnc.getText().isEmpty())
 				{
 					
-						Proyecto proyNuevo = new Proyecto(empresa.getListaProyectos().generarId(),
-								textFieldNombre.getText(),textFieldDireccion.getText(),
-										textFieldCiudad.getText(),
-										textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
-										,Integer.parseInt(textCantidadDept.getText()));
-						empresa.getListaProyectos().agregar(proyNuevo);
+						Proyecto proyNuevo=empresa.crearProyecto(empresa.generarId(),textFieldNombre.getText(),textFieldDireccion.getText(),
+						textFieldCiudad.getText(),textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
+						,Integer.parseInt(textCantidadDept.getText()));
+						
+						empresa.agregarProyecto(proyNuevo);
 						
 						
 						JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"El proyecto\n"+

@@ -1,13 +1,16 @@
 package Clases;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JPasswordField;
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 
-public class ListaVendedores extends ListaPersonas {
+public class ListaVendedores extends ListaPersonas implements Lista {
 
 
 	private HashMap<String,Vendedor> vendedores;
@@ -24,11 +27,23 @@ public class ListaVendedores extends ListaPersonas {
 	
 	
     
-      /**
+   
+
+
+	public ListaVendedores() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
+
+	/**
        * 
        *Metodo para crear a un vendedor
        */
-    public Vendedor crearVendedor(String nombre,String rut ,String direccion ,String correo,String telefono,String clave)
+    public Vendedor crear(String nombre,String rut ,String direccion ,String correo,String telefono,String clave)
     {
     	Vendedor vendedor=new Vendedor(nombre,rut,direccion,telefono,correo ,clave);
     	return vendedor;
@@ -66,6 +81,16 @@ public class ListaVendedores extends ListaPersonas {
 				 return e.getValue();
 			 }
 		   }		
+		return null;			
+	}
+	public Vendedor obtener(String rut)
+	{															
+		for (Entry<String, Vendedor> e: vendedores.entrySet())
+		 {
+			 if(!e.getValue().getRut().equals(rut))
+				 return e.getValue();
+			 
+		  }		
 		return null;			
 	}
 
@@ -234,7 +259,7 @@ public class ListaVendedores extends ListaPersonas {
 	   }
 	  
 
-
+   
 
 	/**
 	 * 
@@ -250,6 +275,8 @@ public class ListaVendedores extends ListaPersonas {
 			
 			return null;
 		}
+	
+
 
 	 public int size()
 		{

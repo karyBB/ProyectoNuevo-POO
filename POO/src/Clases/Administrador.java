@@ -1,7 +1,7 @@
 package Clases;
 
 /*clase Admin, subclase de la clase Persona*/
-public class Administrador extends Persona {
+public class Administrador extends Persona implements Cloneable{
 
 	private String cargo ;
 	
@@ -40,7 +40,10 @@ public class Administrador extends Persona {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	
+	public Administrador clone() throws CloneNotSupportedException  {
+		
+		  return (Administrador) super.clone();
+		 }
 }
     
 	

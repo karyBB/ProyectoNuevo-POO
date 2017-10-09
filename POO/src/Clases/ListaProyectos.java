@@ -2,7 +2,7 @@ package Clases;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ListaProyectos  {
+public class ListaProyectos  implements Lista,Cloneable {
 
 	
 	private ArrayList <Proyecto> arrayProyectos;
@@ -14,9 +14,14 @@ public class ListaProyectos  {
 		arrayProyectos = new ArrayList<Proyecto>();
 		archivo.cargarArchivoTextoProyecto(ListaProyectos.this);
 	}
-	public int size()
-	{
-		return arrayProyectos.size();
+	
+	public ListaProyectos() {
+		arrayProyectos= new ArrayList<Proyecto>();
+	}
+
+	public Proyecto crearProyecto(String id,String nombre,String direccion,String ciudad,String nombreEncargado,int numPisos,int numDepts) {
+		Proyecto proyecto=new Proyecto(id,nombre,direccion,ciudad,nombreEncargado,numPisos,numDepts);
+		return proyecto;
 	}
 
 //agrega un nuevo proyecto a lista de proyectos 
@@ -39,6 +44,7 @@ public class ListaProyectos  {
 			return false;
 				
 		}
+		//utilizado al cargar de los txt
 		public boolean agregarSinArchivo(Proyecto proyectonuevo)
 		{
 			if(!existe(((Proyecto)proyectonuevo).getId()))
@@ -51,55 +57,73 @@ public class ListaProyectos  {
 				
 		}
 			
-		//elimina un proyecto del arreglo 
-		public boolean eliminar(Object proyecto)
-		{    	
-			if(existe(((Proyecto)proyecto).getId()))
+		
+
+//busca un proy por el id en el array de proy
+		public Proyecto busqueda(String buscado)
+		{									   	
+			if(arrayProyectos!=null){
+				for(int i = 0; i < arrayProyectos.size(); i++){
+					if(buscado.equals(arrayProyectos.get(i).getId()))
+					{
+						return arrayProyectos.get(i);
+						
+					}
+				}
+			}
+			return null;	
+		}
+
+public Proyecto buscarNombre(String buscado)
+		{									   	
+			if(arrayProyectos!=null){
+				for(int i = 0; i < arrayProyectos.size(); i++){
+					if(buscado.equals(arrayProyectos.get(i).getNombre()))
+					{
+						return arrayProyectos.get(i);
+						
+					}
+				}
+			}
+			return null;	
+		}
+
+public boolean modificarNombre(Object proyectoModificar,String cambiar)
+		{
+			Archivo archivo=new Archivo();
+		
+			if(existe(((Proyecto)proyectoModificar).getId()))
 			{
-				Archivo archivos= new Archivo();
-				archivos.eliminarTxtProyecto((Proyecto)proyecto);
+				((Proyecto)proyectoModificar).setNombre(cambiar);
+				try {
+					archivo.actualizarTxtProyectos((Proyecto)proyectoModificar);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				return true;
 			}
-			return false;	
+			return false;
 		}
 
-//modifica el nombre de el proyecto 
-
-	public boolean modificarNombre(Object proyectoModificar,String cambiar)
-	{
-    	Archivo archivo=new Archivo();
-
-		if(existe(((Proyecto)proyectoModificar).getId()))
-		{
-			((Proyecto)proyectoModificar).setNombre(cambiar);
-			try {
-				archivo.actualizarTxtProyectos((Proyecto)proyectoModificar);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return true;
-		}
-		return false;
-	}
+	//modifica el nombre de el proyecto 
+//eliminar porque se generan solos 
 	public boolean modificarId(Object proyectoModificar,String cambiar)
-	{
-    	Archivo archivo=new Archivo();
-
-		if(existe(((Proyecto)proyectoModificar).getId()))
 		{
-			((Proyecto)proyectoModificar).setId(cambiar);
-			try {
-				archivo.actualizarTxtProyectos((Proyecto)proyectoModificar);
-			} catch (IOException e) {
-				e.printStackTrace();
+			Archivo archivo=new Archivo();
+		
+			if(existe(((Proyecto)proyectoModificar).getId()))
+			{
+				((Proyecto)proyectoModificar).setId(cambiar);
+				try {
+					archivo.actualizarTxtProyectos((Proyecto)proyectoModificar);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return true;
 			}
-			return true;
+			return false;
 		}
-		return false;
-	}
-	
-	
-//modifica la direccion donde se encuentra el proyecto 
+	//modifica la direccion donde se encuentra el proyecto 
 		public boolean modificarDireccionProy( Proyecto proyectoModificar,String nuevaDireccion)
 		{
 	    	Archivo archivo=new Archivo();
@@ -116,6 +140,7 @@ public class ListaProyectos  {
 			}
 			return false;
 		}
+		
 		public boolean modificarCiudad( Proyecto proyectoModificar,String nuevaCiudad)
 		{
 	    	Archivo archivo=new Archivo();
@@ -156,7 +181,7 @@ public class ListaProyectos  {
 	
 	
 	
-	public Proyecto busquedaPorCiudad(String ciudad)
+	public Proyecto buscarPorCiudad(String ciudad)
 	{
 		if(arrayProyectos!=null){
 			for(int i = 0; i < arrayProyectos.size(); i++){
@@ -185,40 +210,28 @@ public class ListaProyectos  {
 	}
 
 			
-			//busca un proy por el id en el array de proy
-	public Proyecto busqueda(String buscado)
-	{									   	
-		if(arrayProyectos!=null){
-			for(int i = 0; i < arrayProyectos.size(); i++){
-				if(buscado.equals(arrayProyectos.get(i).getId()))
-				{
-					return arrayProyectos.get(i);
-					
-				}
+			public int size()
+			{
+				return arrayProyectos.size();
 			}
-		}
-		return null;	
-	}
-	public Proyecto busquedaNombre(String buscado)
-	{									   	
-		if(arrayProyectos!=null){
-			for(int i = 0; i < arrayProyectos.size(); i++){
-				if(buscado.equals(arrayProyectos.get(i).getNombre()))
-				{
-					return arrayProyectos.get(i);
-					
-				}
-			}
-		}
-		return null;	
-	}
 
-		public boolean existe(String buscado)
+	//elimina un proyecto del arreglo 
+	public boolean eliminar(Object proyecto)
+	{    	
+		if(existe(((Proyecto)proyecto).getId()))
+		{
+			Archivo archivos= new Archivo();
+			archivos.eliminarTxtProyecto((Proyecto)proyecto);
+			return true;
+		}
+		return false;	
+	}
+		public boolean existe(Object buscado)
 		{										
 			if(arrayProyectos!=null){
 				for(int i = 0; i < arrayProyectos.size(); i++)
 				{
-					if(buscado.equals(arrayProyectos.get(i).getId())){
+					if(buscado.equals(arrayProyectos.get(i))){
 						return true;			
 					}
 				}
@@ -233,6 +246,19 @@ public class ListaProyectos  {
 			return null;
 		}
 		
+		public ListaProyectos clone() throws CloneNotSupportedException  {
+			
+			Proyecto proy=new Proyecto();
+			ListaProyectos proyectos=new ListaProyectos();
+			for(int i=0;i<arrayProyectos.size();i++)
+			{
+				proy=arrayProyectos.get(i).clone();
+				proyectos.agregarSinArchivo(proy);
+			}
+                 return proyectos;
+			 }
+		 
+		 
 		
 		public ArrayList<Departamento> TodosLosDepartamentos()
 		{
@@ -248,13 +274,7 @@ public class ListaProyectos  {
 			return todosDepts;
 		}
 
-		public Proyecto getPosDept(int i) 
-		{
-			if(arrayProyectos.get(i)==null)
-			return null;
-			
-			return arrayProyectos.get(i);
-		}
+		
 
 		public int largo() {
 			return arrayProyectos.size();
@@ -280,6 +300,7 @@ public class ListaProyectos  {
 			}
 			return String.valueOf(numero);
 		}
+	
 
 	
 }

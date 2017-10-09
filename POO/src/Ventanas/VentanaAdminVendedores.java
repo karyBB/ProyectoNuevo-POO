@@ -33,7 +33,7 @@ public class VentanaAdminVendedores extends JFrame {
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 227);
+		setBounds(100, 100, 509, 235);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -43,18 +43,18 @@ public class VentanaAdminVendedores extends JFrame {
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBorder(new LineBorder(new Color(255, 255, 255)));
 		panelBusqueda.setBackground(new Color(0, 153, 153));
-		panelBusqueda.setBounds(10, 62, 339, 41);
+		panelBusqueda.setBounds(10, 69, 276, 65);
 		contentPane.add(panelBusqueda);
 		panelBusqueda.setLayout(null);
 		
 		JLabel lblProyecto = new JLabel("Vendedor :");
-		lblProyecto.setBounds(10, 13, 73, 14);
+		lblProyecto.setBounds(10, 11, 73, 14);
 		panelBusqueda.add(lblProyecto);
-		lblProyecto.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		lblProyecto.setFont(new Font("Consolas", Font.PLAIN, 13));
 		lblProyecto.setForeground(new Color(255, 255, 255));
 		
 		txtNombreVendedor = new JTextField();
-		txtNombreVendedor.setBounds(82, 6, 247, 28);
+		txtNombreVendedor.setBounds(10, 26, 256, 28);
 		panelBusqueda.add(txtNombreVendedor);
 		txtNombreVendedor.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		txtNombreVendedor.setColumns(10);
@@ -64,7 +64,7 @@ public class VentanaAdminVendedores extends JFrame {
 		JLabel lblUsuario = new JLabel("Men\u00FA Vendedor");
 		lblUsuario.setForeground(Color.WHITE);
 		lblUsuario.setFont(new Font("Cambria", Font.PLAIN, 20));
-		lblUsuario.setBounds(198, 11, 181, 47);
+		lblUsuario.setBounds(63, 0, 156, 58);
 		contentPane.add(lblUsuario);
 		
 		JButton btnRegresar = new JButton("VOLVER");
@@ -77,7 +77,7 @@ public class VentanaAdminVendedores extends JFrame {
 			}
 		});
 		btnRegresar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnRegresar.setBounds(159, 150, 175, 34);
+		btnRegresar.setBounds(63, 162, 175, 34);
 		contentPane.add(btnRegresar);
 		
 		JButton btnMostrar = new JButton("MOSTRAR VENDEDOR");
@@ -88,34 +88,56 @@ public class VentanaAdminVendedores extends JFrame {
 				if(!txtNombreVendedor.getText().isEmpty())
 				{	
 					String vendedorBuscado = txtNombreVendedor.getText();
-					VentanaMostrarVendedor ventanaMostrarProyecto = new VentanaMostrarVendedor (empresa.buscarNombreVendedor(vendedorBuscado),VentanaAdminVendedores.this);     
-					ventanaMostrarProyecto.setVisible(true);
+					if(empresa.buscarNombreVendedor(vendedorBuscado)!=null)
+					{
+					VentanaMostrarVendedor ventanaMostrarVendedor = new VentanaMostrarVendedor (empresa.buscarNombreVendedor(vendedorBuscado),VentanaAdminVendedores.this);     
+					ventanaMostrarVendedor.setVisible(true);
 					setVisible(false);
-				}
+					}
+					else
+						JOptionPane.showMessageDialog(VentanaAdminVendedores.this,"No existen Vendedor","Error",0);
+
+				}else
+					JOptionPane.showMessageDialog(VentanaAdminVendedores.this,"Porfavor ingrese un nombre","Error",0);
+
 				
 
 				
 			}
 		});
 		btnMostrar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnMostrar.setBounds(357, 62, 187, 34);
+		btnMostrar.setBounds(296, 36, 187, 34);
 		contentPane.add(btnMostrar);
 		
 		JButton btnNewButton = new JButton("MODIFICAR");
 		btnNewButton.setBackground(SystemColor.controlHighlight);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				if(!txtNombreVendedor.getText().isEmpty())
 				{	
 					String vendedorBuscado = txtNombreVendedor.getText();
+					 if(empresa.buscarNombreVendedor(vendedorBuscado)!=null) {
 							 VentanaModificarVendedor ventanaModificarVendedor = new VentanaModificarVendedor (empresa,empresa.buscarNombreVendedor(vendedorBuscado),null,VentanaAdminVendedores.this);     
-					            ventanaModificarVendedor.setVisible(true);
+					         ventanaModificarVendedor.setVisible(true);
 						setVisible(false);
+					 }
+					 else {
+							JOptionPane.showMessageDialog(VentanaAdminVendedores.this,"No se encuentra ningun vendedor con este nombre","Error",0);
+
+					 }
 						}
+				else {
+					JOptionPane.showMessageDialog(VentanaAdminVendedores.this,"Porfavor ingrese algun nombre","Error",0);
+
 				}
+				 }
+			
+			
+	      
 			
 		});
-		btnNewButton.setBounds(357, 107, 185, 34);
+		btnNewButton.setBounds(296, 100, 185, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("ELIMINAR");
@@ -132,7 +154,7 @@ public class VentanaAdminVendedores extends JFrame {
 	                    Archivo archivo=new Archivo();
 	                    archivo.eliminarTxtUsuario(vendedor);
 	                    archivo.eliminarCarpetaUsuario(vendedor);
-	                  empresa.eliminaVendedor(vendedor);;
+	                    empresa.eliminaVendedor(vendedor);
 	                    JOptionPane.showMessageDialog(VentanaAdminVendedores.this,"El Vendedor ha sido eliminado","Mensaje ",1);
 	
 							}
@@ -148,7 +170,7 @@ public class VentanaAdminVendedores extends JFrame {
 			}
 			
 		});
-		btnNewButton_1.setBounds(357, 149, 185, 34);
+		btnNewButton_1.setBounds(296, 161, 185, 34);
 		contentPane.add(btnNewButton_1);
 	
 		

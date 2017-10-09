@@ -31,7 +31,7 @@ public class VentanaVendedor extends JFrame {
 	
 	public VentanaVendedor(Empresa empresa,Vendedor user,VentanaInicial ventanaAnterior) {
 		Proyectos = new DefaultListModel<Proyecto>();
-		ListaProyectos listaProyecto = empresa.getListaProyectos();
+		
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,16 +104,16 @@ public class VentanaVendedor extends JFrame {
 				if(!txtProyecto.getText().isEmpty() && !txtProyecto.getText().equals(""))
 				{
 					String nombreProyecto = txtProyecto.getText();
-					int largo = listaProyecto.largo();
+					int largo = empresa.sizeProyecto();
 					
 					Proyectos.removeAllElements(); //se parte con la lista de Proyectos vacia
 						for(int i=0;i<largo;i++)
 						{
-							if(listaProyecto.getPosDept(i).getNombre().indexOf(nombreProyecto)!=-1
-								|| listaProyecto.getPosDept(i).getCiudadUbicacion().indexOf(nombreProyecto)!=-1
-								|| listaProyecto.getPosDept(i).getId().indexOf(nombreProyecto)!=-1)
+							if(empresa.obtenerProyecto(i).getNombre().indexOf(nombreProyecto)!=-1
+								|| empresa.obtenerProyecto(i).getCiudadUbicacion().indexOf(nombreProyecto)!=-1
+								|| empresa.obtenerProyecto(i).getId().indexOf(nombreProyecto)!=-1)
 							{
-								Proyectos.addElement(listaProyecto.getPosDept(i));
+								Proyectos.addElement(empresa.obtenerProyecto(i));
 							}
 						}
 					

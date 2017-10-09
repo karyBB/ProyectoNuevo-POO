@@ -109,7 +109,7 @@ public class VentanaAgregarAdministrador extends JFrame {
 						&& !textFieldTelefono.getText().isEmpty()&& !textFieldDireccion.getText().isEmpty())
 				{
 					
-						empresa.crearAdministrador(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldCargo.getText(),textFieldClave.getText());
+						
 						empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
 				        
 						

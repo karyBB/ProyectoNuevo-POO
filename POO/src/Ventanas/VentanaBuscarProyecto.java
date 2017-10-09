@@ -26,7 +26,6 @@ public class VentanaBuscarProyecto extends JFrame {
 	private JTextField textFieldBusquedaId;
 
 	public VentanaBuscarProyecto(Empresa empresa,final VentanaProyecto ventanaAnterior) {
-		ListaProyectos listaProyectos = empresa.getListaProyectos();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 427);
@@ -45,7 +44,7 @@ public class VentanaBuscarProyecto extends JFrame {
 				
 				
 				String id=textFieldBusquedaId.getText();
-				VentanaMostrarProyecto ventanaMostrarProyecto = new VentanaMostrarProyecto (empresa,empresa.getListaProyectos().busqueda(id),null,VentanaBuscarProyecto.this);     
+				VentanaMostrarProyecto ventanaMostrarProyecto = new VentanaMostrarProyecto (empresa,empresa.buscarIdProyecto(id),null,VentanaBuscarProyecto.this);     
 				ventanaMostrarProyecto.setVisible(true);
 			setVisible(false);
 				
@@ -87,8 +86,8 @@ public class VentanaBuscarProyecto extends JFrame {
 
 					String id = textFieldBusquedaId.getText();
 
-						if(listaProyectos.busqueda(id)!=null) {
-							 VentanaModificarProyecto ventanaModificarProyecto = new VentanaModificarProyecto (empresa,listaProyectos.busqueda(id),VentanaBuscarProyecto.this);     
+						if(empresa.buscarIdProyecto(id)!=null) {
+							 VentanaModificarProyecto ventanaModificarProyecto = new VentanaModificarProyecto (empresa,empresa.buscarIdProyecto(id),VentanaBuscarProyecto.this);     
 							 ventanaModificarProyecto.setVisible(true);
 						setVisible(false);
 						}
@@ -110,12 +109,12 @@ public class VentanaBuscarProyecto extends JFrame {
 				{	
 					String id = textFieldBusquedaId.getText();
 
-						if(listaProyectos.busqueda(id)!=null) {
-					Proyecto proyecto=listaProyectos.busqueda(id);
+						if(empresa.buscarIdProyecto(id)!=null) {
+					Proyecto proyecto=empresa.buscarIdProyecto(id);
                     Archivo archivo=new Archivo();
                     archivo.eliminarTxtProyecto(proyecto);
                     archivo.eliminarCarpetaProyecto(proyecto);
-                    listaProyectos.eliminar(proyecto);
+                    empresa.eliminarProyecto(proyecto);
                     JOptionPane.showMessageDialog(VentanaBuscarProyecto.this,"El Proyecto ha sido eliminado","Mensaje ",1);
 
 						}

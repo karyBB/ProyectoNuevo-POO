@@ -2,7 +2,7 @@ package Clases;
 
 import javax.swing.JPasswordField;
 
-public class Empresa {
+public class Empresa  implements Cloneable {
 	
  
 	private String nombre;
@@ -43,8 +43,8 @@ public class Empresa {
 	
 	 public Vendedor crearVendedor(String nombre,String rut ,String direccion,String correo ,String telefono,String clave)
 	 {
-		 listaVendedores.crearVendedor(nombre, rut, direccion, correo, telefono, clave);
-		 return listaVendedores.crearVendedor(nombre, rut, direccion, correo, telefono, clave);
+		 
+		 return listaVendedores.crear(nombre, rut, direccion, correo, telefono, clave);
 	 }
 	 
 	 
@@ -118,6 +118,9 @@ public class Empresa {
 	   return listaVendedores.getVendedor(usuario, clave);
 	   
    }
+    public Vendedor obtenerVendedor(String rut) {
+    	return listaVendedores.obtener(rut);
+    }
    public int sizeVendedores() {
     return listaVendedores.size();
    }
@@ -153,8 +156,7 @@ public class Empresa {
 	 
 	 public Administrador crearAdministrador(String nombre,String rut ,String direccion,String correo ,String telefono,String cargo,String clave)
 	 {
-		 listaAdministradores.crearAdministrador(nombre, rut, direccion, correo, telefono, cargo,clave);
-		 return listaAdministradores.crearAdministrador(nombre, rut, direccion, correo, telefono,cargo, clave);
+		 return listaAdministradores.crear(nombre, rut, direccion, correo, telefono,cargo, clave);
 	 }
 	 
 	 
@@ -163,7 +165,10 @@ public class Empresa {
     }
    
     
-    
+	public ListaAdministradores clonarAdministradores() throws CloneNotSupportedException {
+		
+		return listaAdministradores.clone();
+	}
     
 
 	
@@ -230,35 +235,112 @@ public class Empresa {
 	   return listaAdministradores.getAdministrador(administrador, clave);
 	   
   }
-    
+  public Administrador obtenerAdministrador(String rut) {
+  	return listaAdministradores.obtener(rut);
+  }
+   public int sizeAdministrador()
+   {
+	   return listaAdministradores.size();
+   }
+	
+
+	/**
+	 * metodos para los proyectos 
+	 * @return
+	 */
+	public Proyecto crearProyecto(String id,String nombre,String direccion,String ciudad,String nombreEncargado,int numPisos,int numDepts ) {
+		return listaProyectos.crearProyecto(id,nombre,direccion,ciudad,nombreEncargado,numPisos,numDepts);
+	}
 	
 	
 	
 	
+	public void agregarProyecto(Proyecto proyecto)
+	{
+		listaProyectos.agregar(proyecto);
+	}
+	
+	
+	public void agregarProyectoSinArchivo(Proyecto proyecto)
+	{
+		listaProyectos.agregarSinArchivo(proyecto);
+	}
 	
 	
 	
+	public String generarId() {
+		return listaProyectos.generarId();
+	}
 	
 	
 	
+	public Proyecto buscarIdProyecto(String id)
+	{
+		return listaProyectos.busqueda(id);
+	}
 	
 	
 	
+	public Proyecto buscarNombreProyecto(String nombre)
+	{
+		return listaProyectos.buscarNombre(nombre);
+	}
 	
 	
 	
+	public Proyecto buscarCiudadProyecto(String ciudad)
+	{
+		return listaProyectos.buscarPorCiudad(ciudad);
+	}
 	
 	
 	
+	public Proyecto buscarNombreEncargadoProyecto(String nombre)
+	{
+		return listaProyectos.busquedaPorNombreEncargado(nombre);
+	}
+	
+	
+	
+	public boolean modificarNombreProyecto(Proyecto proyecto,String nombre) {
+		return listaProyectos.modificarNombre(proyecto, nombre);
+	}
+	
+	
+	public boolean modificarDireccionProyecto(Proyecto proyecto,String direccion) {
+		return listaProyectos.modificarDireccionProy(proyecto, direccion);
+	}
+	
+	
+	public boolean modificarCiudadProyecto(Proyecto proyecto,String ciudad) {
+		return listaProyectos.modificarCiudad(proyecto, ciudad);
+	}
+	
+	
+	public boolean modificarNombreEncProyecto(Proyecto proyecto,String nombre) {
+		return listaProyectos.modificarNombreEncargado(proyecto, nombre);
+	}
+	public boolean eliminarProyecto(Proyecto proyecto)
+	{
+		return listaProyectos.eliminar(proyecto);
+	}
+	
+	public Proyecto obtenerProyecto(int i)
+	{
+		return listaProyectos.getPosProyecto(i);
+	}
+	
+	public int sizeProyecto() {
+		return listaProyectos.size();
+	}
+	public ListaProyectos clonarProyectos() throws CloneNotSupportedException {
+            return listaProyectos.clone();
+            
+	}
 	
 	public ListaProyectos getListaProyectos() {
 		return listaProyectos;
 	}
-	
-	public void setListaProyectos(ListaProyectos listaProyectos) {
-		this.listaProyectos = listaProyectos;
-	}
-	
 	
 	public String getNombre() {
 		return nombre;
@@ -275,6 +357,14 @@ public class Empresa {
 	public void setArchivos(Archivo archivo) {
 		this.archivo = archivo;
 	}
+
+
+	
+
+
+	
+
+	
 
 
   	
