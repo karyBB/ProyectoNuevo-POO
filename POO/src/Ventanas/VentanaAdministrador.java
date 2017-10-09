@@ -125,7 +125,7 @@ public class VentanaAdministrador extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				VentanaProyecto ingreso = new VentanaProyecto(empresa,VentanaAdministrador.this,false, VentanaAdministrador.this);//interfaz 
+				VentanaProyecto ingreso = new VentanaProyecto(empresa,VentanaAdministrador.this);//interfaz 
 				ingreso.setVisible(true);
 			}
 		});

@@ -24,7 +24,7 @@ public class VentanaMostrarProyecto extends JFrame {
 	private JPanel contentPane;
 
 	
-	public VentanaMostrarProyecto(Empresa empresa,Proyecto proyecto,VentanaVendedor ventanaAnt,VentanaBuscarProyecto ventanaAnte) {
+	public VentanaMostrarProyecto(Empresa empresa,Proyecto proyecto,Object ventanaAnt,VentanaBuscarProyecto ventanaAnte) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 368, 401);
@@ -63,7 +63,7 @@ public class VentanaMostrarProyecto extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						if(ventanaAnt!=null) {
 						dispose();
-						ventanaAnt.setVisible(true);
+						((VentanaVendedor)ventanaAnt).setVisible(true);
 						}
 						else
 							if(ventanaAnte!=null) {
