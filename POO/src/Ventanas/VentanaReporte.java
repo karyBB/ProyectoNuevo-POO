@@ -89,15 +89,15 @@ public class VentanaReporte extends JFrame {
 				btnAtras.setBounds(268, 376, 90, 23);
 				contentPane.add(btnAtras);
 				
-				
+				if (seleccionado==0)
+			     {
 				//Se crea un .xls con los datos de los proyecto
 				JButton btnCrearArchivoXls = new JButton("CREAR ARCHIVO XLS");
 				btnCrearArchivoXls.setFont(new Font("Consolas", Font.PLAIN, 11));
 				btnCrearArchivoXls.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						//implementar despues un JFileChooser para elegir ruta y nombre archivo
-						     if (seleccionado==0)
-						     {
+						     
 						    	 ListaProyectos proyectos;
 								
 									try {
@@ -107,27 +107,14 @@ public class VentanaReporte extends JFrame {
 										e.printStackTrace();
 									}
 								
-						     }
-						     if(seleccionado==2)
-						     {
-						    	 ListaAdministradores administradores;
-								
-									try {
-										administradores = empresa.clonarAdministradores();
-										
-											CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(empresa,administradores);
-										
-									} catch (CloneNotSupportedException | IOException e) {
-										e.printStackTrace();
-									}
-								
-
-							}}
+						     
+					}
 				});
+			     
 				btnCrearArchivoXls.setBounds(8, 376, 137, 23);
 				contentPane.add(btnCrearArchivoXls);
 			}
-		
+	}
 	//muestra los datos por pantalla
 	private void mostrarEnJTextAreaProyecto(JTextArea datosProy,Empresa empresa)
 	{

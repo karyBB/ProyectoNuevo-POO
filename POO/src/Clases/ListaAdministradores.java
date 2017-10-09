@@ -94,22 +94,7 @@ package Clases;
 	 }
 	 
 	 
-	 public ListaAdministradores clone() throws CloneNotSupportedException {
-			
-			Administrador admin=new Administrador();
-			ListaAdministradores listaAdministradores=new ListaAdministradores();
-			String rut=null;
-			for (Entry<String, Administrador> e: administradores.entrySet())
-			 {
-				if(!e.getValue().getRut().equals(rut))	{
-				admin=e.getValue().clone();
-				listaAdministradores.agregarSinArchivo(admin);
-				rut=admin.getRut();
-				 }
-			}
-              return listaAdministradores;
-			 }
-		 
+	
 	 
 	//modificar los datos del administrador 
 	    public boolean modificarNombre(Object administradorModificar,String nuevoNombre)
