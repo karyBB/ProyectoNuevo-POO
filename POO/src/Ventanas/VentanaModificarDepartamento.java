@@ -6,10 +6,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import Clases.Departamento;
+import Clases.Empresa;
 
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,7 +29,7 @@ public class VentanaModificarDepartamento extends JFrame {
 	private JTextField textFieldDescripcion;
 
 	
-	public VentanaModificarDepartamento (Departamento departamento ,final VentanaDepartamento ventanaDepartamento ){
+	public VentanaModificarDepartamento (Empresa empresa,Departamento departamento ,final VentanaDepartamento ventanaDepartamento ){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 412, 450);
 		contentPane = new JPanel();
@@ -46,8 +48,15 @@ public class VentanaModificarDepartamento extends JFrame {
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				if(!textFieldPrecio.getText().isEmpty())
+				{
+					if(empresa.esNumerico(textFieldPrecio.getText()))
+						//LLAMAR A LA FUNCION MODIFICAR PRECIO DEPARTAMENTO
+					else
+						JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"Ingresó mal el precio","Error",0);	
+				}
+				if(!textFieldDescripcion.getText().isEmpty())
+					//LLAMAR A LA FUNCION QUE MODIFICA LA DESCRIPCION DEL DEPARTAMENTO
 				
 				
 			}

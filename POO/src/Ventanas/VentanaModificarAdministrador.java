@@ -105,29 +105,29 @@ public class VentanaModificarAdministrador extends JFrame {
 				
 			
 				if(!textFieldNombre.getText().isEmpty())
-				{
-					
 					empresa.modificarNombreAdministrador(admin, textFieldNombre.getText());
-				}
+				
 				if(!textFieldDireccion.getText().isEmpty())
-				{
 					empresa.modificarDireccionAdministrador(admin, textFieldDireccion.getText());
-				}
+	
 				if(!textFieldCorreo.getText().isEmpty())
 				{
+					if(empresa.verificarEmail(textFieldCorreo.getText()))
 					empresa.modificarCorreoAdministrador(admin, textFieldCorreo.getText());
+					else
+						JOptionPane.showMessageDialog(VentanaModificarAdministrador.this,"Ingresó mal el correo","Error",0);
 				}
 				if(!textFieldTelefono.getText().isEmpty())
 				{
-					empresa.modificarTelefonoAdministrador(admin, textFieldTelefono.getText());
+					if(empresa.verificarTelefono(textFieldTelefono.getText()))
+						empresa.modificarTelefonoAdministrador(admin, textFieldTelefono.getText());
+					else
+						JOptionPane.showMessageDialog(VentanaModificarAdministrador.this,"Ingresó mal el telefono","Error",0);
+					
 				}
 				if(!textFieldClave.getText().isEmpty())
-				{
 					empresa.modificarClaveAdministrador(admin, textFieldCorreo.getText());
-				}
-				JOptionPane.showMessageDialog(VentanaModificarAdministrador.this,"Administrador\n"+
-						admin.getNombre()+"sus datos han sido modificados","DATOS MODIFICADOS",1);
-					
+
 			}
 			});
 		button.setFont(new Font("Consolas", Font.PLAIN, 13));
