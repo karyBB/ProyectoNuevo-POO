@@ -10,8 +10,6 @@ import javax.swing.border.LineBorder;
 
 import Clases.Empresa;
 import Clases.Proyecto;
-import Clases.Vendedor;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -22,6 +20,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import java.awt.SystemColor;
 
@@ -87,7 +86,7 @@ public class VentanaProyecto extends JFrame {
 		lblUsuario.setBounds(198, 11, 181, 47);
 		contentPane.add(lblUsuario);
 		
-		JButton btnRegresar = new JButton("CERRAR SESION");
+		JButton btnRegresar = new JButton("ATRAS");
 		btnRegresar.setBackground(SystemColor.controlHighlight);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -96,7 +95,7 @@ public class VentanaProyecto extends JFrame {
 			}
 		});
 		btnRegresar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnRegresar.setBounds(359, 332, 175, 34);
+		btnRegresar.setBounds(359, 376, 175, 34);
 		contentPane.add(btnRegresar);
 		
 		JButton btnBuscar = new JButton("BUSCAR PROYECTO");
@@ -159,6 +158,35 @@ public class VentanaProyecto extends JFrame {
 		btnDepartamentos.setBackground(SystemColor.controlHighlight);
 		btnDepartamentos.setBounds(347, 157, 187, 34);
 		contentPane.add(btnDepartamentos);
+		
+		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setFont(new Font("Consolas", Font.PLAIN, 13));
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaModificarProyecto ventanaModif = new VentanaModificarProyecto(
+						empresa,listaProyectos.getSelectedValue(),VentanaProyecto.this);
+				ventanaModif.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnModificar.setBackground(SystemColor.controlHighlight);
+		btnModificar.setBounds(347, 202, 187, 34);
+		contentPane.add(btnModificar);
+		
+		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int reply = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar de forma permanente el proyecto: '"+listaProyectos.getSelectedValue()+"' ?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+			    if (reply == JOptionPane.YES_OPTION)
+			    {
+			    	empresa.eliminarProyecto(listaProyectos.getSelectedValue());
+			    }
+			}
+		});
+		btnEliminar.setBackground(SystemColor.controlHighlight);
+		btnEliminar.setBounds(10, 381, 90, 23);
+		contentPane.add(btnEliminar);
 	
 		
 		
@@ -166,63 +194,6 @@ public class VentanaProyecto extends JFrame {
 		
 	}
 	
-	
-	/*
-	public VentanaProyecto(Empresa empresa, VentanaAdministrador ventanaAdministrador, boolean b, VentanaAdministrador ventanaAnterior) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 299, 407);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 153, 153));
-		contentPane.setForeground(new Color(0, 153, 153));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton BotonAgregarProyecto = new JButton("AGREGAR PROYECTO");
-		BotonAgregarProyecto.setBackground(SystemColor.controlHighlight);
-		BotonAgregarProyecto.setFont(new Font("Consolas", Font.PLAIN, 13));
-		BotonAgregarProyecto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			VentanaAgregarProyecto ingreso = new VentanaAgregarProyecto(empresa,VentanaProyecto.this,false, VentanaProyecto.this);//interfaz 
-			ingreso.setVisible(true);
-			}
-		});
-		BotonAgregarProyecto.setBounds(10, 93, 253, 37);
-		contentPane.add(BotonAgregarProyecto);
-		
-		JLabel lblMenProyectos = new JLabel("Men\u00FA Proyectos");
-		lblMenProyectos.setForeground(Color.WHITE);
-		lblMenProyectos.setFont(new Font("Cambria", Font.PLAIN, 20));
-		lblMenProyectos.setBounds(59, 11, 147, 47);
-		contentPane.add(lblMenProyectos);
-		
-		//btn buscar
-		JButton btnBuscarProyecto = new JButton("BUSCAR PROYECTO");
-		btnBuscarProyecto.setBackground(SystemColor.controlHighlight);
-		btnBuscarProyecto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 setVisible(false);
-	             VentanaBuscarProyecto buscar = new VentanaBuscarProyecto(empresa, VentanaProyecto.this);     
-	             buscar.setVisible(true);
-			}
-		});
-		btnBuscarProyecto.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnBuscarProyecto.setBounds(10, 184, 253, 35);
-		contentPane.add(btnBuscarProyecto);
-		
-		JButton BtnVolver = new JButton("VOLVER");
-		BtnVolver.setBackground(SystemColor.controlHighlight);
-		BtnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ventanaAnterior.setVisible(true);
-			}
-		});
-		BtnVolver.setFont(new Font("Consolas", Font.PLAIN, 13));
-		BtnVolver.setBounds(59, 299, 156, 47);
-		contentPane.add(BtnVolver);
-	} */
 }
 
 

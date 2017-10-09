@@ -27,7 +27,7 @@ public class VentanaModificarProyecto extends JFrame {
 	private JTextField textFieldNomEnc;
 
 	
-	public VentanaModificarProyecto (Empresa empresa,Proyecto proyecto ,final VentanaBuscarProyecto ventanaAnterior ){
+	public VentanaModificarProyecto (Empresa empresa,Proyecto proyecto ,final JFrame ventanaAnterior ){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
