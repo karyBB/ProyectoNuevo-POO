@@ -69,13 +69,13 @@ public class CrearPDF {
 	        
 	        
 	        //Contiene el titulo principal del documento PDF
-	        Paragraph titulo = new Paragraph("Datos\n\r", tipoLetraTitulo); 
+	        Paragraph titulo = new Paragraph("Datos Usuario\n\r", tipoLetraTitulo); 
 	        titulo.setAlignment(Element.ALIGN_CENTER);
 	        docPDF.add(titulo);
 	            
             
 	            //Titulo de la tabla 
-            	Paragraph tituloDatos = new Paragraph(administrador.getNombre(), tipoLetraTitulos); 
+            	Paragraph tituloDatos = new Paragraph("Administrador "+administrador.getNombre(), tipoLetraTitulos); 
             	
 
             	//Se crea la tabla con titulo de la receta
@@ -87,17 +87,26 @@ public class CrearPDF {
 	            
 	            
 	            //Contiene las instrucciones de la receta
-	            Paragraph rut = new Paragraph(administrador.getRut(), tipoLetraNormal); 
+	            Paragraph rut = new Paragraph("RUT "+administrador.getRut(), tipoLetraNormal);
+	            docPDF.add(rut); 
+	            Paragraph direccion = new Paragraph("DIRECCION "+administrador.getDireccion(), tipoLetraNormal);
+	            docPDF.add(direccion); 
+	            Paragraph correo = new Paragraph("CORREO "+administrador.getCorreo(), tipoLetraNormal);
+	            docPDF.add(correo); 
+	            Paragraph telefono = new Paragraph("TELEFONO"+administrador.getTelefono(), tipoLetraNormal);
+	            docPDF.add(telefono); 
+	            Paragraph cargo = new Paragraph("CARGO "+administrador.getCargo(), tipoLetraNormal);
+	            docPDF.add(cargo); 
+	           
+	     
+	          
+	       
+	           
+	           
 	            
-	            //Se crea la tabla que tendrá las instrucciones de la receta
-	            PdfPTable tablaInstrucciones = new PdfPTable(1);
-	            PdfPCell celdaInstrucciones = new PdfPCell(rut);
-	            celdaInstrucciones.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-	            tablaInstrucciones.addCell(celdaInstrucciones);
-	            docPDF.add(tablaInstrucciones);  
 	            
-    	
-            
+	            
+	            
             //Se cierra el documento PDF
             docPDF.close();
 
