@@ -128,7 +128,7 @@ public class VentanaDepartamento extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (listaDepartamentos.getSelectedValue(), VentanaDepartamento.this);     
+	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (empresa,listaDepartamentos.getSelectedValue(), VentanaDepartamento.this);     
 	             ventanaModificarDepartamento.setVisible(true);
 			}
 		});
