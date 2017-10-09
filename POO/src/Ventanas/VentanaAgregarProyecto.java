@@ -66,41 +66,46 @@ public class VentanaAgregarProyecto extends JFrame {
 		btnAgregar.setBackground(SystemColor.controlHighlight);
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//validaciones de numero de pisos, cantidad de departamentos y campos vacios
 				if(!textCantidadDept.getText().isEmpty() && !textFieldNombre.getText().isEmpty()
 						&& !textFieldDireccion.getText().isEmpty() && !textFieldCiudad.getText().isEmpty()
 						&& !textFieldNpisos.getText().isEmpty()&& !textFieldNombreEnc.getText().isEmpty())
 				{
-					
-						Proyecto proyNuevo=empresa.crearProyecto(empresa.generarId(),textFieldNombre.getText(),textFieldDireccion.getText(),
-						textFieldCiudad.getText(),textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
-						,Integer.parseInt(textCantidadDept.getText()));
-						
-						empresa.agregarProyecto(proyNuevo);
-						
-						
-						JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"El proyecto\n"+
-								proyNuevo.getId(),"a sido ingresado correctamente",1);
-						
-						JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingrese datos Departamento para el proyecto\n"+
-								proyNuevo.getId(),"Departamentos",1);
-						
-					    
-					    VentanaAgregarDepartamento ventana= new VentanaAgregarDepartamento(proyNuevo,VentanaAgregarProyecto.this);
-					    ventana.setVisible(true);
-					    
-					
-						
-				}else{			
-					
-					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal algun campo","Error",0);
-				}
-				textCantidadDept.setEditable(false);
+				if(empresa.esNumerico(textFieldNpisos.getText()))
+				{
+				if(empresa.esNumerico(textCantidadDept.getText()))
+				{
+				Proyecto proyNuevo=empresa.crearProyecto(empresa.generarId(),textFieldNombre.getText(),textFieldDireccion.getText(),
+				textFieldCiudad.getText(),textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
+				,Integer.parseInt(textCantidadDept.getText()));
+				
+				empresa.agregarProyecto(proyNuevo);
+				
+				
+				JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"El proyecto\n"+
+						proyNuevo.getId(),"a sido ingresado correctamente",1);
+				
+				JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingrese datos Departamento para el proyecto\n"+
+						proyNuevo.getId(),"Departamentos",1);
+				
+			    
+			    VentanaAgregarDepartamento ventana= new VentanaAgregarDepartamento(empresa,proyNuevo,VentanaAgregarProyecto.this);
+			    ventana.setVisible(true);
+			    textCantidadDept.setEditable(false);
 				textFieldNombre.setEditable(false);
 				textFieldDireccion.setEditable(false);
 				textFieldCiudad.setEditable(false);
 				textFieldNombreEnc.setEditable(false);
 				textFieldNpisos.setEditable(false);	
-				
+				}
+				else		
+					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal la cantidad de departamentos","Error",0);
+				}
+				else		
+					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal el numero de pisos","Error",0);	
+				}
+				else		
+					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal algun campo","Error",0);
 			}
 			
 			

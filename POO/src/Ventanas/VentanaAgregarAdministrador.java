@@ -134,12 +134,11 @@ public class VentanaAgregarAdministrador extends JFrame {
 					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el correo","Error",0);
 				}
 				else
-					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el rut","Error",0);
-				    	
-				}else{
-					
-					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal algun campo","Error",0);
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el rut","Error",0);   	
 				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal algun campo","Error",0);
+				
 
 			}
 		});

@@ -6,6 +6,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import Clases.Departamento;
+import Clases.Empresa;
 import Clases.Proyecto;
 
 import java.awt.Color;
@@ -31,7 +32,7 @@ public class VentanaAgregarDepartamento extends JFrame {
 	private JTextField textFieldTamanno;
 
 	
-	public VentanaAgregarDepartamento(Proyecto proy, VentanaAgregarProyecto ventanaAnterior) {
+	public VentanaAgregarDepartamento(Empresa empresa,Proyecto proy, VentanaAgregarProyecto ventanaAnterior) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
@@ -54,34 +55,45 @@ public class VentanaAgregarDepartamento extends JFrame {
 		btnAgregar.setBackground(SystemColor.controlHighlight);
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//debo mandar datos a la lista departamento para crear un nuevo departamento 
+				
+				//validaciones de precio, tamaño, numero de habitaciones y campos vacios 
 				if(!textFieldTamanno.getText().isEmpty()
 						&& !textFieldNumHabitaciones.getText().isEmpty() && !textFieldPrecio.getText().isEmpty()
 						&& !textAreaDescripcion.getText().isEmpty())
 				{
+				if(empresa.esNumerico(textFieldPrecio.getText()))
+				{
+				if(empresa.esNumerico(textFieldNumHabitaciones.getText()))
+				{
+				if(empresa.esNumerico(textFieldTamanno.getText()))
+				{
+					Departamento deptNuevo = new Departamento("0",textFieldTamanno.getText(),
+						Integer.parseInt(textFieldNumHabitaciones.getText()),rootPaneCheckingEnabled, Integer.parseInt(textFieldPrecio.getText()),
+						textAreaDescripcion.getText());
 					
-						Departamento deptNuevo = new Departamento("0",textFieldTamanno.getText(),
-							Integer.parseInt(textFieldNumHabitaciones.getText()),rootPaneCheckingEnabled, Integer.parseInt(textFieldPrecio.getText()),
-							textAreaDescripcion.getText());
-						
-						//se generan los departamentos
-						proy.getListaDepartamentos().generarDepartamentos(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
-								,proy.getId());
-						
-						JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"El departamento\n"+
-								deptNuevo.getNumero(),"han sido creado correctamente los departamentos",1);
-						
-						
-				}else{			
+					//se generan los departamentos
+					proy.getListaDepartamentos().generarDepartamentos(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
+							,proy.getId());
 					
-					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal algun campo","Error",0);
+					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"El departamento\n"+
+							deptNuevo.getNumero(),"han sido creado correctamente los departamentos",1);
+					textFieldNumHabitaciones.setEditable(false);
+					textFieldPrecio.setEditable(false);
+					textAreaDescripcion.setEditable(false);
+					textFieldTamanno.setEditable(false);
 				}
-
-				textFieldNumHabitaciones.setEditable(false);
-				textFieldPrecio.setEditable(false);
-				textAreaDescripcion.setEditable(false);
-				textFieldTamanno.setEditable(false);	
-				
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal el tamaño","Error",0);
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal el numero de habitaciones","Error",0);
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal el precio","Error",0);			
+				}
+				else			
+					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal algun campo","Error",0);
+	
 			}
 			
 			
