@@ -39,7 +39,7 @@ public class CrearPDF {
 		            //Se crea el PDF en la ruta elegida 
 		            FileOutputStream archivo = new FileOutputStream(archivoJFileChooser+".pdf");
 		            
-		            llenarPDF(archivo,admin);
+		            llenarPDFAdministrador(archivo,admin);
 		    	}
 	    	}catch (Exception e){
 		        JOptionPane.showMessageDialog(null,"Error al guardar el archivo!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -52,7 +52,7 @@ public class CrearPDF {
 	
 	
 	
-	public void llenarPDF(FileOutputStream archivo, Administrador administrador){
+	public void llenarPDFAdministrador(FileOutputStream archivo, Administrador administrador){
 
 	    //Tipos de letras personalizados que se usaran	    
 		Font tipoLetraTitulo = new Font(Font.FontFamily.HELVETICA , 16, Font.BOLD);
@@ -75,7 +75,7 @@ public class CrearPDF {
 	            
             
 	            //Titulo de la tabla 
-            	Paragraph tituloDatos = new Paragraph("Administrador "+administrador.getNombre(), tipoLetraTitulos); 
+            	Paragraph tituloDatos = new Paragraph("Administrador"+administrador.getNombre(), tipoLetraTitulos); 
             	
 
             	//Se crea la tabla con titulo de la receta
@@ -87,25 +87,17 @@ public class CrearPDF {
 	            
 	            
 	            //Contiene las instrucciones de la receta
-	            Paragraph rut = new Paragraph("RUT "+administrador.getRut(), tipoLetraNormal);
+	            
+	            Paragraph rut = new Paragraph("RUT  "+administrador.getRut(), tipoLetraNormal);
 	            docPDF.add(rut); 
-	            Paragraph direccion = new Paragraph("DIRECCION "+administrador.getDireccion(), tipoLetraNormal);
+	            Paragraph direccion = new Paragraph("DIRECCION  "+administrador.getDireccion(), tipoLetraNormal);
 	            docPDF.add(direccion); 
-	            Paragraph correo = new Paragraph("CORREO "+administrador.getCorreo(), tipoLetraNormal);
+	            Paragraph correo = new Paragraph("CORREO  "+administrador.getCorreo(), tipoLetraNormal);
 	            docPDF.add(correo); 
-	            Paragraph telefono = new Paragraph("TELEFONO"+administrador.getTelefono(), tipoLetraNormal);
+	            Paragraph telefono = new Paragraph("TELEFONO  "+administrador.getTelefono(), tipoLetraNormal);
 	            docPDF.add(telefono); 
-	            Paragraph cargo = new Paragraph("CARGO "+administrador.getCargo(), tipoLetraNormal);
+	            Paragraph cargo = new Paragraph("CARGO  "+administrador.getCargo(), tipoLetraNormal);
 	            docPDF.add(cargo); 
-	           
-	     
-	          
-	       
-	           
-	           
-	            
-	            
-	            
 	            
             //Se cierra el documento PDF
             docPDF.close();
