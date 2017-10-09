@@ -163,15 +163,7 @@ public class Empresa  implements Cloneable {
     public void  agregarAdministrador(Administrador nuevoAdministrador) {
    	 listaAdministradores.agregar(nuevoAdministrador);
     }
-   
-    
-	public ListaAdministradores clonarAdministradores() throws CloneNotSupportedException {
-		
-		return listaAdministradores.clone();
-	}
-    
-
-	
+  
 	
 	public Administrador buscarNombreAdministrador(String nombre)
     {
