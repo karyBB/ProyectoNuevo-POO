@@ -87,23 +87,23 @@ public class CrearPDF {
 	            
 	            
 	            //Contiene las instrucciones de la receta
-	            Paragraph rut = new Paragraph("RUT "+administrador.getRut(), tipoLetraNormal); 
+	            Paragraph rut = new Paragraph("RUT "+administrador.getRut(), tipoLetraNormal);
+	            docPDF.add(rut); 
+	            Paragraph direccion = new Paragraph("DIRECCION "+administrador.getDireccion(), tipoLetraNormal);
+	            docPDF.add(direccion); 
+	            Paragraph correo = new Paragraph("CORREO "+administrador.getCorreo(), tipoLetraNormal);
+	            docPDF.add(correo); 
+	            Paragraph telefono = new Paragraph("TELEFONO"+administrador.getTelefono(), tipoLetraNormal);
+	            docPDF.add(telefono); 
+	            Paragraph cargo = new Paragraph("CARGO "+administrador.getCargo(), tipoLetraNormal);
+	            docPDF.add(cargo); 
+	           
+	     
+	          
+	       
+	           
+	           
 	            
-	            //Se crea la tabla que tendrá las instrucciones de la receta
-	            PdfPTable tablaAdministrador = new PdfPTable(1);
-	            PdfPCell celdaInstrucciones = new PdfPCell(rut);
-	            celdaInstrucciones.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-	            tablaAdministrador.addCell(celdaInstrucciones);
-	            docPDF.add(tablaAdministrador); 
-	            
-                Paragraph direccion = new Paragraph("DIRECCION "+administrador.getDireccion(), tipoLetraNormal); 
-	            
-	            //Se crea la tabla que tendrá las instrucciones de la receta
-	            PdfPTable tablaAdministrador = new PdfPTable(2);
-	            PdfPCell celdaDireccion = new PdfPCell(direccion);
-	            celdaDireccion.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-	            tablaAdministrador.addCell(celdaDireccion);
-	            docPDF.add(tablaAdministrador);
 	            
 	            
 	            
