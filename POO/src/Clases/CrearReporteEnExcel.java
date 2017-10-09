@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class CrearReporteEnExcel {
 
     public CrearReporteEnExcel(Empresa empresa,ListaProyectos proyectos) throws IOException{
-        if(proyectos!=null) {
+        
     	HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet();	
         libro.setSheetName(0, "Proyectos");
@@ -78,7 +78,6 @@ public class CrearReporteEnExcel {
             
     }//Fin Constructor
     
-    }
     
     
     /**
