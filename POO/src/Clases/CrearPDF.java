@@ -69,150 +69,47 @@ public class CrearPDF {
 	        
 	        
 	        //Contiene el titulo principal del documento PDF
-	        Paragraph titulo = new Paragraph("Mis Recetas\n\r", tipoLetraTitulo); 
+	        Paragraph titulo = new Paragraph("Datos\n\r", tipoLetraTitulo); 
 	        titulo.setAlignment(Element.ALIGN_CENTER);
 	        docPDF.add(titulo);
 	            
-            //Recorrido de todas las recetas del alumno
-            for(int i = 0; i < arrayRecetas.largo(); i++)
-            {
-	            //Titulo de la tabla de la receta
-            	Paragraph tituloReceta = new Paragraph(arrayRecetas.getPosReceta(i).getNombreReceta(), tipoLetraTitulos); 
+            
+	            //Titulo de la tabla 
+            	Paragraph tituloDatos = new Paragraph(administrador.getNombre(), tipoLetraTitulos); 
             	
 
             	//Se crea la tabla con titulo de la receta
 	            PdfPTable tablaTitulo = new PdfPTable(1);
-	            PdfPCell celdaTitulo = new PdfPCell(tituloReceta);
+	            PdfPCell celdaTitulo = new PdfPCell(tituloDatos);
 	            celdaTitulo.setHorizontalAlignment(Element.ALIGN_CENTER);
 	            tablaTitulo.addCell(celdaTitulo);
-	            docPDF.add(tablaTitulo);		            
-	            
-	            
-	            //String donde se guardaran los ingredientes de cada receta
-	            String todosLosIng = "";
-	            
-	            for (int j = 0 ; j < arrayRecetas.getPosReceta(i).getIngredientes().length; j++){
-		            String ingrediente = (""+arrayRecetas.getPosReceta(i).getIngredientes()[j].toString()+"\n");
-		            todosLosIng = todosLosIng + ingrediente;
-	            }
-	            PdfPCell celdaIngredientes = new PdfPCell(new Phrase(todosLosIng));
-	            
-	      
-	            //String donde se guardaran los utensilios de cada receta
-	            String todosLosUten = "";
-	            
-	            for (int x = 0 ; x < arrayRecetas.getPosReceta(i).getUtensilios().length; x++){
-	            	String utensilio = (""+arrayRecetas.getPosReceta(i).getUtensilios()[x].toString()+"\n");
-	            	todosLosUten = todosLosUten + utensilio;
-	            } 
-	            PdfPCell celdaUtensilios = new PdfPCell(new Phrase(todosLosUten));
-	           
-
-	            //String donde se guardaran las categorias de cada receta
-	            String todosLasCat = "";
-	            
-	            for (int y = 0 ; y < arrayRecetas.getPosReceta(i).getCategorias().length; y++){
-	            	String categoria = (""+arrayRecetas.getPosReceta(i).getCategorias()[y].toString()+"\n");
-	            	todosLasCat = todosLasCat + categoria;
-	            } 
-	            PdfPCell celdaCategorias = new PdfPCell(new Phrase(todosLasCat));	
-	            
-	            
-	            //Contienen los headers de los elementos de la receta 
-	            Paragraph tituloIngredientes = new Paragraph("INGREDIENTES", tipoLetraTitulos);
-	            Paragraph tituloUtensilios = new Paragraph("UTENSILIOS", tipoLetraTitulos); 
-	            Paragraph tituloCategorias = new Paragraph("CATEGORIAS", tipoLetraTitulos);
-	            
-	            
-	            //Creacion de Headers de cada columna que contiene los elementos de la receta (Ingredientes, Utensilios, Categorias)
-	            PdfPTable cabecerasElementosReceta = new PdfPTable(3);
-	            cabecerasElementosReceta.addCell(tituloIngredientes);
-	            cabecerasElementosReceta.addCell(tituloUtensilios);
-	            cabecerasElementosReceta.addCell(tituloCategorias);
-	            docPDF.add(cabecerasElementosReceta); 
-	            
-	            
-	            //Creacion tabla de todos los elemtnos de la receta  
-	            PdfPTable elementosRecetas = new PdfPTable(3);	
-	            elementosRecetas.addCell(celdaIngredientes);
-	            elementosRecetas.addCell(celdaUtensilios);
-	            elementosRecetas.addCell(celdaCategorias);
-	            docPDF.add(elementosRecetas);
-	            
-	            
-	            //Contiene el titulo de instrucciones
-	            Paragraph tituloInstrucciones = new Paragraph("INSTRUCCIONES", tipoLetraTitulos);
-	            
-	            //Se crea la tabla que tendrá el titulo de instrucciones
-	            PdfPTable tablaTituloInstrucciones = new PdfPTable(1);
-	            PdfPCell celdaTituloInstrucciones = new PdfPCell(tituloInstrucciones);
-	            celdaTituloInstrucciones.setHorizontalAlignment(Element.ALIGN_CENTER);
-	            tablaTituloInstrucciones.addCell(celdaTituloInstrucciones);
-	            docPDF.add(tablaTituloInstrucciones);  
+	            docPDF.add(tablaTitulo);		
 	            
 	            
 	            //Contiene las instrucciones de la receta
-	            Paragraph instrucciones = new Paragraph(arrayRecetas.getPosReceta(i).getInstrucciones(), tipoLetraNormal); 
+	            Paragraph rut = new Paragraph(administrador.getRut(), tipoLetraNormal); 
 	            
 	            //Se crea la tabla que tendrá las instrucciones de la receta
 	            PdfPTable tablaInstrucciones = new PdfPTable(1);
-	            PdfPCell celdaInstrucciones = new PdfPCell(instrucciones);
+	            PdfPCell celdaInstrucciones = new PdfPCell(rut);
 	            celdaInstrucciones.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 	            tablaInstrucciones.addCell(celdaInstrucciones);
-	            docPDF.add(tablaInstrucciones);     
+	            docPDF.add(tablaInstrucciones);  
 	            
-	            
-	            //Contiene el tiempo estimado que tiene la receta   
-	            Paragraph tiempoEstimado = new Paragraph ("Tiempo Estimado : "+arrayRecetas.getPosReceta(i).getTiempoEstimadoPreparacion()+" minutos",tipoLetraNormal);
-	            PdfPTable tablaTiempoEstimado = new PdfPTable(1);
-	            PdfPCell celdaTiempoEstimado = new PdfPCell(tiempoEstimado);
-	            tablaTiempoEstimado.addCell(celdaTiempoEstimado);
-	            docPDF.add(tablaTiempoEstimado);
-	            
-	            
-	            //Un Espacio en blanco para separar cada tabla
-	            Paragraph espacioEnBlanco = new Paragraph ("\n\r");
-	            docPDF.add(espacioEnBlanco);
-            }
+    	
             
             //Se cierra el documento PDF
             docPDF.close();
 
-            if(opcion == 1){
+           
             	JOptionPane.showMessageDialog(null,"Se guardó correctamente el archivo", "Guardado exitoso!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (opcion == 2){
-            	String correoAlumno = JOptionPane.showInputDialog(null, "Ingrese su correo: ", "Para enviar sus recetas", JOptionPane.QUESTION_MESSAGE);
-            	if(correoAlumno != null){
-            		if(!correoAlumno.equals("")){
-                    	enviarPDF(correoAlumno);
-            		}else{
-            			JOptionPane.showMessageDialog(null,"Faltó llenar campo");
-            		}
-            	}
-            	try {
-					eliminarPDF();
-				} catch (IOException e) {
-					System.out.println("no se pudo eliminar archivo");
-				}
-            }
+          
             	
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}	 
     }
 	
-	//Metodo que llama al metodo de la clase EnviarMensajeCorreo para poder enviar pdf a correo
-	private void enviarPDF(String correoAlumno)
-	{
-		EnviarMensajeACorreo enviarCorreo = new EnviarMensajeACorreo();
-		enviarCorreo.crearMensajeConArchivoAdjunto(correoAlumno);
-	}
 	
-	//Metodo que elimina el PDF auxiliar
-	private void eliminarPDF() throws IOException{
-        File f = new File("MisRecetas.pdf");
-        if(f.exists())
-        	f.delete();
-	}
 
 }//FIN CLASE

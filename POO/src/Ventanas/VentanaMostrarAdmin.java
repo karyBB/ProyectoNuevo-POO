@@ -64,8 +64,21 @@ public class VentanaMostrarAdmin extends JFrame {
 						ventanaAnt.setVisible(true);
 					}
 				});
-				btnVolver.setBounds(127, 318, 89, 23);
+				btnVolver.setBounds(253, 316, 89, 23);
 				contentPane.add(btnVolver);
+				
+				JButton btnArchivoPdf = new JButton("ARCHIVO PDF");
+				btnArchivoPdf.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+							CrearPDF ingreso = new CrearPDF(admin);
+							
+							
+							}
+					
+				});
+				btnArchivoPdf.setBounds(39, 316, 143, 23);
+				contentPane.add(btnArchivoPdf);
 	}
 
 	private void mostrarEnJTextArea(JTextArea datosAdministrador, Administrador administrador)
