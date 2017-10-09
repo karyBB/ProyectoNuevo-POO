@@ -108,26 +108,35 @@ public class VentanaAgregarAdministrador extends JFrame {
 						&& !textFieldCorreo.getText().isEmpty()
 						&& !textFieldTelefono.getText().isEmpty()&& !textFieldDireccion.getText().isEmpty())
 				{
-					
-						
-						empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
-				        
-						
-						JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Su contraseña es\n"+
-								textFieldClave.getText(),"Datos ingresados correctamente",1);
+				
+				if(empresa.esNumerico(textField))
+				if(empresa.verificarEmail(textFieldCorreo.getText()))
+				{
+				if(empresa.verificarTelefono(textFieldTelefono.getText()))
+					{
+					empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
+				      
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Su contraseña es\n"+
+							textFieldClave.getText(),"Datos ingresados correctamente",1);
+					textFieldNombre.setEditable(false);
+					textFieldRut.setEditable(false);
+					textFieldCorreo.setEditable(false);
+					textFieldCargo.setEditable(false);
+					textFieldDireccion.setEditable(false);
+					textFieldTelefono.setEditable(false);
+					}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el telefono","Error",0);
+				}
+				else
+					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal el correo","Error",0);
 					
 				    	
 				}else{
 					
 					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Ingresó mal algun campo","Error",0);
 				}
-				textFieldNombre.setEditable(false);
-				textFieldRut.setEditable(false);
-				textFieldCorreo.setEditable(false);
-				textFieldCargo.setEditable(false);
-				textFieldDireccion.setEditable(false);
-				textFieldTelefono.setEditable(false);	
-				
+
 			}
 		});
 		btnAgregar.setFont(new Font("Consolas", Font.PLAIN, 13));
