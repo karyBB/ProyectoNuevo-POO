@@ -384,9 +384,6 @@ public class Empresa  implements Cloneable {
             
 	}
 	
-	public ListaProyectos getListaProyectos() {
-		return listaProyectos;
-	}
 	
 	public String getNombre() {
 		return nombre;
