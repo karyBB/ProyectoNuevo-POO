@@ -7,6 +7,7 @@ import javax.swing.border.TitledBorder;
 
 import Clases.Departamento;
 import Clases.Empresa;
+import Clases.Proyecto;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -29,7 +30,7 @@ public class VentanaModificarDepartamento extends JFrame {
 	private JTextField textFieldDescripcion;
 
 	
-	public VentanaModificarDepartamento (Empresa empresa,Departamento departamento ,final VentanaDepartamento ventanaDepartamento ){
+	public VentanaModificarDepartamento (Empresa empresa,Proyecto proy,Departamento departamento ,final VentanaDepartamento ventanaDepartamento ){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 412, 450);
 		contentPane = new JPanel();
@@ -50,13 +51,14 @@ public class VentanaModificarDepartamento extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!textFieldPrecio.getText().isEmpty())
 				{
-					if(empresa.esNumerico(textFieldPrecio.getText()))
-						//LLAMAR A LA FUNCION MODIFICAR PRECIO DEPARTAMENTO
+					if(departamento.esNumerico(textFieldPrecio.getText()))
+						
+						proy.modificarPrecioDepartamento(departamento, Integer.parseInt(textFieldPrecio.getText()), proy.getId());
 					else
 						JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"Ingresó mal el precio","Error",0);	
 				}
 				if(!textFieldDescripcion.getText().isEmpty())
-					//LLAMAR A LA FUNCION QUE MODIFICA LA DESCRIPCION DEL DEPARTAMENTO
+					    proy.modificarDescripcionDepartemento(departamento, textFieldDescripcion.getText(), proy.getId());
 				
 				
 			}

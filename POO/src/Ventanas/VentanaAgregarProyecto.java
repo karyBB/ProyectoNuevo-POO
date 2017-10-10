@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Clases.Administrador;
 import Clases.Empresa;
 import Clases.Proyecto;
 
@@ -29,7 +30,7 @@ public class VentanaAgregarProyecto extends JFrame {
 	private JTextField textFieldNpisos;
 
 	
-	public VentanaAgregarProyecto(Empresa empresa, VentanaProyecto ventanaProyecto, boolean b, final VentanaProyecto ventanaAnterior) {
+	public VentanaAgregarProyecto(Empresa empresa,Administrador admin, VentanaAdministrador ventanaAnterior) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
@@ -71,9 +72,9 @@ public class VentanaAgregarProyecto extends JFrame {
 						&& !textFieldDireccion.getText().isEmpty() && !textFieldCiudad.getText().isEmpty()
 						&& !textFieldNpisos.getText().isEmpty()&& !textFieldNombreEnc.getText().isEmpty())
 				{
-				if(empresa.esNumerico(textFieldNpisos.getText()))
+				if(admin.esNumerico(textFieldNpisos.getText()))
 				{
-				if(empresa.esNumerico(textCantidadDept.getText()))
+				if(admin.esNumerico(textCantidadDept.getText()))
 				{
 				Proyecto proyNuevo=empresa.crearProyecto(empresa.generarId(),textFieldNombre.getText(),textFieldDireccion.getText(),
 				textFieldCiudad.getText(),textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
@@ -106,6 +107,9 @@ public class VentanaAgregarProyecto extends JFrame {
 				}
 				else		
 					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal algun campo","Error",0);
+				
+				dispose();
+				ventanaAnterior.setVisible(true);
 			}
 			
 			

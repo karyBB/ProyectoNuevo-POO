@@ -105,7 +105,7 @@ public class VentanaAdministrador extends JFrame {
 		lblMenAdministrador.setBounds(187, 11, 181, 47);
 		contentPane.add(lblMenAdministrador);
 		
-		JButton botonRegresar = new JButton("VOLVER");
+		JButton botonRegresar = new JButton("CERRAR SESION");
 		botonRegresar.setBackground(SystemColor.controlHighlight);
 		botonRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -114,7 +114,7 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		botonRegresar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		botonRegresar.setBounds(107, 291, 156, 47);
+		botonRegresar.setBounds(10, 312, 253, 28);
 		contentPane.add(botonRegresar);
 		
 		JButton botonProyectos = new JButton("PROYECTOS\r\n");
@@ -215,7 +215,7 @@ public class VentanaAdministrador extends JFrame {
 		btnAgregarUnVendedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-	             VentanaAgregarVendedor  ventanaAgregarAdministrador = new VentanaAgregarVendedor(empresa,VentanaAdministrador.this);     
+	             VentanaAgregarVendedor  ventanaAgregarAdministrador = new VentanaAgregarVendedor(empresa,admin,VentanaAdministrador.this);     
 	             ventanaAgregarAdministrador.setVisible(true);
 	             setVisible(false);
 			}
@@ -252,5 +252,22 @@ public class VentanaAdministrador extends JFrame {
 		btnReporteAdministradores.setBackground(SystemColor.controlHighlight);
 		btnReporteAdministradores.setBounds(273, 312, 253, 26);
 		contentPane.add(btnReporteAdministradores);
+		
+		JButton btnAgregarProyecto = new JButton("AGREGAR UN PROYECTO\r\n");
+		btnAgregarProyecto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+	             VentanaAgregarProyecto  ventanaAgregar = new VentanaAgregarProyecto(empresa,admin,VentanaAdministrador.this);     
+	             ventanaAgregar.setVisible(true);
+	             setVisible(false);
+			}
+		});
+		btnAgregarProyecto.setForeground(Color.BLACK);
+		btnAgregarProyecto.setFont(new Font("Consolas", Font.PLAIN, 13));
+		btnAgregarProyecto.setBorderPainted(false);
+		btnAgregarProyecto.setBorder(null);
+		btnAgregarProyecto.setBackground(SystemColor.controlHighlight);
+		btnAgregarProyecto.setBounds(10, 277, 253, 28);
+		contentPane.add(btnAgregarProyecto);
 	}
 }

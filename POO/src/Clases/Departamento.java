@@ -23,6 +23,17 @@ public Departamento(String numero, String tamaño, int numeroHabitaciones, boolea
 	this.descripcion = descripcion;
 	
 }
+//verifica que el string se pueda cambiar a numerico
+	public boolean esNumerico(String string)
+	{
+	    boolean numerico = true;
+	    try{
+	        Integer.parseInt(string);
+	    }catch(NumberFormatException e){
+	    	numerico = false;
+	    }
+	    return numerico;
+	}
 
 
 //getters and setters

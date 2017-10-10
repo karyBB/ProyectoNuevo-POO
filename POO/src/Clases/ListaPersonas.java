@@ -16,6 +16,8 @@ public abstract class ListaPersonas
 			
 		return false;
 	}
+	
+			
 			
 	
 	public abstract Object buscarNombre(String nombre);

@@ -1,4 +1,7 @@
 package Clases;
+
+import java.util.ArrayList;
+
 public class Proyecto implements Cloneable {
 
 	private String id;
@@ -78,14 +81,98 @@ public class Proyecto implements Cloneable {
 	}
 
 
-	public ListaDepartamentos getListaDepartamentos() {
-		return listaDepartamentos;
+	public void agregarDepartamento(Object deptnuevo,String id)
+	{
+		listaDepartamentos.agregar(deptnuevo, id);
 	}
-
-
-	public void setListaDepartamentos(ListaDepartamentos listaDepartamentos) {
-		this.listaDepartamentos = listaDepartamentos;
+	
+	
+	public void agregarDepartamentoSinArchivo(Departamento nuevoDepartamento)
+	{
+		listaDepartamentos.agregarSinArchivo(nuevoDepartamento);
 	}
+	
+	public Departamento getPosDept (int i)
+	{
+		return listaDepartamentos.getPosDept(i);
+	}
+	
+	public int sizeDepartamentos()
+	{
+		return listaDepartamentos.largo();
+	}
+	
+	public boolean existe(String numero)
+	{
+		return listaDepartamentos.existe(numero); 
+	}
+	
+
+	public void eliminarDepartamento(Departamento  departamento)
+	{
+		listaDepartamentos.eliminar(departamento);
+	}
+	
+	
+	public Departamento buscarNumeroDepartamento(String numeroDep)
+	{
+		return listaDepartamentos.buscarNumero(numeroDep);
+	}
+	
+	
+	
+    public Departamento buscarEstadoDepartamento(boolean estado)
+	{
+		return listaDepartamentos.buscarEstado(estado);
+	}
+    
+    
+    public Departamento buscarPrecioDepartamento(int precio)
+	{
+		return listaDepartamentos.buscarPrecio(precio);
+	}
+    
+    public Departamento buscarNumHabitacionesDepartamento(int numeroHabitaciones)
+	{
+		return listaDepartamentos.buscarNumeroHabitaciones(numeroHabitaciones);
+	}
+	
+    public Departamento buscarTamañoDepartamento(String tamaño)
+	{
+		return listaDepartamentos.buscarTamaño(tamaño);
+	}
+	
+    
+	
+	
+	
+	
+	public boolean modificarPrecioDepartamento(Departamento departamentoModificar,int nuevoPrecio,String idProyecto) {
+		return listaDepartamentos.modificarprecio(departamentoModificar, nuevoPrecio, idProyecto);
+	}
+	
+	
+	public boolean modificarEstadoDepartamento(Departamento departamentoModificar,String idProyecto) {
+		return listaDepartamentos.modificarEstado(departamentoModificar, idProyecto);
+	}
+	
+	
+	public boolean modificarDescripcionDepartemento(Departamento departamentoModificar,String descripcion,String idProyecto) {
+		return listaDepartamentos.modificarDescripcion(departamentoModificar, descripcion, idProyecto);
+	}
+	
+	public boolean modificarTamañoDepartemento(Departamento departamentoModificar,String tamaño,String idProyecto) {
+		return listaDepartamentos.modificarTamaño(departamentoModificar, tamaño, idProyecto);
+	}
+	
+
+	
+	
+	public ArrayList<Departamento> generanDept(Departamento departamento,int cantidad,int pisos,String idProyecto)  {
+            return listaDepartamentos.generarDepartamentos(departamento, cantidad, pisos, idProyecto);      
+	}
+	
+
 
 
 	public String getNombre() {
@@ -115,7 +202,8 @@ public class Proyecto implements Cloneable {
 		return totaldepartamentos;
 	}
 
-
+	
+	
 	public void setTotaldepartamentos(int totaldepartamentos) {
 		this.totaldepartamentos = totaldepartamentos;
 	}
@@ -130,5 +218,15 @@ public class Proyecto implements Cloneable {
 	}
 	
 	
-	
+	//verifica que el string se pueda cambiar a numerico
+			public boolean esNumerico(String string)
+			{
+			    boolean numerico = true;
+			    try{
+			        Integer.parseInt(string);
+			    }catch(NumberFormatException e){
+			    	numerico = false;
+			    }
+			    return numerico;
+			}
 }

@@ -112,14 +112,14 @@ public class VentanaModificarAdministrador extends JFrame {
 	
 				if(!textFieldCorreo.getText().isEmpty())
 				{
-					if(empresa.verificarEmail(textFieldCorreo.getText()))
+					if(admin.verificarEmail(textFieldCorreo.getText()))
 					empresa.modificarCorreoAdministrador(admin, textFieldCorreo.getText());
 					else
 						JOptionPane.showMessageDialog(VentanaModificarAdministrador.this,"Ingresó mal el correo","Error",0);
 				}
 				if(!textFieldTelefono.getText().isEmpty())
 				{
-					if(empresa.verificarTelefono(textFieldTelefono.getText()))
+					if(admin.verificarTelefono(textFieldTelefono.getText()))
 						empresa.modificarTelefonoAdministrador(admin, textFieldTelefono.getText());
 					else
 						JOptionPane.showMessageDialog(VentanaModificarAdministrador.this,"Ingresó mal el telefono","Error",0);

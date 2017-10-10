@@ -99,7 +99,7 @@ public class VentanaModificarVendedor extends JFrame {
 
 				if(!textFieldCorreo.getText().isEmpty())
 				{
-					if(empresa.verificarEmail(textFieldCorreo.getText()))
+					if(vendedor.verificarEmail(textFieldCorreo.getText()))
 						empresa.modificarCorreoVendedor(vendedor, textFieldCorreo.getText());
 					else
 						JOptionPane.showMessageDialog(VentanaModificarVendedor.this,"Ingresó mal el correo","Error",0);
@@ -107,7 +107,7 @@ public class VentanaModificarVendedor extends JFrame {
 				
 				if(!textFieldTelefono.getText().isEmpty())
 				{
-					if(empresa.verificarTelefono(textFieldTelefono.getText()))
+					if(vendedor.verificarTelefono(textFieldTelefono.getText()))
 						empresa.modificarTelefonoVendedor(vendedor, textFieldTelefono.getText());
 					else
 						JOptionPane.showMessageDialog(VentanaModificarVendedor.this,"Ingresó mal algun campo","Error",0);

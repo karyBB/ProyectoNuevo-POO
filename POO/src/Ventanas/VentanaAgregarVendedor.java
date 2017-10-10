@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Clases.Administrador;
 import Clases.Empresa;
 
 import java.awt.Color;
@@ -31,7 +32,7 @@ public class VentanaAgregarVendedor extends JFrame {
 
 
 	
-	public VentanaAgregarVendedor(Empresa empresa,VentanaAdministrador ventanaAnterior) {
+	public VentanaAgregarVendedor(Empresa empresa,Administrador admin,VentanaAdministrador ventanaAnterior) {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
@@ -97,11 +98,11 @@ public class VentanaAgregarVendedor extends JFrame {
 						&& !textFieldCorreo.getText().isEmpty()
 						&& !textFieldTelefono.getText().isEmpty()&& !textFieldDireccion.getText().isEmpty())
 				{
-				if(empresa.esNumerico(textFieldRut.getText()))
+				if(admin.esNumerico(textFieldRut.getText()))
 				{
-				if(empresa.verificarEmail(textFieldCorreo.getText()))
+				if(admin.verificarEmail(textFieldCorreo.getText()))
 				{
-				if(empresa.verificarTelefono(textFieldTelefono.getText()))	
+				if(admin.verificarTelefono(textFieldTelefono.getText()))	
 				{
 					empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText());
 					empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		

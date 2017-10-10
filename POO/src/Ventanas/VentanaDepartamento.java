@@ -31,7 +31,7 @@ public class VentanaDepartamento extends JFrame {
 	
 	public VentanaDepartamento(Empresa empresa,Proyecto proyecto,JFrame ventanaAnterior) {
 		departamentos = new DefaultListModel<Departamento>();
-		ListaDepartamentos listadepartamento =proyecto.getListaDepartamentos();
+		
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,14 +104,14 @@ public class VentanaDepartamento extends JFrame {
 				if(!txtDepartamento.getText().isEmpty() && !txtDepartamento.getText().equals(""))
 				{
 					String numero = txtDepartamento.getText();
-					int largo = listadepartamento.largo();
+					int largo =proyecto.sizeDepartamentos();
 					
 					departamentos.removeAllElements(); //se parte con la lista de Proyectos vacia
 						for(int i=0;i<largo;i++)
 						{
-							if(listadepartamento.getPosDept(i).getNumero().indexOf(numero)!=-1)
+							if(proyecto.getPosDept(i).getNumero().indexOf(numero)!=-1)
 							{
-								departamentos.addElement(listadepartamento.getPosDept(i));
+								departamentos.addElement(proyecto.getPosDept(i));
 							}
 						}
 					
@@ -128,7 +128,7 @@ public class VentanaDepartamento extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (empresa,listaDepartamentos.getSelectedValue(), VentanaDepartamento.this);     
+	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (empresa,proyecto,listaDepartamentos.getSelectedValue(), VentanaDepartamento.this);     
 	             ventanaModificarDepartamento.setVisible(true);
 			}
 		});

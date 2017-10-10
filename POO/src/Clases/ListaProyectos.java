@@ -21,9 +21,11 @@ public class ListaProyectos  implements Lista,Cloneable {
 
 	public Proyecto crearProyecto(String id,String nombre,String direccion,String ciudad,String nombreEncargado,int numPisos,int numDepts) {
 		Proyecto proyecto=new Proyecto(id,nombre,direccion,ciudad,nombreEncargado,numPisos,numDepts);
+		
 		return proyecto;
 	}
 
+	
 //agrega un nuevo proyecto a lista de proyectos 
 
 	
@@ -258,7 +260,7 @@ public boolean modificarNombre(Object proyectoModificar,String cambiar)
                  return proyectos;
 			 }
 		 
-		 
+		
 		
 		public ArrayList<Departamento> TodosLosDepartamentos()
 		{
@@ -266,9 +268,9 @@ public boolean modificarNombre(Object proyectoModificar,String cambiar)
 			for(int i=0;i<arrayProyectos.size();i++)
 			{
 				Proyecto proyActual = arrayProyectos.get(i);
-				for(int j=0;j<proyActual.getListaDepartamentos().largo();j++)
+				for(int j=0;j<proyActual.sizeDepartamentos();j++)
 				{
-					todosDepts.add(proyActual.getListaDepartamentos().getPosDept(j));
+					todosDepts.add(proyActual.getPosDept(i));
 				}
 			}
 			return todosDepts;

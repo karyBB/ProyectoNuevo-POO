@@ -61,18 +61,19 @@ public class VentanaAgregarDepartamento extends JFrame {
 						&& !textFieldNumHabitaciones.getText().isEmpty() && !textFieldPrecio.getText().isEmpty()
 						&& !textAreaDescripcion.getText().isEmpty())
 				{
-				if(empresa.esNumerico(textFieldPrecio.getText()))
+				if(proy.esNumerico(textFieldPrecio.getText()))
 				{
-				if(empresa.esNumerico(textFieldNumHabitaciones.getText()))
+				if(proy.esNumerico(textFieldNumHabitaciones.getText()))
 				{
-				if(empresa.esNumerico(textFieldTamanno.getText()))
+				if(proy.esNumerico(textFieldTamanno.getText()))
 				{
 					Departamento deptNuevo = new Departamento("0",textFieldTamanno.getText(),
 						Integer.parseInt(textFieldNumHabitaciones.getText()),rootPaneCheckingEnabled, Integer.parseInt(textFieldPrecio.getText()),
 						textAreaDescripcion.getText());
 					
 					//se generan los departamentos
-					proy.getListaDepartamentos().generarDepartamentos(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
+					
+					proy.generanDept(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
 							,proy.getId());
 					
 					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"El departamento\n"+
@@ -94,6 +95,8 @@ public class VentanaAgregarDepartamento extends JFrame {
 				else			
 					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal algun campo","Error",0);
 	
+				dispose();
+				ventanaAnterior.setVisible(true);
 			}
 			
 			

@@ -13,6 +13,8 @@ public class ListaDepartamentos {
 		
 	}
 	
+	
+
 	public Departamento getPosDept(int i)
 	{
 		if(i<departamentos.size())
@@ -213,7 +215,7 @@ public class ListaDepartamentos {
     	return false;
     }
     //al crear un departamento se generan todos iguales 
-    public void generarDepartamentos(Departamento departamento,int cantidad,int pisos,String idProyecto)
+    public ArrayList<Departamento> generarDepartamentos(Departamento departamento,int cantidad,int pisos,String idProyecto)
     {
     	int id=0;
     	String idCadena;
@@ -245,12 +247,13 @@ public class ListaDepartamentos {
     		departamentos.add(nuevo);
     		try {
 				archivo.actualizarTxtDepartamentos(nuevo, idProyecto);
+				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     		
     	}
+		return departamentos;
     }
 
 	private int obtenerUltimosDigitos(int id) 
