@@ -62,7 +62,7 @@ public class VentanaProyecto extends JFrame {
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBorder(new LineBorder(new Color(255, 255, 255)));
 		panelBusqueda.setBackground(new Color(0, 153, 153));
-		panelBusqueda.setBounds(10, 62, 339, 41);
+		panelBusqueda.setBounds(10, 62, 327, 41);
 		contentPane.add(panelBusqueda);
 		panelBusqueda.setLayout(null);
 		
@@ -73,7 +73,7 @@ public class VentanaProyecto extends JFrame {
 		lblProyecto.setForeground(new Color(255, 255, 255));
 		
 		txtProyecto = new JTextField();
-		txtProyecto.setBounds(82, 6, 247, 28);
+		txtProyecto.setBounds(82, 6, 232, 28);
 		panelBusqueda.add(txtProyecto);
 		txtProyecto.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		txtProyecto.setColumns(10);
@@ -86,7 +86,7 @@ public class VentanaProyecto extends JFrame {
 		lblUsuario.setBounds(198, 11, 181, 47);
 		contentPane.add(lblUsuario);
 		
-		JButton btnRegresar = new JButton("ATRAS");
+		JButton btnRegresar = new JButton("VOLVER");
 		btnRegresar.setBackground(SystemColor.controlHighlight);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +124,7 @@ public class VentanaProyecto extends JFrame {
 			}
 		});
 		btnBuscar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnBuscar.setBounds(359, 62, 175, 34);
+		btnBuscar.setBounds(347, 62, 187, 34);
 		contentPane.add(btnBuscar);
 		
 		JButton btnMostrar = new JButton("MOSTRAR PROYECTO");
@@ -144,6 +144,7 @@ public class VentanaProyecto extends JFrame {
 		contentPane.add(btnMostrar);
 		
 		JButton btnDepartamentos = new JButton("DEPARTAMENTOS");
+		btnDepartamentos.setFont(new Font("Consolas", Font.PLAIN, 13));
 		btnDepartamentos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaProyectos.getSelectedIndex()!=-1)
@@ -174,6 +175,7 @@ public class VentanaProyecto extends JFrame {
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setFont(new Font("Consolas", Font.PLAIN, 13));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -185,7 +187,7 @@ public class VentanaProyecto extends JFrame {
 			}
 		});
 		btnEliminar.setBackground(SystemColor.controlHighlight);
-		btnEliminar.setBounds(10, 381, 90, 23);
+		btnEliminar.setBounds(34, 376, 175, 34);
 		contentPane.add(btnEliminar);
 	
 		

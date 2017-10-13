@@ -1,11 +1,7 @@
 package Clases;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.swing.JPasswordField;
 
-public class Empresa  implements Cloneable {
+public class Empresa  implements Cloneable  {
 	
  
 	private String nombre;
@@ -14,8 +10,9 @@ public class Empresa  implements Cloneable {
 	private ListaAdministradores listaAdministradores;
 	private ListaProyectos listaProyectos ;
        
-	
-	
+	//crear un iterador patron de sdiseño entrega la lista pero utiliza el iterador 
+	//no modifica la cleccion solo es para vver losinformacion que esta trae 
+	//entrego un array puedo iterator para 
 	//Constructor
 	public Empresa() 
 	{
@@ -53,6 +50,7 @@ public class Empresa  implements Cloneable {
 	 
      public void  agregarVendedor(Vendedor nuevoVendedor) {
     	 listaVendedores.agregar(nuevoVendedor);
+    	 
      }
     
      
@@ -165,6 +163,7 @@ public class Empresa  implements Cloneable {
 	 
     public void  agregarAdministrador(Administrador nuevoAdministrador) {
    	 listaAdministradores.agregar(nuevoAdministrador);
+   	 
     }
   
 	
@@ -239,13 +238,6 @@ public class Empresa  implements Cloneable {
    }
 	
 
-	
-   /**
-	 * metodos para los depts 
-	 * @return
-	 */
-	
-	
 
 	
 	
@@ -342,6 +334,10 @@ public class Empresa  implements Cloneable {
 	}
 	
 	
+	
+	
+
+   //getters and setters de la clase empresa 
 	public String getNombre() {
 		return nombre;
 	}
@@ -357,15 +353,5 @@ public class Empresa  implements Cloneable {
 	public void setArchivos(Archivo archivo) {
 		this.archivo = archivo;
 	}
-
-
 	
-
-
-	
-
-	
-
-
-  	
 }

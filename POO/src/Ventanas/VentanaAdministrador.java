@@ -32,7 +32,10 @@ public class VentanaAdministrador extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//ventana agregar
+		
+		
+		
+		//Boton agregar 
 		JButton botonAgregarAdmin = new JButton("AGREGAR UN ADMINISTRADOR\r\n");
 		botonAgregarAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -42,6 +45,7 @@ public class VentanaAdministrador extends JFrame {
              setVisible(false);
 			}
 		});
+		
 		botonAgregarAdmin.setBounds(10, 123, 253, 28);
 		botonAgregarAdmin.setForeground(Color.BLACK);
 		botonAgregarAdmin.setFont(new Font("Consolas", Font.PLAIN, 13));
@@ -87,7 +91,7 @@ public class VentanaAdministrador extends JFrame {
 		botonBuscarAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-	             VentanaBuscarAdministrador ventanaBuscarAdministrador = new VentanaBuscarAdministrador (empresa, VentanaAdministrador.this);     
+	             VentanaBuscarAdministrador ventanaBuscarAdministrador = new VentanaBuscarAdministrador (empresa,admin.getNombre(), VentanaAdministrador.this);     
 	             ventanaBuscarAdministrador.setVisible(true);
 			}
 		});

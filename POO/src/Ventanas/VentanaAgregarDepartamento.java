@@ -73,7 +73,7 @@ public class VentanaAgregarDepartamento extends JFrame {
 					
 					//se generan los departamentos
 					
-					proy.generanDept(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
+					proy.departamentosCopia(deptNuevo,proy.getTotaldepartamentos(),proy.getTotalPisos()
 							,proy.getId());
 					
 					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"El departamento\n"+

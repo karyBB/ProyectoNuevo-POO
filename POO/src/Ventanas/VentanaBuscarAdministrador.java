@@ -23,7 +23,7 @@ public class VentanaBuscarAdministrador extends JFrame {
 	private JTextField textFieldBusquedaNom;
 	private JTextField textFieldBusquedaRut;
 	
-	public VentanaBuscarAdministrador(Empresa empresa,final VentanaAdministrador ventanaAnterior) {
+	public VentanaBuscarAdministrador(Empresa empresa,String  adminNombre,final VentanaAdministrador ventanaAnterior) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
@@ -36,8 +36,15 @@ public class VentanaBuscarAdministrador extends JFrame {
 		
 		
 
+		JLabel lblBienvenido = new JLabel("Administrador "+adminNombre);
+		lblBienvenido.setFont(new Font("Consolas", Font.PLAIN, 25));
+		lblBienvenido.setForeground(Color.WHITE);
+		lblBienvenido.setBounds(10, 71, 342, 28);
+		contentPane.add(lblBienvenido);
+		
+
 		textFieldBusquedaNom = new JTextField();
-		textFieldBusquedaNom.setBounds(10, 71, 514, 36);
+		textFieldBusquedaNom.setBounds(10, 119, 514, 36);
 		contentPane.add(textFieldBusquedaNom);
 		textFieldBusquedaNom.setColumns(10);
 		
@@ -103,14 +110,14 @@ public class VentanaBuscarAdministrador extends JFrame {
 		lblBusquedaRut.setForeground(new Color(255, 255, 255));
 		lblBusquedaRut.setFont(new Font("Cambria", Font.PLAIN, 14));
 		lblBusquedaRut.setBackground(new Color(0, 153, 153));
-		lblBusquedaRut.setBounds(102, 138, 338, 58);
+		lblBusquedaRut.setBounds(100, 150, 338, 58);
 		contentPane.add(lblBusquedaRut);
 		
 		JLabel lblBusquedaNom = new JLabel("Ingrese nombre del Administrador que desea buscar");
 		lblBusquedaNom.setForeground(Color.WHITE);
 		lblBusquedaNom.setFont(new Font("Cambria", Font.PLAIN, 14));
 		lblBusquedaNom.setBackground(new Color(0, 153, 153));
-		lblBusquedaNom.setBounds(102, 29, 347, 58);
+		lblBusquedaNom.setBounds(56, 59, 347, 58);
 		contentPane.add(lblBusquedaNom);
 		
 		textFieldBusquedaRut = new JTextField();

@@ -36,6 +36,11 @@ public class VentanaEliminarAdministrador extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblBienvenido = new JLabel("Administrador "+admin.getNombre());
+		lblBienvenido.setFont(new Font("Consolas", Font.PLAIN, 25));
+		lblBienvenido.setForeground(Color.WHITE);
+		lblBienvenido.setBounds(10, 71, 342, 28);
+		contentPane.add(lblBienvenido);
 		//boton eliminar
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {

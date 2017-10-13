@@ -14,9 +14,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class CrearReporteEnExcel {
+public class CrearReporteExcel {
 
-    public CrearReporteEnExcel(Empresa empresa,ListaProyectos proyectos) throws IOException{
+    public CrearReporteExcel(Empresa empresa,ListaProyectos proyectos) throws IOException{
         
     	HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet();	

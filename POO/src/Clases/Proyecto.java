@@ -168,7 +168,7 @@ public class Proyecto implements Cloneable {
 
 	
 	
-	public ArrayList<Departamento> generanDept(Departamento departamento,int cantidad,int pisos,String idProyecto)  {
+	public ArrayList<Departamento> departamentosCopia (Departamento departamento,int cantidad,int pisos,String idProyecto)  {
             return listaDepartamentos.generarDepartamentos(departamento, cantidad, pisos, idProyecto);      
 	}
 	
@@ -207,6 +207,7 @@ public class Proyecto implements Cloneable {
 	public void setTotaldepartamentos(int totaldepartamentos) {
 		this.totaldepartamentos = totaldepartamentos;
 	}
+	
 	public Proyecto clone() throws CloneNotSupportedException  {
 		
 		  return (Proyecto) super.clone();

@@ -10,11 +10,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import Clases.CrearPdf;
 import Clases.Vendedor;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class VentanaMostrarVendedor extends JFrame {
 
@@ -23,7 +25,7 @@ public class VentanaMostrarVendedor extends JFrame {
 	private JPanel contentPane;
 
 	
-	public VentanaMostrarVendedor(Vendedor usuario,VentanaAdminVendedores ventanaAnt) {
+	public VentanaMostrarVendedor(Vendedor vendedor,VentanaAdminVendedores ventanaAnt) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 368, 401);
@@ -55,25 +57,43 @@ public class VentanaMostrarVendedor extends JFrame {
 		panelUsuario.add(scrollLateral);
 		
 		//Generar reporte
-				mostrarEnJTextArea(datosUsuario,usuario);
+				mostrarEnJTextArea(datosUsuario,vendedor);
 				
 				JButton btnVolver = new JButton("VOLVER");
+				btnVolver.setBackground(SystemColor.controlHighlight);
+				btnVolver.setFont(new Font("Consolas", Font.PLAIN, 13));
 				btnVolver.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 						ventanaAnt.setVisible(true);
 					}
 				});
-				btnVolver.setBounds(127, 318, 89, 23);
+				btnVolver.setBounds(231, 316, 89, 23);
 				contentPane.add(btnVolver);
+				JButton btnArchivoPdf = new JButton("ARCHIVO PDF");
+				btnArchivoPdf.setFont(new Font("Consolas", Font.PLAIN, 13));
+				btnArchivoPdf.setBackground(SystemColor.controlHighlight);
+				btnArchivoPdf.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						new CrearPdf(null,vendedor);							
+							
+							}
+					
+				});
+				btnArchivoPdf.setBounds(39, 316, 143, 23);
+				contentPane.add(btnArchivoPdf);
 	}
 
-	private void mostrarEnJTextArea(JTextArea datosUsuario, Vendedor usuario)
+	
+	
+	
+	private void mostrarEnJTextArea(JTextArea datosUsuario, Vendedor vendedor)
 	{
 			
-		datosUsuario.append(" usuario \r\nNombre : "+usuario.getNombre()+
-				"\r\nRut : "+usuario.getRut()+"\r\nDireccion : "+usuario.getDireccion()+
-				"\r\nTelefono: "+usuario.getTelefono()+"\r\nCorreo : "+usuario.getCorreo()+"\r\n\r\n");
+		datosUsuario.append(" usuario \r\nNombre : "+vendedor.getNombre()+
+				"\r\nRut : "+vendedor.getRut()+"\r\nDireccion : "+vendedor.getDireccion()+
+				"\r\nTelefono: "+vendedor.getTelefono()+"\r\nCorreo : "+vendedor.getCorreo()+"\r\n\r\n");
 			
 	}
 }

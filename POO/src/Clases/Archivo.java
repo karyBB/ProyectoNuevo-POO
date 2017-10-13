@@ -28,7 +28,8 @@ public void cargarArchivoTextoProyecto(ListaProyectos arrayProyectos)
 				    	String ciudadUbicacion = st.nextToken();
 				    	String nombreEncargado = st.nextToken();
 				    	int totalPisos = Integer.parseInt(st.nextToken());
-				        int totalDept  = Integer.parseInt(st.nextToken());	
+				        int totalDept  = Integer.parseInt(st.nextToken());
+
 				    	//se agrega al ArrayList de Proyectos
 				    	arrayProyectos.agregarSinArchivo(new Proyecto(id,nombre,direccion,ciudadUbicacion,
 				    			nombreEncargado,totalPisos,totalDept));
@@ -160,7 +161,7 @@ public void cargarDatosDepartamentos(ListaDepartamentos departamentos, String id
 						estado= true;
 			
 					int precio = Integer.parseInt(st.nextToken());
-					String descripcion = buffer.readLine();
+					String descripcion = st.nextToken();
 					
 			    	
 			    	//se agrega al arrayList de departamentos

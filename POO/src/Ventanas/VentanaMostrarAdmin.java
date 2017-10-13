@@ -11,11 +11,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import Clases.Administrador;
-import Clases.CrearPDF;
+import Clases.CrearPdf;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class VentanaMostrarAdmin extends JFrame {
 
@@ -59,6 +60,8 @@ public class VentanaMostrarAdmin extends JFrame {
 				mostrarEnJTextArea(datosAdministrador,admin);
 				
 				JButton btnVolver = new JButton("VOLVER");
+				btnVolver.setFont(new Font("Consolas", Font.PLAIN, 13));
+				btnVolver.setBackground(SystemColor.controlHighlight);
 				btnVolver.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -69,10 +72,12 @@ public class VentanaMostrarAdmin extends JFrame {
 				contentPane.add(btnVolver);
 				
 				JButton btnArchivoPdf = new JButton("ARCHIVO PDF");
+				btnArchivoPdf.setFont(new Font("Consolas", Font.PLAIN, 13));
+				btnArchivoPdf.setBackground(SystemColor.controlHighlight);
 				btnArchivoPdf.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-						new CrearPDF(admin);							
+						new CrearPdf(admin,null);							
 							
 							}
 					
@@ -86,7 +91,7 @@ public class VentanaMostrarAdmin extends JFrame {
 		
 		
 		
-		datosAdministrador.append(" Administrador \r\nNombre : "+administrador.getNombre()+
+		datosAdministrador.append("Administrador \r\nNombre : "+administrador.getNombre()+
 				"\r\nRut : "+administrador.getRut()+"\r\nDireccion : "+administrador.getDireccion()+
 				"\r\nTelefono: "+administrador.getTelefono()+"\r\nCorreo : "+administrador.getCorreo()+ 
 				"\r\nCargo : "+administrador.getCargo()+"\r\n\r\n");

@@ -60,18 +60,18 @@ public class VentanaDepartamento extends JFrame {
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBorder(new LineBorder(new Color(255, 255, 255)));
 		panelBusqueda.setBackground(new Color(0, 153, 153));
-		panelBusqueda.setBounds(10, 62, 339, 41);
+		panelBusqueda.setBounds(10, 62, 327, 41);
 		contentPane.add(panelBusqueda);
 		panelBusqueda.setLayout(null);
 		
 		JLabel lblDepartamento = new JLabel("DEPARTAMENTO:");
-		lblDepartamento.setBounds(10, 13, 73, 14);
+		lblDepartamento.setBounds(10, 13, 119, 14);
 		panelBusqueda.add(lblDepartamento);
 		lblDepartamento.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		lblDepartamento.setForeground(new Color(255, 255, 255));
 		
 		txtDepartamento = new JTextField();
-		txtDepartamento.setBounds(82, 6, 247, 28);
+		txtDepartamento.setBounds(139, 6, 176, 28);
 		panelBusqueda.add(txtDepartamento);
 		txtDepartamento.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		txtDepartamento.setColumns(10);
@@ -84,7 +84,7 @@ public class VentanaDepartamento extends JFrame {
 		lblDept.setBounds(198, 11, 181, 47);
 		contentPane.add(lblDept);
 		
-		JButton btnRegresar = new JButton("CERRAR SESION");
+		JButton btnRegresar = new JButton("VOLVER");
 		btnRegresar.setBackground(SystemColor.controlHighlight);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -149,7 +149,7 @@ public class VentanaDepartamento extends JFrame {
 			}
 		});
 		btnMostrar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnMostrar.setBounds(347, 112, 187, 34);
+		btnMostrar.setBounds(359, 112, 175, 34);
 		contentPane.add(btnMostrar);
 	
 		

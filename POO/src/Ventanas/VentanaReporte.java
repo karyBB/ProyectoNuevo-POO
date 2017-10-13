@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import Clases.Administrador;
-import Clases.CrearReporteEnExcel;
+import Clases.CrearReporteExcel;
 import Clases.Empresa;
 import Clases.ListaAdministradores;
 import Clases.ListaProyectos;
@@ -102,7 +102,7 @@ public class VentanaReporte extends JFrame {
 								
 									try {
 										proyectos = empresa.clonarProyectos();
-										CrearReporteEnExcel archivoXLS = new CrearReporteEnExcel(empresa,proyectos);
+										CrearReporteExcel archivoXLS = new CrearReporteExcel(empresa,proyectos);
 									} catch (IOException | CloneNotSupportedException e) {
 										e.printStackTrace();
 									}
@@ -151,7 +151,7 @@ public class VentanaReporte extends JFrame {
 		for (int i = 0; i < empresa.sizeVendedores(); i++)
 		{
 			Administrador administradores=empresa.obtenerAdministrador(rut);
-			datoAdministrador.append("["+j+"] VENDEDOR \r\nNOMBRE : "+administradores.getNombre()+
+			datoAdministrador.append("["+j+"] ADMINISTRADOR \r\nNOMBRE : "+administradores.getNombre()+
 			"\r\nRut : "+administradores.getRut()+"\r\nDIRECCION : "+administradores.getDireccion()+
 			"\r\nTELEFONO: "+administradores.getTelefono()+"\r\nCORREO : "+administradores.getCorreo()+
 			"\r\nCARGO: "+administradores.getCargo()+"\r\n\r\n");

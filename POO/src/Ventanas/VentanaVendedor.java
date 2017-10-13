@@ -60,7 +60,7 @@ public class VentanaVendedor extends JFrame {
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBorder(new LineBorder(new Color(255, 255, 255)));
 		panelBusqueda.setBackground(new Color(0, 153, 153));
-		panelBusqueda.setBounds(10, 62, 339, 41);
+		panelBusqueda.setBounds(10, 62, 327, 41);
 		contentPane.add(panelBusqueda);
 		panelBusqueda.setLayout(null);
 		
@@ -71,7 +71,7 @@ public class VentanaVendedor extends JFrame {
 		lblProyecto.setForeground(new Color(255, 255, 255));
 		
 		txtProyecto = new JTextField();
-		txtProyecto.setBounds(82, 6, 247, 28);
+		txtProyecto.setBounds(82, 6, 235, 28);
 		panelBusqueda.add(txtProyecto);
 		txtProyecto.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		txtProyecto.setColumns(10);
@@ -93,7 +93,7 @@ public class VentanaVendedor extends JFrame {
 			}
 		});
 		btnRegresar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnRegresar.setBounds(359, 332, 175, 34);
+		btnRegresar.setBounds(347, 332, 187, 34);
 		contentPane.add(btnRegresar);
 		
 		JButton btnBuscar = new JButton("BUSCAR PROYECTO");
@@ -122,7 +122,7 @@ public class VentanaVendedor extends JFrame {
 			}
 		});
 		btnBuscar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnBuscar.setBounds(359, 62, 175, 34);
+		btnBuscar.setBounds(347, 62, 187, 34);
 		contentPane.add(btnBuscar);
 		
 		JButton btnModificar = new JButton("MODIFICAR\r\n DATOS");
@@ -135,7 +135,7 @@ public class VentanaVendedor extends JFrame {
 			}
 		});
 		btnModificar.setFont(new Font("Consolas", Font.PLAIN, 13));
-		btnModificar.setBounds(359, 287, 175, 34);
+		btnModificar.setBounds(347, 287, 187, 34);
 		contentPane.add(btnModificar);
 		
 		JButton btnMostrar = new JButton("MOSTRAR PROYECTO");
@@ -155,6 +155,7 @@ public class VentanaVendedor extends JFrame {
 		contentPane.add(btnMostrar);
 		
 		JButton btnDepartamentos = new JButton("DEPARTAMENTOS");
+		btnDepartamentos.setFont(new Font("Consolas", Font.PLAIN, 13));
 		btnDepartamentos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaProyectos.getSelectedIndex()!=-1)
@@ -167,7 +168,7 @@ public class VentanaVendedor extends JFrame {
 			}
 		});
 		btnDepartamentos.setBackground(SystemColor.controlHighlight);
-		btnDepartamentos.setBounds(347, 157, 187, 34);
+		btnDepartamentos.setBounds(347, 161, 187, 34);
 		contentPane.add(btnDepartamentos);
 	
 		

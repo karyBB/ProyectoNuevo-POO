@@ -15,11 +15,16 @@ public class ListaDepartamentos {
 	
 	
 
+	public ListaDepartamentos() {
+		ListaDepartamentos departamentos=new ListaDepartamentos();
+	}
+
+
+
 	public Departamento getPosDept(int i)
 	{
 		if(i<departamentos.size())
 			return departamentos.get(i);
-		
 		return null;
 	}
 	public int largo()
@@ -214,6 +219,7 @@ public class ListaDepartamentos {
     	}
     	return false;
     }
+    
     //al crear un departamento se generan todos iguales 
     public ArrayList<Departamento> generarDepartamentos(Departamento departamento,int cantidad,int pisos,String idProyecto)
     {
