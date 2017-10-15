@@ -92,12 +92,14 @@ public class VentanaAgregarProyecto extends JFrame {
 			    
 			    VentanaAgregarDepartamento ventana= new VentanaAgregarDepartamento(empresa,proyNuevo,VentanaAgregarProyecto.this);
 			    ventana.setVisible(true);
+			    setVisible(false);
 			    textCantidadDept.setEditable(false);
 				textFieldNombre.setEditable(false);
 				textFieldDireccion.setEditable(false);
 				textFieldCiudad.setEditable(false);
 				textFieldNombreEnc.setEditable(false);
 				textFieldNpisos.setEditable(false);	
+				btnAgregar.setEnabled(false);
 				}
 				else		
 					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal la cantidad de departamentos","Error",0);
@@ -108,8 +110,8 @@ public class VentanaAgregarProyecto extends JFrame {
 				else		
 					JOptionPane.showMessageDialog(VentanaAgregarProyecto.this,"Ingresó mal algun campo","Error",0);
 				
-				dispose();
-				ventanaAnterior.setVisible(true);
+				
+				
 			}
 			
 			

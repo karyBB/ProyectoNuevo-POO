@@ -115,6 +115,9 @@ public void  cargarArchivoTextoVendedor(ListaVendedores usuarios, ListaProyectos
 				    	//se agrega los departamentos al vendedor
 				    	leerListaDpt(buffer, vendedorNuevo,proyectos);
 				    	
+				    	//se agrega a la lista de vendedores
+				    	usuarios.agregar(vendedorNuevo);
+				    	
 			    	}
 			    buffer.close();
 			   	archivoLectura.close();
@@ -466,17 +469,15 @@ public void leerListaDpt(BufferedReader buffer, Vendedor vendedorNuevo,ListaProy
 {													
 	//primero lee la cantidad de elementos de la lista
 	int cantidad = Integer.parseInt(buffer.readLine());
+	
 	String departamentoStr;
 	
-	if(cantidad>0){
-		
 		for(int i=0;i<cantidad;i++){
 			departamentoStr = buffer.readLine();
 		    Departamento deptNuevo = proyectos.busquedaDept(departamentoStr);
 			if(deptNuevo!=null)
 				vendedorNuevo.agregarDept(deptNuevo);
 		}
-	}
 	
 }
 

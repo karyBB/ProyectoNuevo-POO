@@ -82,6 +82,9 @@ public class VentanaAgregarDepartamento extends JFrame {
 					textFieldPrecio.setEditable(false);
 					textAreaDescripcion.setEditable(false);
 					textFieldTamanno.setEditable(false);
+					
+					ventanaAnterior.setVisible(true);
+					dispose();
 				}
 				else
 					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal el tamaño","Error",0);
@@ -95,8 +98,7 @@ public class VentanaAgregarDepartamento extends JFrame {
 				else			
 					JOptionPane.showMessageDialog(VentanaAgregarDepartamento.this,"Ingresó mal algun campo","Error",0);
 	
-				dispose();
-				ventanaAnterior.setVisible(true);
+				
 			}
 			
 			
@@ -113,8 +115,9 @@ public class VentanaAgregarDepartamento extends JFrame {
 		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				ventanaAnterior.setVisible(true);
+				dispose();
+				
 			}
 		});
 		button.setFont(new Font("Consolas", Font.PLAIN, 13));

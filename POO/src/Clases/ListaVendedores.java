@@ -1,13 +1,8 @@
 package Clases;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JPasswordField;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 
 public class ListaVendedores extends ListaPersonas implements Lista {
