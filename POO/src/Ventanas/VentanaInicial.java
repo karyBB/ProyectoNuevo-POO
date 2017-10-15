@@ -130,7 +130,7 @@ public class VentanaInicial extends JFrame {
 						Administrador Admin = empresa.obtenerAdministrador(usuarioField.getText(),passwordField);
 						JOptionPane.showMessageDialog(VentanaInicial.this,"Se inició sesión correctamente");
 						//creo la ventanaAdministrador
-						VentanaAdministrador ventanaAdministrador = new VentanaAdministrador(empresa,null, Admin,VentanaInicial.this);
+						VentanaAdministrador ventanaAdministrador = new VentanaAdministrador(empresa, Admin,VentanaInicial.this);
 						ventanaAdministrador.setVisible(true);
 						dispose();
 						//Dejar en blanco los campos de rut y contraseña
