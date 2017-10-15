@@ -262,8 +262,8 @@ public class Empresa  implements Cloneable  {
 	
 	
 	
-	public String generarId() {
-		return listaProyectos.generarId();
+	public String generarIdProyecto() {
+		return listaProyectos.generarIdProyecto();
 	}
 	
 	

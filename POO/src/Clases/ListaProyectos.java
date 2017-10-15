@@ -283,24 +283,31 @@ public boolean modificarNombre(Object proyectoModificar,String cambiar)
 		}
 		
 		//crea un numero id que no se repita
-		public String generarId()
+		public String generarIdProyecto()
 		{								
-			int numero=0,cont;
-			int correcto=0;
-			while(correcto!=1)
-			{
-				cont=numero;
+			char letra = 'a';
+			String aux="";
+			String claveNueva="a";
+			
 				if(arrayProyectos==null)
 					arrayProyectos= new ArrayList<Proyecto>();
 				for(int i=0;i<arrayProyectos.size();i++)
 				{
-					if(Integer.parseInt(arrayProyectos.get(i).getId())==numero)
-						numero++;
+					
+					claveNueva=aux+letra;
+					if(arrayProyectos.get(i).getId()==claveNueva)
+					{
+						letra=(char) (letra+1);
+					}
+					
+					if(letra=='z')
+					{
+						aux=aux+letra;
+						letra='a';
+					}
 				}
-				if(cont==numero)
-					correcto=1;		//se valida que el numero no lo tenga otro comentario
-			}
-			return String.valueOf(numero);
+			
+			return claveNueva;
 		}
 	
 

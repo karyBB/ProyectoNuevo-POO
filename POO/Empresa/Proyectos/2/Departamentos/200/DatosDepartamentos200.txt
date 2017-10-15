@@ -1,1 +1,0 @@
-200|1000|3|true|123456|bonita calle ,tranquila 

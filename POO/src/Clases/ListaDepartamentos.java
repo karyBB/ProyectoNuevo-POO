@@ -224,7 +224,7 @@ public class ListaDepartamentos {
     public ArrayList<Departamento> generarDepartamentos(Departamento departamento,int cantidad,int pisos,String idProyecto)
     {
     	int id=0;
-    	String idCadena;
+    	String idCadena=idProyecto;
     	int ultDig=0;
     	int cantidadXpiso=cantidad/pisos;
     	Archivo archivo = new Archivo();
@@ -239,9 +239,9 @@ public class ListaDepartamentos {
     		if(id<100)
     		{
     			if(id<10)
-    				idCadena="00"+String.valueOf(id);
+    				idCadena=idCadena+"00"+String.valueOf(id);
     			else
-    				idCadena="0"+String.valueOf(id);
+    				idCadena=idCadena+"0"+String.valueOf(id);
     		}	
     		else
     		{

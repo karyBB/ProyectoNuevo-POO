@@ -76,7 +76,7 @@ public class VentanaAgregarProyecto extends JFrame {
 				{
 				if(admin.esNumerico(textCantidadDept.getText()))
 				{
-				Proyecto proyNuevo=empresa.crearProyecto(empresa.generarId(),textFieldNombre.getText(),textFieldDireccion.getText(),
+				Proyecto proyNuevo=empresa.crearProyecto(empresa.generarIdProyecto(),textFieldNombre.getText(),textFieldDireccion.getText(),
 				textFieldCiudad.getText(),textFieldNombreEnc.getText(),Integer.parseInt(textFieldNpisos.getText())
 				,Integer.parseInt(textCantidadDept.getText()));
 				
