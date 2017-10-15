@@ -8,6 +8,7 @@ import javax.swing.border.TitledBorder;
 import Clases.Departamento;
 import Clases.Empresa;
 import Clases.Proyecto;
+import Clases.Vendedor;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -30,7 +31,11 @@ public class VentanaModificarDepartamento extends JFrame {
 	private JTextField textFieldDescripcion;
 
 	
-	public VentanaModificarDepartamento (Empresa empresa,Proyecto proy,Departamento departamento ,final VentanaDepartamento ventanaDepartamento ){
+	public VentanaModificarDepartamento (Empresa empresa,Proyecto proy,Departamento departamento ,final VentanaDepartamento ventanaDepartamento
+											,Object usuario){
+		boolean estadoActual = departamento.isEstado();
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 412, 450);
 		contentPane = new JPanel();
@@ -46,9 +51,42 @@ public class VentanaModificarDepartamento extends JFrame {
 		lblDepartamento.setBounds(122, 11, 172, 26);
 		contentPane.add(lblDepartamento);
 		
+		JPanel paneltipoEstado = new JPanel();
+		paneltipoEstado.setBackground(new Color(0, 102, 102));
+		paneltipoEstado.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255), 2, true), "", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		
+		paneltipoEstado.setBounds(10, 126, 176, 63);
+		contentPane.add(paneltipoEstado);
+		paneltipoEstado.setLayout(null);
+		
+		String[] tipoEstado = {"Libre","Ocupado"};
+		
+		final JComboBox comboBoxtipoEstado = new JComboBox(tipoEstado);
+		comboBoxtipoEstado.setModel(new DefaultComboBoxModel(new String[] {"Libre", "Ocupado"}));
+		comboBoxtipoEstado.setBounds(61, 27, 105, 25);
+		paneltipoEstado.add(comboBoxtipoEstado);
+		comboBoxtipoEstado.setFont(new Font("Consolas", Font.PLAIN, 10));
+		
+		if("Vendedor".equals(usuario.getClass().getName()))
+			textFieldPrecio.setVisible(false);
+		else
+			paneltipoEstado.setVisible(false);
+		
+		
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				//si el estado del departamento pasa de libre a vendido es agregado al vendedor
+				String estadoNuevoStr= comboBoxtipoEstado.getActionCommand();
+				if(estadoActual==false)
+				{
+					if(!estadoNuevoStr.equals("Libre"))			
+						((Vendedor)usuario).agregarDeptConArchivo(departamento);					
+				}
+				
+
 				if(!textFieldPrecio.getText().isEmpty())
 				{
 					if(departamento.esNumerico(textFieldPrecio.getText()))
@@ -57,6 +95,7 @@ public class VentanaModificarDepartamento extends JFrame {
 					else
 						JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"Ingresó mal el precio","Error",0);	
 				}
+				
 				if(!textFieldDescripcion.getText().isEmpty())
 					    proy.modificarDescripcionDepartemento(departamento, textFieldDescripcion.getText(), proy.getId());
 				
@@ -87,21 +126,7 @@ public class VentanaModificarDepartamento extends JFrame {
 		labelNombre.setBounds(10, 66, 66, 49);
 		contentPane.add(labelNombre);
 
-		 JPanel paneltipoEstado = new JPanel();
-			paneltipoEstado.setBackground(new Color(0, 102, 102));
-			paneltipoEstado.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255), 2, true), "", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			
-			paneltipoEstado.setBounds(10, 126, 176, 63);
-			contentPane.add(paneltipoEstado);
-			paneltipoEstado.setLayout(null);
-			
-			String[] tipoEstado = {"Libre","Ocupado"};
-			
-			final JComboBox comboBoxtipoEstado = new JComboBox(tipoEstado);
-			comboBoxtipoEstado.setModel(new DefaultComboBoxModel(new String[] {"Libre", "Ocupado"}));
-			comboBoxtipoEstado.setBounds(61, 27, 105, 25);
-			paneltipoEstado.add(comboBoxtipoEstado);
-			comboBoxtipoEstado.setFont(new Font("Consolas", Font.PLAIN, 10));
+		 
 			
 			JLabel lblNewLabel = new JLabel("Estado");
 			lblNewLabel.setForeground(new Color(255, 255, 255));

@@ -23,7 +23,7 @@ public class VentanaAdministrador extends JFrame {
 	private JPanel contentPane;
 
 	
-	public VentanaAdministrador(Empresa empresa,Vendedor usuario,Administrador admin, VentanaInicial ventanaAnterior) {
+	public VentanaAdministrador(Empresa empresa,Administrador admin, VentanaInicial ventanaAnterior) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
@@ -129,7 +129,7 @@ public class VentanaAdministrador extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				VentanaProyecto ingreso = new VentanaProyecto(empresa,VentanaAdministrador.this);//interfaz 
+				VentanaProyecto ingreso = new VentanaProyecto(empresa,VentanaAdministrador.this,admin);//interfaz 
 				ingreso.setVisible(true);
 			}
 		});

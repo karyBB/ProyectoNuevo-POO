@@ -40,6 +40,12 @@ public class Vendedor extends Persona {
 	{
 		departamentos.agregar(deptnuevo);
 	}
+	public void agregarDeptConArchivo(Departamento deptnuevo) 
+	{
+		Archivo archivo = new Archivo();
+		departamentos.agregar(deptnuevo);
+		archivo.actualizarTxtVendedor(Vendedor.this);
+	}
 	
 	
 }

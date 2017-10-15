@@ -160,7 +160,7 @@ public class VentanaVendedor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaProyectos.getSelectedIndex()!=-1)
 				{
-					VentanaDepartamento ventana = new VentanaDepartamento (empresa,listaProyectos.getSelectedValue(),VentanaVendedor.this);     
+					VentanaDepartamento ventana = new VentanaDepartamento (empresa,listaProyectos.getSelectedValue(),VentanaVendedor.this,user);     
 					ventana.setVisible(true);
 					setVisible(false);
 				}

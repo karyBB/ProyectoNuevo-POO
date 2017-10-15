@@ -29,7 +29,7 @@ public class VentanaDepartamento extends JFrame {
 	private JTextField txtDepartamento;
 	private DefaultListModel<Departamento> departamentos;
 	
-	public VentanaDepartamento(Empresa empresa,Proyecto proyecto,JFrame ventanaAnterior) {
+	public VentanaDepartamento(Empresa empresa,Proyecto proyecto,JFrame ventanaAnterior, Object usuario) {
 		departamentos = new DefaultListModel<Departamento>();
 		
 		
@@ -128,7 +128,7 @@ public class VentanaDepartamento extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (empresa,proyecto,listaDepartamentos.getSelectedValue(), VentanaDepartamento.this);     
+	             VentanaModificarDepartamento ventanaModificarDepartamento = new VentanaModificarDepartamento (empresa,proyecto,listaDepartamentos.getSelectedValue(), VentanaDepartamento.this, usuario);     
 	             ventanaModificarDepartamento.setVisible(true);
 			}
 		});

@@ -18,9 +18,9 @@ public class Empresa  implements Cloneable  {
 	{
 		
 		archivo=new Archivo();
-		this.listaVendedores = new ListaVendedores(archivo);
-		this.listaAdministradores=new ListaAdministradores(archivo);
 		this.listaProyectos =new ListaProyectos(archivo);
+		this.listaAdministradores=new ListaAdministradores(archivo);
+		this.listaVendedores = new ListaVendedores(archivo,listaProyectos);
 	}
 	
 	

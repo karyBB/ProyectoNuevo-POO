@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import Clases.Administrador;
 import Clases.Empresa;
 import Clases.Proyecto;
 import javax.swing.DefaultListModel;
@@ -31,7 +32,7 @@ public class VentanaProyecto extends JFrame {
 	private JTextField txtProyecto;
 	private DefaultListModel<Proyecto> Proyectos;
 	
-	public VentanaProyecto(Empresa empresa, VentanaAdministrador ventanaAnterior) {
+	public VentanaProyecto(Empresa empresa, VentanaAdministrador ventanaAnterior,Administrador admin) {
 		Proyectos = new DefaultListModel<Proyecto>();
 		
 		
@@ -149,7 +150,7 @@ public class VentanaProyecto extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaProyectos.getSelectedIndex()!=-1)
 				{
-					VentanaDepartamento ventana = new VentanaDepartamento (empresa,listaProyectos.getSelectedValue(),VentanaProyecto.this);     
+					VentanaDepartamento ventana = new VentanaDepartamento (empresa,listaProyectos.getSelectedValue(),VentanaProyecto.this,admin);     
 					ventana.setVisible(true);
 					setVisible(false);
 				}
