@@ -231,7 +231,7 @@ public void actualizarTxtVendedor(Vendedor usuario) throws IOException
 								+usuario.getDireccion()+"|"+usuario.getCorreo()+"|"+usuario.getTelefono()
 								+"|"+usuario.getClave()+"|");
 	
-	escribirListaDpt(usuario, pEscrit);
+  	escribirListaDpt(usuario, pEscrit);
     
 	
 	
@@ -472,7 +472,7 @@ public void leerListaDpt(BufferedReader buffer, Vendedor vendedorNuevo,ListaProy
 		
 		for(int i=0;i<cantidad;i++){
 			departamentoStr = buffer.readLine();
-			Departamento deptNuevo = proyectos.busquedaDept(departamentoStr);
+		    Departamento deptNuevo = proyectos.busquedaDept(departamentoStr);
 			if(deptNuevo!=null)
 				vendedorNuevo.agregarDept(deptNuevo);
 		}

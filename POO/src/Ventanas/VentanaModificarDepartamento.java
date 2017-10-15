@@ -67,10 +67,13 @@ public class VentanaModificarDepartamento extends JFrame {
 		paneltipoEstado.add(comboBoxtipoEstado);
 		comboBoxtipoEstado.setFont(new Font("Consolas", Font.PLAIN, 10));
 		
-		if("Vendedor".equals(usuario.getClass().getName()))
-			textFieldPrecio.setVisible(false);
+		String usuarioStr = usuario.getClass().getName();
+ 		if(usuarioStr.equals("Vendedor"))
+ 			textFieldPrecio.setEditable(false);
 		else
-			paneltipoEstado.setVisible(false);
+			comboBoxtipoEstado.setEditable(false);
+		
+			
 		
 		
 		JButton btnModificar = new JButton("MODIFICAR");

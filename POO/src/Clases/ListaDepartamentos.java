@@ -15,9 +15,15 @@ public class ListaDepartamentos {
 	
 	
 
+	
+
+
 	public ListaDepartamentos() {
-		ListaDepartamentos departamentos=new ListaDepartamentos();
+		departamentos=new ArrayList<Departamento>();
 	}
+
+
+
 
 
 
@@ -278,5 +284,47 @@ public class ListaDepartamentos {
 		
 		return ultDig;
 	}
+
+
+
+
+
+
+	public void agregar(Departamento deptnuevo) {
+		String strDatos=deptnuevo.getNumero();
+		  char[] ca = strDatos.toCharArray();
+		  String id = null ;
+		   String num = null;
+		  for(int i=0; i<strDatos.length();i++)
+		  { 	
+		if(Character.isLetter(ca[i]))       //Si es letra
+		        id=(""+ca[i]); 
+		else    
+			if(Character.isDigit(ca[i]))//Si no es letra
+			        num=(""+ca[i]);   
+			   }
+		  agregar(id.toString(),num.toString());
+		  }
+	
+	
+	public void agregarSinArchivo2(Departamento deptnuevo) {
+		 String strDatos=deptnuevo.getNumero();
+		  char[] ca = strDatos.toCharArray();
+		  String id = null ;
+		   String num = null;
+		  for(int i=0; i<strDatos.length();i++)
+		  { 	
+		if(Character.isLetter(ca[i]))       //Si es letra
+		        id=(""+ca[i]); 
+		else    
+			if(Character.isDigit(ca[i])||ca[i]==0)//Si no es letra
+			        num=(""+ca[i]);   
+			   } 
+		  Departamento dept= new Departamento(num,deptnuevo.getTamaño(), deptnuevo.getNumeroHabitaciones(), false,deptnuevo.getPrecio(),deptnuevo.getDescripcion());
+		  
+		  agregarSinArchivo(dept);
+		  }
+	
+	
 	
 }

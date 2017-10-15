@@ -309,6 +309,27 @@ public boolean modificarNombre(Object proyectoModificar,String cambiar)
 			
 			return claveNueva;
 		}
+
+		public Departamento busquedaDept(String departamentoStr) {
+			String strDatos=departamentoStr;
+			  char[] ca = strDatos.toCharArray();
+			  String id = null ;
+			   String num = null;
+			  for(int i=0; i<strDatos.length();i++)
+			  { 	
+			if(Character.isLetter(ca[i]))       //Si es letra
+			        id=(""+ca[i]); 
+			else    
+			if(Character.isDigit(ca[i]))//Si no es letra
+			        num=(""+ca[i]);   
+			   }
+			  
+			  Proyecto proy=busqueda(id);
+			 Departamento dept= proy.buscarNumeroDepartamento(num);
+			return dept;
+		}
+
+		
 	
 
 	

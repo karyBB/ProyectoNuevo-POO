@@ -324,14 +324,12 @@ package Clases;
 
 	
 
+		
+		
 		public HashMap<String, Administrador> clonarLista () {
-			 HashMap <String, Administrador> result = null;
+			 HashMap <String, Administrador> result = new HashMap <String, Administrador>();
 	       
-	            try {
-					result = (HashMap <String, Administrador>) super.clone();
-				} catch (CloneNotSupportedException e) {
-					e.printStackTrace();
-				}
+	            result = (HashMap) administradores.clone();
 
 	        return result;
 	    }

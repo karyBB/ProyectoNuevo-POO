@@ -1,4 +1,7 @@
 package Clases;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.JPasswordField;
 
 public class Empresa  implements Cloneable  {
@@ -235,7 +238,11 @@ public class Empresa  implements Cloneable  {
    {
 	   return listaAdministradores.size();
    }
-	
+   
+public HashMap<String, Administrador> clonarAdministradores() throws CloneNotSupportedException {
+       return (HashMap<String, Administrador>) listaAdministradores.clonarLista();
+       
+}
 
 
 	
@@ -327,11 +334,11 @@ public class Empresa  implements Cloneable  {
 	public int sizeProyecto() {
 		return listaProyectos.size();
 	}
-	public ListaProyectos clonarProyectos() throws CloneNotSupportedException {
-            return listaProyectos.clone();
-            
-	}
 	
+	public ListaProyectos clonarProyectos() throws CloneNotSupportedException  {
+        return listaProyectos.clone();
+        
+}
 	
 	
 	

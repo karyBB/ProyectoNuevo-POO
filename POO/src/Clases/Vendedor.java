@@ -1,5 +1,7 @@
 package Clases;
 
+import java.io.IOException;
+
 public class Vendedor extends Persona { 
 	
 	//el usuario tiene un arraylist de los departamentos que el ha vendido 
@@ -10,7 +12,7 @@ public class Vendedor extends Persona {
 			String clave) 
 	{
 		super(nombre, rut, direccion, correo, telefono, clave);
-		this.departamentos = new ListaDepartamentos();
+	    this.departamentos = new ListaDepartamentos();
 	}
 	public Vendedor(String nombre, String rut, String direccion, String correo, String telefono) {
 		super(nombre, rut, direccion, correo, telefono);
@@ -44,7 +46,11 @@ public class Vendedor extends Persona {
 	{
 		Archivo archivo = new Archivo();
 		departamentos.agregar(deptnuevo);
-		archivo.actualizarTxtVendedor(Vendedor.this);
+		try {
+			archivo.actualizarTxtVendedor(Vendedor.this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

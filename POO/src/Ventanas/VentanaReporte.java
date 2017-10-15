@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -144,23 +147,30 @@ public class VentanaReporte extends JFrame {
 			rut=vendedores.getRut();
 		}
 	}
-	private void mostrarEnJTextAreaAdministrador(JTextArea datoAdministrador,Empresa empresa)
+	private void mostrarEnJTextAreaAdministrador(JTextArea datoAdministrador,Empresa empresa) throws CloneNotSupportedException
 	{
 		int j = 1;
-		String rut=null;
-		for (int i = 0; i < empresa.sizeVendedores(); i++)
-		{
-			Administrador administradores=empresa.obtenerAdministrador(rut);
-			datoAdministrador.append("["+j+"] ADMINISTRADOR \r\nNOMBRE : "+administradores.getNombre()+
-			"\r\nRut : "+administradores.getRut()+"\r\nDIRECCION : "+administradores.getDireccion()+
-			"\r\nTELEFONO: "+administradores.getTelefono()+"\r\nCORREO : "+administradores.getCorreo()+
-			"\r\nCARGO: "+administradores.getCargo()+"\r\n\r\n");
+		int i=0;
+		
+      HashMap<String,Administrador> administradores=empresa.clonarAdministradores();
+		
+				Iterator<Entry<String, Administrador>> it = administradores.entrySet().iterator();
+			while(i<administradores.size()) {
+				if (it.hasNext()) {
+				 Entry<String, Administrador> e = it.next();
+				Administrador administrador= e.getValue();
+			datoAdministrador.append("["+j+"] ADMINISTRADOR \r\nNOMBRE : "+administrador.getNombre()+
+			"\r\nRut : "+administrador.getRut()+"\r\nDIRECCION : "+administrador.getDireccion()+
+			"\r\nTELEFONO: "+administrador.getTelefono()+"\r\nCORREO : "+administrador.getCorreo()+
+			"\r\nCARGO: "+administrador.getCargo()+"\r\n\r\n");
 			j++;
-			rut=administradores.getRut();
-		}
+			i++;
+		
+		}}
+	}
 	}
 	 
 
-}
+
 		
 
