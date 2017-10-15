@@ -327,7 +327,22 @@ package Clases;
 
 	
 
-		
+		public HashMap <String, Administrador> c clonarLista () {
+			 HashMap <String, Administrador> result = null;
+	        try {
+	            result = (HashMap <String, Administrador>) super.clone ();
+	        } catch (CloneNotSupportedException e) {
+	            // afirmar falso;
+	        }
+	        result. = nueva entrada [table.length];
+	        result.entrySet() = nulo;
+	        result.modCount = 0;
+	        resultado.size = 0;
+	        result.init ();
+	        result.putAllForCreate (esto);
+
+	        resultado de retorno;
+	    }
 	
 		
 	

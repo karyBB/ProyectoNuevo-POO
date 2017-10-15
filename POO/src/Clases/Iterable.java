@@ -6,7 +6,7 @@ public interface Iterable {
 	public Object actual();
 	public Object siguiente();
 	public boolean quedanElementos();
-	
+	void eliminar();
 	
 	
 }

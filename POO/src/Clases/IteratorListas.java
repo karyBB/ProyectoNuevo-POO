@@ -1,16 +1,28 @@
 package Clases;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 
-public class IteratorListas implements Iterable   {
+public abstract class IteratorListas implements Iterable   {
 	
        private int posicion=-1;
-              
+       Entry<String,Administrador> siguiente;        // next entry to return
+       int expectedModCount;   // For fast-fail
+       int index;              // current slot
+       Entry<String,Administrador> current;     // current entry
+       
        private HashMap<String,Administrador> lista;
        
    
-
+      public void HashIterator() {
+           expectedModCount = lista.size();
+           if (lista.size() > 0) { // advance to first entry
+               Entry[] t = table;
+               while (index < t.length && (next = t[index++]) == null)
+                   ;
+           }
+       }
 
 	public  IteratorListas(HashMap<String,Administrador>administradores)  {
         this.lista=administradores;
@@ -67,4 +79,38 @@ public class IteratorListas implements Iterable   {
         	   
 		
        }
+      
+
+       public final boolean hasNext() {
+           return next != null;
+       }
+
+       final Entry<K,V> nextEntry() {
+           if (modCount != expectedModCount)
+               throw new ConcurrentModificationException();
+           Entry<K,V> e = next;
+           if (e == null)
+               throw new NoSuchElementException();
+
+           if ((next = e.next) == null) {
+               Entry[] t = table;
+               while (index < t.length && (next = t[index++]) == null)
+                   ;
+           }
+           current = e;
+           return e;
+       }
+
+       public void remove() {
+           if (current == null)
+               throw new IllegalStateException();
+           if (modCount != expectedModCount)
+               throw new ConcurrentModificationException();
+           Object k = current.key;
+           current = null;
+           HashMap.this.removeEntryForKey(k);
+           expectedModCount = modCount;
+       }
+
+   }
 }
