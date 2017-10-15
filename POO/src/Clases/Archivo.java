@@ -85,7 +85,7 @@ public void cargarArchivoTextoAdministrador(ListaAdministradores administradores
 	}
 }
 	
-public void  cargarArchivoTextoVendedor(ListaVendedores usuarios)
+public void  cargarArchivoTextoVendedor(ListaVendedores usuarios, ListaProyectos proyectos)
 {
 	
 	File raiz = new File("Empresa\\Usuarios");
@@ -108,14 +108,13 @@ public void  cargarArchivoTextoVendedor(ListaVendedores usuarios)
 				    	String correo = st.nextToken();
 				    	String telefono = st.nextToken();
 				    	String clave = st.nextToken();
-				    	String[] departamentos = leerListaTxt(buffer);
 				    	
-
+				    	//se crea el vendedor nuevo    	
+				    	Vendedor vendedorNuevo = new Vendedor(nombre,rut,direccion,correo,telefono,clave);
 				    	
+				    	//se agrega los departamentos al vendedor
+				    	leerListaDpt(buffer, vendedorNuevo,proyectos);
 				    	
-				    	//se agregar los usuarios
-				    	usuarios.agregar(new Vendedor(nombre,rut,direccion,correo,telefono,clave,departamentos));
-
 			    	}
 			    buffer.close();
 			   	archivoLectura.close();
@@ -231,7 +230,8 @@ public void actualizarTxtVendedor(Vendedor usuario) throws IOException
 	pEscrit.println(usuario.getNombre()+"|"+usuario.getRut()+"|"
 								+usuario.getDireccion()+"|"+usuario.getCorreo()+"|"+usuario.getTelefono()
 								+"|"+usuario.getClave()+"|");
-	escribirListaTxt(usuario.getDepartamentos(), pEscrit);
+	
+	escribirListaDpt(usuario, pEscrit);
     
 	
 	
@@ -442,44 +442,42 @@ public boolean eliminarArchivos(File []archivos)
 }
 
 //escribe una lista de string en un archivo para este caso los id departamentos en los usuarios
-public void escribirListaTxt(String [] lista,PrintWriter pEscrit)
-{						
-	if(lista!=null)
+public void escribirListaDpt(Vendedor vendedor,PrintWriter pEscrit)
+{	
+	int largo = vendedor.largoDept();
+	
+	pEscrit.println(largo);
+	if(vendedor!=null)
 	{
-		if(lista.length==0)
-			pEscrit.println("0");	
-		else
+	
+		for(int i=0;i<largo;i++)
 		{
-			//primero ingresa el largo de la lista
-			pEscrit.println(lista.length);
-			
-			for(int i=0;i<lista.length;i++)
-			{
-				//despues ingresa cada elemento del a lista
-				pEscrit.println(lista[i].toString());
-			}
+			//despues ingresa cada elemento del a lista
+			pEscrit.println(vendedor.getPosDept(i));
 		}
+	
 	}
-	else
-		pEscrit.println("0");
+
 }
 
 
 //lee una lista de string en un archivo para este caso los id departamentos en los usuarios
-public String [] leerListaTxt(BufferedReader buffer) throws NumberFormatException, IOException
+public void leerListaDpt(BufferedReader buffer, Vendedor vendedorNuevo,ListaProyectos proyectos) throws NumberFormatException, IOException
 {													
 	//primero lee la cantidad de elementos de la lista
 	int cantidad = Integer.parseInt(buffer.readLine());
+	String departamentoStr;
 	
-	String[] lista = new String[cantidad];
-
 	if(cantidad>0){
-		//despues los lee un por uno
+		
 		for(int i=0;i<cantidad;i++){
-			lista[i] = buffer.readLine();
+			departamentoStr = buffer.readLine();
+			Departamento deptNuevo = proyectos.busquedaDept(departamentoStr);
+			if(deptNuevo!=null)
+				vendedorNuevo.agregarDept(deptNuevo);
 		}
 	}
-	return lista;
+	
 }
 
 

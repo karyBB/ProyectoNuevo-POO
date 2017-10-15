@@ -19,10 +19,10 @@ public class ListaVendedores extends ListaPersonas implements Lista {
 
 
 	//constructor
-	public ListaVendedores(Archivo archivo) {
+	public ListaVendedores(Archivo archivo,ListaProyectos proyectos) {
 	    	
 		vendedores =new HashMap<String,Vendedor>();
-		archivo.cargarArchivoTextoVendedor(ListaVendedores.this);
+		archivo.cargarArchivoTextoVendedor(ListaVendedores.this,proyectos);
 	}
 	
 	
