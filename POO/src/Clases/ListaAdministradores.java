@@ -6,7 +6,7 @@ package Clases;
 	import java.util.regex.Pattern;
 	
 	import javax.swing.JPasswordField;
-	public class ListaAdministradores extends ListaPersonas implements Lista {
+	public class ListaAdministradores extends ListaPersonas implements Lista  {
 	
 		private HashMap<String,Administrador> administradores;
 		
@@ -249,6 +249,11 @@ package Clases;
 			 }
 		   }		
 		return null;
+	}
+	
+	public Iterable ObtenerIterator()
+	{
+	    return new IteratorListas (administradores);
 	}
 	 
 	public Administrador busqueda(String rut)

@@ -23,7 +23,6 @@ public class Empresa  implements Cloneable  {
 		this.listaVendedores = new ListaVendedores(archivo,listaProyectos);
 	}
 	
-	
 	public Empresa(String nombre, Archivo archivo) {
 		this.nombre = nombre;
 		this.archivo = archivo;
