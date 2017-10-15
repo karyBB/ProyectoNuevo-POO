@@ -6,7 +6,7 @@ package Clases;
 	import java.util.regex.Pattern;
 	
 	import javax.swing.JPasswordField;
-	public class ListaAdministradores extends ListaPersonas implements Lista  {
+	public class ListaAdministradores extends ListaPersonas implements Lista,Cloneable {
 	
 		private HashMap<String,Administrador> administradores;
 		
@@ -251,10 +251,7 @@ package Clases;
 		return null;
 	}
 	
-	public Iterable ObtenerIterator()
-	{
-	    return new IteratorListas (administradores);
-	}
+	
 	 
 	public Administrador busqueda(String rut)
 	{
@@ -327,21 +324,16 @@ package Clases;
 
 	
 
-		public HashMap <String, Administrador> c clonarLista () {
+		public HashMap<String, Administrador> clonarLista () {
 			 HashMap <String, Administrador> result = null;
-	        try {
-	            result = (HashMap <String, Administrador>) super.clone ();
-	        } catch (CloneNotSupportedException e) {
-	            // afirmar falso;
-	        }
-	        result. = nueva entrada [table.length];
-	        result.entrySet() = nulo;
-	        result.modCount = 0;
-	        resultado.size = 0;
-	        result.init ();
-	        result.putAllForCreate (esto);
+	       
+	            try {
+					result = (HashMap <String, Administrador>) super.clone();
+				} catch (CloneNotSupportedException e) {
+					e.printStackTrace();
+				}
 
-	        resultado de retorno;
+	        return result;
 	    }
 	
 		
