@@ -2,7 +2,7 @@ package Clases;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class ListaPersonas 
+public abstract class ListaPersonas
 {
   
 
@@ -31,6 +31,7 @@ public abstract class ListaPersonas
 	public abstract boolean modificarCorreo(Object persona,String cambiar);
 	
 	public abstract boolean modificarClave(Object persona,String cambiar);
+	
 	
 
 	
