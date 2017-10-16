@@ -116,7 +116,7 @@ public class VentanaAgregarAdministrador extends JFrame {
 				if(admin.verificarTelefono(textFieldTelefono.getText()))
 					{
 					//Se agrega el administrador
-					empresa.agregarVendedor(empresa.crearVendedor(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(), textFieldClave.getText()));		
+					empresa.agregarAdministrador(empresa.crearAdministrador(textFieldNombre.getText(), textFieldRut.getText(), textFieldDireccion.getText(), textFieldCorreo.getText(), textFieldTelefono.getText(),textFieldCargo.getText(), textFieldClave.getText()));		
 				      
 					JOptionPane.showMessageDialog(VentanaAgregarAdministrador.this,"Su contraseña es\n"+
 							textFieldClave.getText(),"Datos ingresados correctamente",1);

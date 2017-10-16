@@ -1,10 +1,9 @@
 package Clases;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JPasswordField;
 
-public class Empresa  implements Cloneable  {
+public class Empresa   {
 	
  
 	private String nombre;
@@ -128,6 +127,10 @@ public class Empresa  implements Cloneable  {
     return listaVendedores.size();
    }
      
+   public HashMap<String, Vendedor> clonarVendedores() throws CloneNotSupportedException {
+       return (HashMap<String, Vendedor>) listaVendedores.clonarLista();
+       
+}
      
  
    

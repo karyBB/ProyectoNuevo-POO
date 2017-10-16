@@ -91,9 +91,9 @@ public class VentanaMostrarVendedor extends JFrame {
 	private void mostrarEnJTextArea(JTextArea datosUsuario, Vendedor vendedor)
 	{
 			
-		datosUsuario.append(" usuario \r\nNombre : "+vendedor.getNombre()+
+		datosUsuario.append(" Vendedor \r\nNombre : "+vendedor.getNombre()+
 				"\r\nRut : "+vendedor.getRut()+"\r\nDireccion : "+vendedor.getDireccion()+
-				"\r\nTelefono: "+vendedor.getTelefono()+"\r\nCorreo : "+vendedor.getCorreo()+"\r\n\r\n");
+				"\r\nCorreo: "+vendedor.getCorreo()+"\r\nTelefono : "+vendedor.getTelefono()+"\r\n\r\n");
 			
 	}
 }

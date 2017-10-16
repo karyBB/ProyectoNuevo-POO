@@ -142,7 +142,7 @@ public class VentanaReporte extends JFrame {
 			Vendedor vendedores=empresa.obtenerVendedor(rut);
 			datoVendedor.append("["+j+"] VENDEDOR \r\nNOMBRE : "+vendedores.getNombre()+
 			"\r\nRUT : "+vendedores.getRut()+"\r\nDIRECCION : "+vendedores.getDireccion()+
-			"\r\nTELEFONO: "+vendedores.getTelefono()+"\r\nCORREO : "+vendedores.getCorreo()+"\r\n\r\n");
+			"\r\nCORREO: "+vendedores.getCorreo()+"\r\nTELEFONO : "+vendedores.getTelefono()+"\r\n\r\n");
 			j++;
 			rut=vendedores.getRut();
 		}

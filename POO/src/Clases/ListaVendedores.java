@@ -10,7 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 
-public class ListaVendedores extends ListaPersonas implements Lista {
+public class ListaVendedores extends ListaPersonas implements Lista,Cloneable{
 
 
 	private HashMap<String,Vendedor> vendedores;
@@ -45,7 +45,7 @@ public class ListaVendedores extends ListaPersonas implements Lista {
        */
     public Vendedor crear(String nombre,String rut ,String direccion ,String correo,String telefono,String clave)
     {
-    	Vendedor vendedor=new Vendedor(nombre,rut,direccion,telefono,correo ,clave);
+    	Vendedor vendedor=new Vendedor(nombre,rut,direccion,correo,telefono ,clave);
     	return vendedor;
     	
     	
@@ -70,6 +70,16 @@ public class ListaVendedores extends ListaPersonas implements Lista {
 		return false;
 			
 	 }
+	
+	 public boolean agregarSinArchivo(Vendedor nuevoVendedor) {
+	     if(!existe(nuevoVendedor))
+		 {
+	    	 vendedores.put(nuevoVendedor.getClave(), nuevoVendedor);
+	      return true;
+		 }
+	 return false;
+ }
+ 
 
 
 	public Object busqueda(String rut)
@@ -311,7 +321,13 @@ public class ListaVendedores extends ListaPersonas implements Lista {
 		
 	  }
 
- 
+	 public HashMap<String, Vendedor> clonarLista () {
+		 HashMap <String, Vendedor> result = new HashMap <String, Vendedor>();
+       
+            result = (HashMap) vendedores.clone();
+
+        return result;
+    }
 
 
 	 

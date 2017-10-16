@@ -85,7 +85,7 @@ public void cargarArchivoTextoAdministrador(ListaAdministradores administradores
 	}
 }
 	
-public void  cargarArchivoTextoVendedor(ListaVendedores usuarios, ListaProyectos proyectos)
+public void  cargarArchivoTextoVendedor(ListaVendedores vendedores, ListaProyectos proyectos)
 {
 	
 	File raiz = new File("Empresa\\Usuarios");
@@ -111,9 +111,10 @@ public void  cargarArchivoTextoVendedor(ListaVendedores usuarios, ListaProyectos
 				    	
 				    	//se crea el vendedor nuevo    	
 				    	Vendedor vendedorNuevo = new Vendedor(nombre,rut,direccion,correo,telefono,clave);
-				    	
+				    	vendedores.agregarSinArchivo(vendedorNuevo);
+
 				    	//se agrega los departamentos al vendedor
-				    	leerListaDpt(buffer, vendedorNuevo,proyectos);
+				    	leerListaDpt(buffer,vendedorNuevo,proyectos);
 				    	
 			    	}
 			    buffer.close();
@@ -228,7 +229,7 @@ public void actualizarTxtVendedor(Vendedor usuario) throws IOException
 	
 	
 	pEscrit.println(usuario.getNombre()+"|"+usuario.getRut()+"|"
-								+usuario.getDireccion()+"|"+usuario.getCorreo()+"|"+usuario.getTelefono()
+								+usuario.getDireccion()+"|"+usuario.getTelefono()+"|"+usuario.getCorreo()
 								+"|"+usuario.getClave()+"|");
 	
   	escribirListaDpt(usuario, pEscrit);
