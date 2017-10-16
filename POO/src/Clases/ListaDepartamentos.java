@@ -236,6 +236,7 @@ public class ListaDepartamentos {
     	Archivo archivo = new Archivo();
     	for(int i=0;i<cantidad;i++,id++)
     	{
+    		idCadena=idProyecto;
     		ultDig= obtenerUltimosDigitos(id);
     		if(ultDig-cantidadXpiso==0)
     		{
@@ -251,7 +252,7 @@ public class ListaDepartamentos {
     		}	
     		else
     		{
-    			idCadena=String.valueOf(id);
+    			idCadena=idCadena+String.valueOf(id);
     		}
     		Departamento nuevo = new Departamento(idCadena, departamento.getTamaño(),
     				departamento.getNumeroHabitaciones(),departamento.isEstado(),

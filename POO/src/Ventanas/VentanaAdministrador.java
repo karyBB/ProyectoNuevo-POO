@@ -260,7 +260,7 @@ public class VentanaAdministrador extends JFrame {
 		JButton btnAgregarProyecto = new JButton("AGREGAR UN PROYECTO\r\n");
 		btnAgregarProyecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				
 	             VentanaAgregarProyecto  ventanaAgregar = new VentanaAgregarProyecto(empresa,admin,VentanaAdministrador.this);     
 	             ventanaAgregar.setVisible(true);
 	             setVisible(false);
