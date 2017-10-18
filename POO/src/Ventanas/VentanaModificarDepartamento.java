@@ -1,9 +1,11 @@
 package Ventanas;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.JTextComponent;
 
 import Clases.Departamento;
 import Clases.Empresa;
@@ -28,8 +30,7 @@ public class VentanaModificarDepartamento extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JTextField textFieldPrecio;
-	private JTextField textFieldDescripcion;
-
+  
 	
 	public VentanaModificarDepartamento (Empresa empresa,Proyecto proy,Departamento departamento ,final VentanaDepartamento ventanaDepartamento
 											,Object usuario){
@@ -45,7 +46,7 @@ public class VentanaModificarDepartamento extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDepartamento = new JLabel("Modificar Depatamento");
+		JLabel lblDepartamento = new JLabel("Modificar Departamento "+departamento.getNumero());
 		lblDepartamento.setForeground(new Color(255, 255, 255));
 		lblDepartamento.setFont(new Font("Cambria", Font.PLAIN, 17));
 		lblDepartamento.setBounds(122, 11, 172, 26);
@@ -73,7 +74,9 @@ public class VentanaModificarDepartamento extends JFrame {
 		else
 			comboBoxtipoEstado.setEditable(false);
 		
-			
+ 		JTextArea textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setBounds(75, 81, 416, 20);
+		contentPane.add(textAreaDescripcion);
 		
 		
 		JButton btnModificar = new JButton("MODIFICAR");
@@ -86,22 +89,33 @@ public class VentanaModificarDepartamento extends JFrame {
 				if(estadoActual==false)
 				{
 					if(!estadoNuevoStr.equals("Libre"))			
-						((Vendedor)usuario).agregarDeptConArchivo(departamento);					
-				}
+						((Vendedor)usuario).agregarDeptConArchivo(departamento);	
+                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                    ventanaDepartamento.setVisible(true);
+    				setVisible(false);
+				} 
 				
-
+               if(usuario.getClass().getName().equals("Administrador")) { 
 				if(!textFieldPrecio.getText().isEmpty())
 				{
-					if(departamento.esNumerico(textFieldPrecio.getText()))
+					if(departamento.esNumerico(textFieldPrecio.getText())) {
 						
 						proy.modificarPrecioDepartamento(departamento, Integer.parseInt(textFieldPrecio.getText()), proy.getId());
+                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                    ventanaDepartamento.setVisible(true);
+    				setVisible(false);
+					}
 					else
 						JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"Ingresó mal el precio","Error",0);	
 				}
+               }
 				
-				if(!textFieldDescripcion.getText().isEmpty())
-					    proy.modificarDescripcionDepartemento(departamento, textFieldDescripcion.getText(), proy.getId());
-				
+				if(!textAreaDescripcion.getText().isEmpty())
+					    proy.modificarDescripcionDepartemento(departamento, textAreaDescripcion.getText(), proy.getId());
+                JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                ventanaDepartamento.setVisible(true);
+				setVisible(false);
+
 				
 			}
 		});
@@ -114,8 +128,10 @@ public class VentanaModificarDepartamento extends JFrame {
 		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+
+
 				ventanaDepartamento.setVisible(true);
+				setVisible(false);
 			}
 		});
 		button.setFont(new Font("Consolas", Font.PLAIN, 13));
@@ -148,10 +164,7 @@ public class VentanaModificarDepartamento extends JFrame {
 		textFieldPrecio.setBounds(75, 81, 416, 20);
 		contentPane.add(textFieldPrecio);
 		
-		textFieldDescripcion = new JTextField();
-		textFieldDescripcion.setColumns(10);
-		textFieldDescripcion.setBounds(10, 240, 376, 56);
-		contentPane.add(textFieldDescripcion);
+		
 	}
 
 
