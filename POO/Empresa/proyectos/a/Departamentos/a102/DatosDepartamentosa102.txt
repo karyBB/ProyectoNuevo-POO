@@ -1,0 +1,1 @@
+a102|1000|2|true|30000|super genial

@@ -117,7 +117,7 @@ public void  cargarArchivoTextoVendedor(ListaVendedores vendedores, ListaProyect
 				    	leerListaDpt(buffer,vendedorNuevo,proyectos);
 				    	
 				    	//se agrega a la lista de vendedores
-				    	usuarios.agregar(vendedorNuevo);
+				    	vendedores.agregar(vendedorNuevo);
 				    	
 			    	}
 			    buffer.close();
