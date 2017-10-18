@@ -16,6 +16,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CrearReporteExcel {
 
+	
+	
     public CrearReporteExcel(Empresa empresa,ListaProyectos proyectos) throws IOException{
         
     	HSSFWorkbook libro = new HSSFWorkbook();
@@ -44,6 +46,7 @@ public class CrearReporteExcel {
             cell.setCellValue(cabecera);
         }
 
+        
         //Se llenan las columnas con los datos de los proyectos
         int i=0;
         while (empresa.obtenerProyecto(i)!=null) {
@@ -55,6 +58,7 @@ public class CrearReporteExcel {
             String encargado = proyectos.getPosProyecto(i).getNombreEncargado();
             int npisos = proyectos.getPosProyecto(i).getTotalPisos();
            
+        
             
             //Se agrega el dato especifico del proyecto en cada celda
         
@@ -77,6 +81,8 @@ public class CrearReporteExcel {
         guardarArchivoXLS(libro);
             
     }//Fin Constructor
+    
+    
     
     
     

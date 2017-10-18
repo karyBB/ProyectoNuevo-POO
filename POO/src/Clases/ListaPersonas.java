@@ -1,12 +1,13 @@
 package Clases;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public abstract class ListaPersonas
 {
   
 
-	//valida que la contraseña es correcta
+	/**
+	 * Metodo que valida que la contraseña se encuentre.
+	 */
 	public boolean verificacion(String contraseñaReal, String contraseñaIngresada)  
 	{ 
 
@@ -18,8 +19,10 @@ public abstract class ListaPersonas
 	}
 	
 			
-			
 	
+	
+			
+	/*metodos abstractos que se implementan el listaVendedores y listaAdministradores*/
 	public abstract Object buscarNombre(String nombre);
 
 	public abstract Object buscarClave(String clave);
@@ -31,7 +34,7 @@ public abstract class ListaPersonas
 	public abstract boolean modificarCorreo(Object persona,String cambiar);
 	
 	public abstract boolean modificarClave(Object persona,String cambiar);
-	
+	/*fin */
 	
 
 	

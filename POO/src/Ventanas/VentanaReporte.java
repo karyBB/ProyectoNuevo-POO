@@ -109,6 +109,12 @@ import Clases.Vendedor;
 			if(seleccionado==2)
 				mostrarEnJTextAreaAdministrador(datos,empresa);
 					
+			
+			
+			
+			
+			
+			
 					//Regresa a la ventana anterior
 					JButton btnAtras = new JButton("ATRAS");
 					btnAtras.setFont(new Font("Century Gothic", Font.PLAIN, 11));

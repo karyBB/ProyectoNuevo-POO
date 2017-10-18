@@ -1,6 +1,6 @@
 	package Clases;
 	
-	public class Departamento implements Cloneable {
+	public class Departamento  {
 	 private String numero;
 	 private String tamaño;
 	 private int numeroHabitaciones;
@@ -11,89 +11,121 @@
 	 
 	 
 	 
-	 
-	public Departamento(String numero, String tamaño, int numeroHabitaciones, boolean estado,
-			int precio, String descripcion) {
-		super();
-		this.numero = numero;
-		this.tamaño = tamaño;
-		this.numeroHabitaciones = numeroHabitaciones;
-		this.estado = estado;
-		this.precio = precio;
-		this.descripcion = descripcion;
+	   /*constructores de Departamento */ 
+				public Departamento(String numero, String tamaño, int numeroHabitaciones, boolean estado,
+						int precio, String descripcion) {
+					super();
+					this.numero = numero;
+					this.tamaño = tamaño;
+					this.numeroHabitaciones = numeroHabitaciones;
+					this.estado = estado;
+					this.precio = precio;
+					this.descripcion = descripcion;
+					
+				}
+				public Departamento() {
+					this.numero = null;
+					this.tamaño = null;
+					this.numeroHabitaciones = 0;
+					this.estado = false;
+					this.precio = 0;
+					this.descripcion = null;	}
+				
+		/*fin constructores*/		
 		
-	}
-	public Departamento() {
-		this.numero = null;
-		this.tamaño = null;
-		this.numeroHabitaciones = 0;
-		this.estado = false;
-		this.precio = 0;
-		this.descripcion = null;	}
-	
-	
-		//verifica que el string se pueda cambiar a numerico
-		public boolean esNumerico(String string)
-		{
-		    boolean numerico = true;
-		    try{
-		        Integer.parseInt(string);
-		    }catch(NumberFormatException e){
-		    	numerico = false;
-		    }
-		    return numerico;
-		}
-	
-	
-	//getters and setters
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-	public String getTamaño() {
-		return tamaño;
-	}
-	public void setTamaño(String tamaño) {
-		this.tamaño = tamaño;
-	}
-	public int getNumeroHabitaciones() {
-		return numeroHabitaciones;
-	}
-	public void setNumeroHabitaciones(int numeroHabitaciones) {
-		this.numeroHabitaciones = numeroHabitaciones;
-	}
-	public boolean isEstado() {
-		return estado;
-	}
-	
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-	
-	public int getPrecio() {
-		return precio;
-	}
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	public Departamento clone() throws CloneNotSupportedException  {
-		
-		  return (Departamento) super.clone();
-		 }
-	@Override
-	public String toString()
-	{
-		return numero;
-	}
-	
-	  
-	}
+				
+				
+				
+				
+				//verifica que el string se pueda cambiar a numerico
+				public boolean esNumerico(String string)
+				{
+				    boolean numerico = true;
+				    try{
+				        Integer.parseInt(string);
+				    }catch(NumberFormatException e){
+				    	numerico = false;
+				    }
+				    return numerico;
+				}
+				
+				
+				
+				
+				
+				
+				
+				/*getters and setters*/
+				public String getNumero() {
+					return numero;
+				}
+				
+				
+				public void setNumero(String numero) {
+					this.numero = numero;
+				}
+				
+				
+				public String getTamaño() {
+					return tamaño;
+				}
+				
+				
+				
+				public void setTamaño(String tamaño) {
+					this.tamaño = tamaño;
+				}
+				
+				
+				
+				public int getNumeroHabitaciones() {
+					return numeroHabitaciones;
+				}
+				
+				
+				
+				public void setNumeroHabitaciones(int numeroHabitaciones) {
+					this.numeroHabitaciones = numeroHabitaciones;
+				}
+				
+				
+				
+				public boolean isEstado() {
+					return estado;
+				}
+				
+				
+				
+				public void setEstado(boolean estado) {
+					this.estado = estado;
+				}
+				
+				
+				
+				public int getPrecio() {
+					return precio;
+				}
+				
+				
+				
+				public void setPrecio(int precio) {
+					this.precio = precio;
+				}
+				
+				
+				public String getDescripcion() {
+					return descripcion;
+				}
+				
+				
+				public void setDescripcion(String descripcion) {
+					this.descripcion = descripcion;
+				}
+				/*fin de los getters y setters*/
+				
+				@Override
+				public String toString()
+				{
+					return numero;
+				}
+}

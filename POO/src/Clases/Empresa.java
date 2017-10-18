@@ -28,11 +28,24 @@ package Clases;
 			this.listaVendedores = new ListaVendedores(archivo,listaProyectos);
 		}
 		
+		
 		public Empresa(String nombre, Archivo archivo) {
 			this.nombre = nombre;
 			this.archivo = archivo;
 		}
 		/*fin de los contructores*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -49,7 +62,7 @@ package Clases;
 		
 		
 		
-		/**metodo creasVendedor recibe 
+		/**Metodo creasVendedor recibe 
 		 * 
 		 * @param nombre
 		 * @param rut
@@ -69,17 +82,19 @@ package Clases;
 		 
 		 
 		 
-		 /**metodo agregarVendedor recibe un nuevo vendedor ya creado
-		  Llama al metodo agregar de la lista vendedor y no retorna nada */
+		 /**
+		  * Metodo agregarVendedor recibe un nuevo vendedor ya creado
+		  * llama al metodo agregar de la lista vendedor y no retorna nada */
 		 public void  agregarVendedor(Vendedor nuevoVendedor) {
 			 listaVendedores.agregar(nuevoVendedor);
 			 
 		 }
 		
 		 
-		     
 		   
-		 /*
+		 
+		   
+		 /**
 		 * Metodo para buscar al Vendedor por su nombre
 		 * retornar al vendedor encontrado para poder ser modificado  
 		 */
@@ -92,7 +107,8 @@ package Clases;
 		
 		
 		
-		/*
+		
+		/**
 		 * Metodo para buscar al Vendedor por su clave
 		 * retornar al vendedor encontrado para poder ser modificado  
 		 */
@@ -105,7 +121,7 @@ package Clases;
 		
 		
 		
-		/*
+		/**
 		 * Metodo para buscar al Vendedor por su rut
 		 * retornar un objeto encontrado para poder ser modificado  
 		 */
@@ -118,7 +134,8 @@ package Clases;
 		
 		
 		
-		/*
+		
+		/**
 			 * Metodo para modificar el nombre del vendedor 
 			 * no retorna nada
 			 */
@@ -130,7 +147,8 @@ package Clases;
 		 
 		 
 		 
-		 /*
+		 
+		 /**
 			 * Metodo para modificar la direccion del vendedor 
 			 * no retorna nada
 			 */
@@ -141,7 +159,8 @@ package Clases;
 		 
 		 
 		 
-		 /*
+		 
+		 /**
 			 * Metodo para modificar el telefono del vendedor 
 			 * no retorna nada
 			 */
@@ -152,7 +171,8 @@ package Clases;
 		 
 		 
 		 
-		 /*
+		 
+		 /**
 			 * Metodo para modificar el correo del vendedor 
 			 * no retorna nada
 			 */
@@ -165,7 +185,7 @@ package Clases;
 		 
 		 
 		 
-		 /*
+		 /**
 			 * Metodo para modificar la clave del vendedor 
 			 * no retorna nada
 			 */
@@ -178,7 +198,7 @@ package Clases;
 		 
 		 
 		 
-		/*
+		/**
 		 * Metodo para eliminacion de un Vendedor
 		 * recibe un objeto vendedor y lo elimina ,no retorna nada 
 		 */
@@ -191,8 +211,9 @@ package Clases;
 		
 		
 		
+		
 		/**
-		 * metodo para obtener el Vendedor que esta ingresando
+		 * Metodo para obtener el Vendedor que esta ingresando
 		 * recibe el nombre de usuario y lo ingresado en el j{passowordField
 		 * retorna el vendedor encontrado 
 		 */
@@ -204,18 +225,36 @@ package Clases;
 	   
 	   
 	   
+	   
 	   /**
-		 * Metodos para obtener el  vendedor 
+		 * Metodo para obtener el  vendedor 
 		 * recibe un rut y busca al vendedor 
 		 * retorna al vendedor 
 		 */
 	    public Vendedor obtenerVendedor(String rut) {
 	    	return listaVendedores.obtener(rut);
 	    }
+	    
+	    
+	    
+	    
+	    
+	    /**
+		 * Metodo para obtener el  tamaño del HashMap listaVendedores 
+		 *
+		 */
 	   public int sizeVendedores() {
 	    return listaVendedores.size();
 	   }
-	     
+	   
+	   
+	   
+	   
+
+	    /**
+		 * Metodo para obtener la listaVendedores clonada 
+		 * es utilizada para entregar un informe de los vendedores 
+		 */
 	   public HashMap<String, Vendedor> clonarVendedores() throws CloneNotSupportedException {
 	       return (HashMap<String, Vendedor>) listaVendedores.clonarLista();
 	       
@@ -223,136 +262,305 @@ package Clases;
 		     
 		 
 		   
+		
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 		   
+
 		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   /**
+		/**
 		* 
 		* Metodos de las la lista Administradores
-		* @return
+		* 
+		* 
+		* 
 		*/
 		     
 		
 			
-			 
-			 public Administrador crearAdministrador(String nombre,String rut ,String direccion,String correo ,String telefono,String cargo,String clave)
-			 {
-				 return listaAdministradores.crear(nombre, rut, direccion, correo, telefono,cargo, clave);
-			 }
-			 
-			 
-		    public void  agregarAdministrador(Administrador nuevoAdministrador) {
-		   	 listaAdministradores.agregar(nuevoAdministrador);
-		   	 
-		    }
-		  
+	   /**
+	    * Metodo crear Administrador recibe
+	    * @param nombre
+	    * @param rut
+	    * @param direccion
+	    * @param correo
+	    * @param telefono
+	    * @param cargo
+	    * @param clave
+	    * @return un administrador
+	    */
+		 
+		 public Administrador crearAdministrador(String nombre,String rut ,String direccion,String correo ,String telefono,String cargo,String clave)
+		 {
+			 return listaAdministradores.crear(nombre, rut, direccion, correo, telefono,cargo, clave);
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 /**
+			* Metodo que agrega un nuevoAdministrador a la  lista Administradores
+			* no retorna nada
+			*/ 
+	    public void  agregarAdministrador(Administrador nuevoAdministrador) {
+	   	 listaAdministradores.agregar(nuevoAdministrador);
+	   	 
+	    }
+	  
+		
+	    
+	    
+	    
+	    /**
+		* Metodo buscarNombreAdministrador 
+		* recibe un nombre 
+		* y retorna el administrador encontrado
+		*/
+		public Administrador buscarNombreAdministrador(String nombre)
+	    {
+	   	 return listaAdministradores.buscarNombre(nombre);
+	    } 	
+		
+		
+		
+		
+		
+		 /**
+		* Metodo buscarClaveAdministrador 
+		* recibe una clave  
+		* y retorna el administrador encontrado
+		*/
+		public Administrador buscarClaveAdministrador(String clave)
+		{
+			return listaAdministradores.buscarClave(clave);
+		}
+		
+		
+		
+		
+		
+		 /**
+		* Metodo buscarRutAdministrador 
+		* recibe un rut 
+		* y retorna el administrador encontrado
+		*/
+		public Administrador buscarRutAdministrador(String rut)
+		{
+			return listaAdministradores.busqueda(rut);
+		}
+		
 			
-			public Administrador buscarNombreAdministrador(String nombre)
-		    {
-		   	 return listaAdministradores.buscarNombre(nombre);
-		    } 	
-			
-			public Administrador buscarClaveAdministrador(String clave)
-			{
-				return listaAdministradores.buscarClave(clave);
-			}
-			
-			public Administrador buscarRutAdministrador(String rut)
-			{
-				return listaAdministradores.busqueda(rut);
-			}
-			
-				
-			
+	
+		
+		
+		
 		   
-		/**
-		    * Metodos para buscar al administrador 
-		   
-		    */
+		 /**
+		* Metodo modificarNombreAdministrador 
+		* recibe un objeto y un nuevo nombre y lo modifica
+		* no retorna nada
+		*/
 		public void modificarNombreAdministrador(Object administrador,String nuevoNombre){
 			listaAdministradores.modificarNombre(administrador, nuevoNombre);
 		     }    
 		
+		
+		
+		
+		
+		 /**
+		* Metodo modificarDireccionAdministrador 
+		* recibe un objeto y una nueva direccion y lo modifica
+		* no retorna nada
+		*/
 		public void modificarDireccionAdministrador(Object administrador,String nuevoNombre){
 			listaAdministradores.modificarDireccion(administrador, nuevoNombre);
 		     }
 		
+		
+		
+		
+		
+		 /**
+		* Metodo modificarTelefonoNombreAdministrador 
+		* recibe un objeto y un nuevo telefono y lo modifica
+		* no retorna nada
+		*/
 		public void modificarTelefonoAdministrador(Object administrador,String nuevaDireccion){
 			listaAdministradores.modificarTelefono(administrador, nuevaDireccion);
 		     }
 		
+		
+		
+		
+		 /**
+		* Metodo modificarCorreoAdministrador 
+		* recibe un objeto y u nuevo correo y lo modifica
+		* no retorna nada
+		*/
 		public void modificarCorreoAdministrador(Object administrador,String nuevoCorreo){
 			listaAdministradores.modificarCorreo(administrador, nuevoCorreo);
 		     }
 		
 		
+		
+		
+		
+		
+		 /**
+		* Metodo modificarClaveAdministrador 
+		* recibe un objeto y una nuevo clave y lo modifica
+		* no retorna nada
+		*/
 		public void modificarClaveAdministrador(Object administrador,String nuevaClave){
 			listaAdministradores.modificarClave(administrador, nuevaClave);
 		
 		}
 		
 		   
-			/**
+		
+		
+		
+		
+		 /**
 		 * Metodo para eliminacion de Adminstrador 
+		 * recibe el objeto a eliminar 
+		 * no retorna nada
 		 */
 			
-		   public void eliminaAdministrador(Object administrador)
+		 public void eliminaAdministrador(Object administrador)
 		   {
 			   listaAdministradores.eliminar(administrador);
-		   }
+         }
 		   
-		   /**
-		* motodo para obtener el Administrador que esta ingresando
-		* @return
+		   
+		   
+		   
+		   
+		   
+		 /**
+		* Metodo para obtener el Administrador que esta ingresando
+		* recibe el nombre del usuario que esta ingresando y la clave que ingreso
+		* retorna el administracion con ese nombre y con esa clave
+		* 
 		*/
-		  public Administrador  obtenerAdministrador(String administrador, JPasswordField clave) {
-			   return listaAdministradores.getAdministrador(administrador, clave);
+		  public Administrador  obtenerAdministrador(String usuario, JPasswordField clave) {
+			   return listaAdministradores.getAdministrador(usuario, clave);
 			   
 		  }
+		  
+		  
+		  
+		  
+		  
+		  /**
+			* Metodo obtenerAdministrador 
+			* recibe un rut 
+			* y retorna el administrador con este rut
+			*/
 		  public Administrador obtenerAdministrador(String rut) {
 		  	return listaAdministradores.obtener(rut);
 		  }
+		  
+		  
+		  
+		  
+		  
+		  /**
+			* Metodo que retorna el tamaño del HashMap listaAdministradores  
+			*/
 		   public int sizeAdministrador()
 		   {
 			   return listaAdministradores.size();
 		   }
 		   
-		public HashMap<String, Administrador> clonarAdministradores() throws CloneNotSupportedException {
-		       return (HashMap<String, Administrador>) listaAdministradores.clonarLista();
-		       
-		}
+		   
+		   
+		   
+		   
+		   /**
+			 * Metodos para obtener la listaAdministradores clonada 
+			 * es utilizada para entregar un informe de los administradores 
+			 */
+			public HashMap<String, Administrador> clonarAdministradores() throws CloneNotSupportedException {
+			       return (HashMap<String, Administrador>) listaAdministradores.clonarLista();
+			       
+			}
 		
 		
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			/**
-		 * metodos para los proyectos 
-		 * @return
-		 */
+			 * 
+			 * Metodos para la listaProyectos
+			 *  
+			 */
+			
+			
+			
+			
+			
+		   /**
+		    * el Metodo crearProyecto recibe:
+		    * @param id
+		    * @param nombre
+		    * @param direccion
+		    * @param ciudad
+		    * @param nombreEncargado
+		    * @param numPisos
+		    * @param numDepts
+		    *  y retorna el proyecto creado
+		    */
 			public Proyecto crearProyecto(String id,String nombre,String direccion,String ciudad,String nombreEncargado,int numPisos,int numDepts ) {
 				return listaProyectos.crearProyecto(id,nombre,direccion,ciudad,nombreEncargado,numPisos,numDepts);
 			}
 			
-		
+			
+			
+			
+			
+		    
+			/**
+			 * Metodo agregarProyecto
+			 * recibe un proyecto 
+			 * y no retorna nada 
+			 */
 			public void agregarProyecto(Proyecto proyecto)
 			{
 				listaProyectos.agregar(proyecto);
 			}
 			
+			
+			
+			
+			
+			
+			/**
+			 * Metodo agregar los proyectos si Archivo
+			 * recibe el proyecto y no retorna nada 
+			 */
 			
 			public void agregarProyectoSinArchivo(Proyecto proyecto)
 			{
@@ -361,12 +569,30 @@ package Clases;
 			
 			
 			
+			
+			
+			
+			
+			/**
+			 * Metodo generarIdProyecto  
+			 * no recibe nada solo es la llamada al metodo generarId proyecto que se encuentra en 
+			 * listaProyectos
+			 */
+			
 			public String generarIdProyecto() {
 				return listaProyectos.generarIdProyecto();
 			}
 			
 			
 			
+			
+			
+			
+			
+			/**
+			 * Metodo buscarIdProyecto 
+			 *recibe un id y retorna el proyecto que lo tiene 
+			 */
 			public Proyecto buscarIdProyecto(String id)
 			{
 				return listaProyectos.busqueda(id);
@@ -374,6 +600,13 @@ package Clases;
 			
 			
 			
+			
+			
+			
+			/**
+			 * Metodo buscarNombreProyecto 
+			 *recibe un nombre y retorna el proyecto que lo tiene 
+			 */
 			public Proyecto buscarNombreProyecto(String nombre)
 			{
 				return listaProyectos.buscarNombre(nombre);
@@ -381,6 +614,13 @@ package Clases;
 			
 			
 			
+			
+			
+			
+			/**
+			 * Metodo buscarCiudadProyecto 
+			 *recibe una ciudad y retorna el proyecto que lo tiene 
+			 */
 			public Proyecto buscarCiudadProyecto(String ciudad)
 			{
 				return listaProyectos.buscarPorCiudad(ciudad);
@@ -388,6 +628,13 @@ package Clases;
 			
 			
 			
+			
+			
+			
+			/**
+			 * Metodo buscarNombreEncargadoProyecto 
+			 *recibe un nombre de encargado y retorna el proyecto que lo tiene 
+			 */
 			public Proyecto buscarNombreEncargadoProyecto(String nombre)
 			{
 				return listaProyectos.busquedaPorNombreEncargado(nombre);
@@ -395,61 +642,131 @@ package Clases;
 			
 			
 			
+			
+			
+			
+			/**
+			 * Metodo modificarNombreProyecto 
+			 *recibe un nuevo nombre y retorna un boolean dependiendo si lo hizo o no 
+			 */
 			public boolean modificarNombreProyecto(Proyecto proyecto,String nombre) {
 				return listaProyectos.modificarNombre(proyecto, nombre);
 			}
 			
 			
+			
+			
+			
+			/**
+			 * Metodo modificarDireccionProyecto 
+			 *recibe una nueva direccion y retorna un boolean dependiendo si lo hizo o no 
+			 */
 			public boolean modificarDireccionProyecto(Proyecto proyecto,String direccion) {
 				return listaProyectos.modificarDireccionProy(proyecto, direccion);
 			}
 			
 			
+			
+			
+			/**
+			 * Metodo modificarCuidadProyecto 
+			 *recibe una nueva ciudad y retorna un boolean dependiendo si lo hizo o no 
+			 */
 			public boolean modificarCiudadProyecto(Proyecto proyecto,String ciudad) {
 				return listaProyectos.modificarCiudad(proyecto, ciudad);
 			}
 			
 			
+			
+			
+			
+			
+			/**
+			 * Metodo modificarNombreEncProyecto 
+			 *recibe un nuevo nombre de encargado y retorna un boolean dependiendo si lo hizo o no 
+			 */
 			public boolean modificarNombreEncProyecto(Proyecto proyecto,String nombre) {
 				return listaProyectos.modificarNombreEncargado(proyecto, nombre);
 			}
+			
+			
+		    
+			
+			
+			
+			/**
+			 * Metodo eliminarProyecto 
+			 *recibe un proyecto y retorna un boolean dependiendo si lo elimino o no 
+			 */
 			public boolean eliminarProyecto(Proyecto proyecto)
 			{
 				return listaProyectos.eliminar(proyecto);
 			}
 			
+			
+			
+			
+			
+			/**
+			 *Metodo obtenerProyecto 
+			 *recibe indice y retorna el proyecto que esta en esa posicion  
+			 */
 			public Proyecto obtenerProyecto(int i)
 			{
 				return listaProyectos.getPosProyecto(i);
 			}
 			
+			
+			
+			
+			
+			/**
+			 * Metodo que retorna el tamaño de la listaProyectos
+			 */
 			public int sizeProyecto() {
 				return listaProyectos.size();
 			}
 			
+			
+			
+			
+			
+			/**
+			 * Metodo que retorna la lista ListaProyectos clonada 
+			 */
 			public ListaProyectos clonarProyectos() throws CloneNotSupportedException  {
 		        return listaProyectos.clone();
 		        
-		}
+		    }
 					
 					
 					
+			
+			
+			
+			
+			
+			
+			
+			
 				
-		   //getters and setters de la clase empresa 
-		public String getNombre() {
-			return nombre;
-		}
-		
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
-		
-		public Archivo getArchivos() {
-			return archivo;
-		}
-		
-		public void setArchivos(Archivo archivo) {
-			this.archivo = archivo;
-		}
-					
-				}
+			/*getters y setters de la clase Empresa*/
+			public String getNombre() {
+				return nombre;
+			}
+			
+			public void setNombre(String nombre) {
+				this.nombre = nombre;
+			}
+			
+			public Archivo getArchivos() {
+				return archivo;
+			}
+			
+			public void setArchivos(Archivo archivo) {
+				this.archivo = archivo;
+			}
+			/*fin de los getters y setters de la classe Empresa*/
+			
+			
+}

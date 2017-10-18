@@ -49,13 +49,14 @@ public class CrearPdf {
 	  
 	   
         
-	}//FIN CONSTRUCTOR
+	}/*fin del constructor*/
 	
 	
 	
 	
 	public void llenarPDFVendedor(FileOutputStream archivo, Vendedor vendedor){
 
+		
 	    //Tipos de letras personalizados que se usaran	    
 		Font tipoLetraTitulo = new Font(Font.FontFamily.HELVETICA , 16, Font.BOLD);
 		Font tipoLetraTitulos = new Font(Font.FontFamily.HELVETICA , 12, Font.BOLD);
