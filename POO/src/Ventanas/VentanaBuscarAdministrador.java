@@ -39,7 +39,7 @@ public class VentanaBuscarAdministrador extends JFrame {
 		JLabel lblBienvenido = new JLabel("Administrador "+adminNombre);
 		lblBienvenido.setFont(new Font("Consolas", Font.PLAIN, 25));
 		lblBienvenido.setForeground(Color.WHITE);
-		lblBienvenido.setBounds(10, 71, 342, 28);
+		lblBienvenido.setBounds(10, 43, 342, 28);
 		contentPane.add(lblBienvenido);
 		
 

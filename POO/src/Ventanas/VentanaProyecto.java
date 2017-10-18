@@ -45,6 +45,12 @@ public class VentanaProyecto extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblBienvenido = new JLabel("Administrador "+admin.getNombre());
+		lblBienvenido.setFont(new Font("Consolas", Font.PLAIN, 25));
+		lblBienvenido.setForeground(Color.WHITE);
+		lblBienvenido.setBounds(10, 35, 342, 28);
+		contentPane.add(lblBienvenido);
+		
 		JPanel panelMostrarProyectos = new JPanel();		
 		panelMostrarProyectos.setBackground(new Color(0, 153, 255));
 		panelMostrarProyectos.setBorder(new LineBorder(new Color(255, 255, 255)));
@@ -84,7 +90,7 @@ public class VentanaProyecto extends JFrame {
 		JLabel lblUsuario = new JLabel("Men\u00FA Proyectos");
 		lblUsuario.setForeground(Color.WHITE);
 		lblUsuario.setFont(new Font("Cambria", Font.PLAIN, 20));
-		lblUsuario.setBounds(198, 11, 181, 47);
+		lblUsuario.setBounds(197, 0, 181, 47);
 		contentPane.add(lblUsuario);
 		
 		JButton btnRegresar = new JButton("VOLVER");
