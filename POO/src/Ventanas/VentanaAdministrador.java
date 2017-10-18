@@ -130,7 +130,7 @@ public class VentanaAdministrador extends JFrame {
 		});
 		
 		//ventana modificar
-		JButton btnModificarAdministrador = new JButton("MODIFICAR DATOS");
+		JButton btnModificarAdministrador = new JButton("MODIFICAR DATOS PERSONALES");
 		btnModificarAdministrador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

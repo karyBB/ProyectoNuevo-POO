@@ -116,6 +116,8 @@ public class VentanaAgregarVendedor extends JFrame {
 					textFieldCorreo.setEditable(false);
 					textFieldDireccion.setEditable(false);
 					textFieldTelefono.setEditable(false);
+					textFieldClave.setEditable(false);
+					btnAgregar.setEnabled(false);
 				}
 				else
 					JOptionPane.showMessageDialog(VentanaAgregarVendedor.this,"Ingresó mal el telefono","Error",0);

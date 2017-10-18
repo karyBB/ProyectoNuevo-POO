@@ -168,19 +168,25 @@ import Clases.Vendedor;
 				j++;
 			}
 		}
-		private void mostrarEnJTextAreaVendedor(JTextArea datoVendedor,Empresa empresa)
+		private void mostrarEnJTextAreaVendedor(JTextArea datoVendedor,Empresa empresa) throws CloneNotSupportedException
 		{
 			int j = 1;
-			String rut=null;
-			for (int i = 0; i < empresa.sizeVendedores(); i++)
-			{
-				Vendedor vendedores=empresa.obtenerVendedor(rut);
-				datoVendedor.append("["+j+"] VENDEDOR \r\nNOMBRE : "+vendedores.getNombre()+
-				"\r\nRUT : "+vendedores.getRut()+"\r\nDIRECCION : "+vendedores.getDireccion()+
-				"\r\nCORREO: "+vendedores.getCorreo()+"\r\nTELEFONO : "+vendedores.getTelefono()+"\r\n\r\n");
+			int i=0;
+			
+	      HashMap<String,Vendedor> vendedores=empresa.clonarVendedores();
+			
+					Iterator<Entry<String, Vendedor>> it = vendedores.entrySet().iterator();
+				while(i<vendedores.size()) {
+					if (it.hasNext()) {
+					 Entry<String, Vendedor> e = it.next();
+					 Vendedor vendedor= e.getValue();
+					 datoVendedor.append("["+j+"] ADMINISTRADOR \r\nNOMBRE : "+vendedor.getNombre()+
+				"\r\nRut : "+vendedor.getRut()+"\r\nDIRECCION : "+vendedor.getDireccion()+
+				"\r\nTELEFONO: "+vendedor.getTelefono()+"\r\nCORREO : "+vendedor.getCorreo()+"\r\n\r\n");
 				j++;
-				rut=vendedores.getRut();
-			}
+				i++;
+			
+			}}
 		}
 		private void mostrarEnJTextAreaAdministrador(JTextArea datoAdministrador,Empresa empresa) throws CloneNotSupportedException
 		{

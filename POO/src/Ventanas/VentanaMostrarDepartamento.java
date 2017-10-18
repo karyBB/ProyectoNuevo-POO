@@ -41,7 +41,7 @@ public class VentanaMostrarDepartamento extends JFrame {
 		
 		JPanel panelDepartamento = new JPanel();
 		panelDepartamento.setBackground(new Color(51, 204, 153));
-		panelDepartamento.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Información Administrador :", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, new java.awt.Font("Century Gothic", Font.PLAIN, 14), new Color(255, 255, 255)));
+		panelDepartamento.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Información Departamento :", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, new java.awt.Font("Century Gothic", Font.PLAIN, 14), new Color(255, 255, 255)));
 		panelDepartamento.setBounds(0, 0, 352, 290);
 		contentPane.add(panelDepartamento);
 		panelDepartamento.setLayout(new GridLayout());
