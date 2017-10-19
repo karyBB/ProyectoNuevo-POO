@@ -80,12 +80,15 @@ public class ListaVendedores extends ListaPersonas implements Lista,Cloneable{
 			 * Metodo que agrega sin archivo a un Vendedor al hashmap
 			 * verifica que este no se encuentre y lo agrega 
 			 * es para no sobreescribir el archivo
-			 * retorna un true si el vendedor es agragdo y un false si no lo logro ingresar
+			 * retorna un true si el vendedor es agregado y un false si no lo logro ingresar
 			 */ 
 			 public boolean agregarSinArchivo(Vendedor nuevoVendedor) {
+				 
 			     if(!existe(nuevoVendedor))
 				 {
+			    	 
 			    	 vendedores.put(nuevoVendedor.getClave(), nuevoVendedor);
+			    	 
 			      return true;
 				 }
 			 return false;
@@ -130,6 +133,7 @@ public class ListaVendedores extends ListaPersonas implements Lista,Cloneable{
 			 */   
 			public Vendedor buscarNombre(String nombre)
 			{
+				
 				 for (Entry<String, Vendedor> e: vendedores.entrySet())
 				 {
 					 if(e.getValue().getNombre().equals(nombre))
@@ -420,9 +424,9 @@ public class ListaVendedores extends ListaPersonas implements Lista,Cloneable{
 			 */ 
 			 public boolean validarClaveUsuario(String nombre,String clave )
 			  {
-				 if(vendedores.containsKey(clave) )
+				 Vendedor vendedor = vendedores.get(clave);
+				 if(vendedor.getNombre().equals(nombre))
 				 {
-					 if(vendedores.containsValue((Object)nombre))
 						 return true;
 				 }
 				 return false;

@@ -119,6 +119,27 @@ package Clases;
 		
 		
 		
+		/**
+		 * Metodo para buscar al Vendedor por su clave y su rut
+		 * retornar al vendedor encontrado para poder ser modificado  
+		 */
+		public Vendedor buscarVendedor(String nombre,String clave)
+		{
+			 if(listaVendedores.validarClaveUsuario(nombre,clave))
+				 return (Vendedor)listaVendedores.buscarNombre(nombre);
+			 return null;
+		}
+		
+		/**
+		 * Metodo para buscar al Administrador por su clave y su rut
+		 * retornar al Administrador encontrado para poder ser modificado  
+		 */
+		public Administrador buscarAdministradores(String nombre,String clave)
+		{
+			 if(listaAdministradores.validarClaveAdministrador(nombre,clave))
+				 return (Administrador)listaAdministradores.buscarNombre(nombre);
+			 return null;
+		}
 		
 		
 		/**

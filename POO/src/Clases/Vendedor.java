@@ -102,7 +102,7 @@ public class Vendedor extends Persona {
 			public void agregarDeptConArchivo(Departamento deptnuevo) 
 			{
 				Archivo archivo = new Archivo();
-				departamentos.agregar(deptnuevo);
+				departamentos.agregarSinArchivo(deptnuevo);
 				try {
 					archivo.actualizarTxtVendedor(Vendedor.this);
 				} catch (IOException e) {

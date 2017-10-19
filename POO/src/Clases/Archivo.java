@@ -130,13 +130,13 @@ import java.util.StringTokenizer;
 							    	
 							    	//se crea el vendedor nuevo    	
 							    	Vendedor vendedorNuevo = new Vendedor(nombre,rut,direccion,correo,telefono,clave);
-							    	vendedores.agregarSinArchivo(vendedorNuevo);
-			
+							    	
+							    	
 							    	//se agrega los departamentos al vendedor
 							    	leerListaDpt(buffer,vendedorNuevo,proyectos);
 							    	
 							    	//se agrega a la lista de vendedores
-							    	vendedores.agregar(vendedorNuevo);
+							    	vendedores.agregarSinArchivo(vendedorNuevo);
 							    	
 						    	}
 						    buffer.close();

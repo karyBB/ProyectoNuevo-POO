@@ -49,7 +49,7 @@ public class VentanaModificarDepartamento extends JFrame {
 		JLabel lblDepartamento = new JLabel("Modificar Departamento "+departamento.getNumero());
 		lblDepartamento.setForeground(new Color(255, 255, 255));
 		lblDepartamento.setFont(new Font("Cambria", Font.PLAIN, 17));
-		lblDepartamento.setBounds(122, 11, 172, 26);
+		lblDepartamento.setBounds(38, 11, 336, 26);
 		contentPane.add(lblDepartamento);
 		
 		JPanel paneltipoEstado = new JPanel();
@@ -85,14 +85,15 @@ public class VentanaModificarDepartamento extends JFrame {
 				
 				
 				//si el estado del departamento pasa de libre a vendido es agregado al vendedor
-				String estadoNuevoStr= comboBoxtipoEstado.getActionCommand();
-				if(estadoActual==false)
+				String estadoNuevoStr= (String)comboBoxtipoEstado.getSelectedItem();
+				if(estadoActual==true)
 				{
-					if(!estadoNuevoStr.equals("Libre"))			
+					if(estadoNuevoStr.equals("Ocupado"))
 						((Vendedor)usuario).agregarDeptConArchivo(departamento);	
-                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
                     ventanaDepartamento.setVisible(true);
     				setVisible(false);
+    				System.out.println(estadoNuevoStr);
 				} 
 				
                if(usuario.getClass().getName().equals("Administrador")) { 
@@ -101,7 +102,7 @@ public class VentanaModificarDepartamento extends JFrame {
 					if(departamento.esNumerico(textFieldPrecio.getText())) {
 						
 						proy.modificarPrecioDepartamento(departamento, Integer.parseInt(textFieldPrecio.getText()), proy.getId());
-                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
                     ventanaDepartamento.setVisible(true);
     				setVisible(false);
 					}
@@ -112,7 +113,7 @@ public class VentanaModificarDepartamento extends JFrame {
 				
 				if(!textAreaDescripcion.getText().isEmpty())
 					    proy.modificarDescripcionDepartemento(departamento, textAreaDescripcion.getText(), proy.getId());
-                JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",0);
+                JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
                 ventanaDepartamento.setVisible(true);
 				setVisible(false);
 
@@ -151,13 +152,6 @@ public class VentanaModificarDepartamento extends JFrame {
 			lblNewLabel.setForeground(new Color(255, 255, 255));
 			lblNewLabel.setBounds(10, 2, 59, 14);
 			paneltipoEstado.add(lblNewLabel);
-		
-		JLabel labelNombreEncargado = new JLabel("Descripcion:");
-		labelNombreEncargado.setForeground(Color.WHITE);
-		labelNombreEncargado.setFont(new Font("Cambria", Font.PLAIN, 14));
-		labelNombreEncargado.setBackground(new Color(0, 153, 153));
-		labelNombreEncargado.setBounds(10, 189, 133, 49);
-		contentPane.add(labelNombreEncargado);
 		
 		textFieldPrecio = new JTextField();
 		textFieldPrecio.setColumns(10);

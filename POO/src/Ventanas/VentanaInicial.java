@@ -120,12 +120,12 @@ public class VentanaInicial extends JFrame {
 				if(tipoUsuario.equals("Administrador"))
 				{
 	
-					empresa.buscarNombreAdministrador(usuarioField.getText());
+					 empresa.buscarNombreAdministrador(usuarioField.getText());
 					if(empresa.buscarNombreAdministrador(usuarioField.getText())==null)
 						JOptionPane.showMessageDialog(VentanaInicial.this,"administrador no existe","Error",0);
 					
 					//verifica que la contraseña ingresada es valida
-					else if(empresa.buscarClaveAdministrador(passwordField.getText()) != null)
+					else if(empresa.buscarAdministradores(usuarioField.getText(),passwordField.getText()) != null)
 						{
 						Administrador Admin = empresa.obtenerAdministrador(usuarioField.getText(),passwordField);
 						JOptionPane.showMessageDialog(VentanaInicial.this,"Se inició sesión correctamente");
@@ -150,7 +150,7 @@ public class VentanaInicial extends JFrame {
 						JOptionPane.showMessageDialog(VentanaInicial.this,"vendedor no existe","Error",0);
 						//verifica que la contraseña ingresada es valida
 					//verificacion con nombre y clave
-					else if(empresa.buscarClaveVendedor(passwordField.getText()) != null)
+					else if(empresa.buscarVendedor(usuarioField.getText(),passwordField.getText()) != null)
 					{
 						Vendedor user = empresa.obtenerVendedor(usuarioField.getText(),passwordField); 
 								JOptionPane.showMessageDialog(VentanaInicial.this,"Se inició sesión correctamente");		

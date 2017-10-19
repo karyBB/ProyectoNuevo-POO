@@ -87,9 +87,9 @@ package Clases;
 		 */ 
 		 public boolean validarClaveAdministrador(String nombre,String clave )
 		  {
-			 if(administradores.containsKey(clave) )
+			 Administrador admin = administradores.get(clave);
 			 {
-				 if(administradores.containsValue((Object)nombre))
+				 if(admin.getNombre().equals(nombre))
 					 return true;
 			 }
 			 return false;
