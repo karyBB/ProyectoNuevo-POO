@@ -131,8 +131,8 @@ package Clases;
 		}
 		
 		/**
-		 * Metodo para buscar al Vendedor por su clave y su rut
-		 * retornar al vendedor encontrado para poder ser modificado  
+		 * Metodo para buscar al Administrador por su clave y su rut
+		 * retornar al Administrador encontrado para poder ser modificado  
 		 */
 		public Administrador buscarAdministradores(String nombre,String clave)
 		{
