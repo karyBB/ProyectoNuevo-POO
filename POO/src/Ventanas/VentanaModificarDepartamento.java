@@ -82,7 +82,7 @@ public class VentanaModificarDepartamento extends JFrame {
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				boolean modificado = false;
 				
 				//si el estado del departamento pasa de libre a vendido es agregado al vendedor
 				String estadoNuevoStr= (String)comboBoxtipoEstado.getSelectedItem();
@@ -90,10 +90,9 @@ public class VentanaModificarDepartamento extends JFrame {
 				{
 					if(estadoNuevoStr.equals("Ocupado"))
 						((Vendedor)usuario).agregarDeptConArchivo(departamento);	
-                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
+                    modificado=true;
                     ventanaDepartamento.setVisible(true);
     				setVisible(false);
-    				System.out.println(estadoNuevoStr);
 				} 
 				
                if(usuario.getClass().getName().equals("Administrador")) { 
@@ -102,7 +101,7 @@ public class VentanaModificarDepartamento extends JFrame {
 					if(departamento.esNumerico(textFieldPrecio.getText())) {
 						
 						proy.modificarPrecioDepartamento(departamento, Integer.parseInt(textFieldPrecio.getText()), proy.getId());
-                    JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
+						modificado=true;
                     ventanaDepartamento.setVisible(true);
     				setVisible(false);
 					}
@@ -113,10 +112,12 @@ public class VentanaModificarDepartamento extends JFrame {
 				
 				if(!textAreaDescripcion.getText().isEmpty())
 					    proy.modificarDescripcionDepartemento(departamento, textAreaDescripcion.getText(), proy.getId());
-                JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
+                		modificado=true;
                 ventanaDepartamento.setVisible(true);
 				setVisible(false);
-
+				
+				if(modificado)
+					JOptionPane.showMessageDialog(VentanaModificarDepartamento.this,"El Departamento "+departamento.getNumero() +" ha sido modificado","Mensaje ",1);
 				
 			}
 		});

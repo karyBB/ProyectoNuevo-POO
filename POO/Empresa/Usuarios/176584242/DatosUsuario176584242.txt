@@ -1,3 +1,3 @@
-sofia|176584242|calle plat 596 san antonio|sofiaestefany@gmail.com|78473857|12345|
+sofia|176584242|calle plat 596 san antonio|78473857|sofiaestefany@gmail.com|12345|
 1
-b102
+a203
