@@ -1,2 +1,4 @@
-israel ogas|583765842|calle los humedales 123|56543581|israelogas@gmail.com|1234|
-0
+israel ogas|583765842|calle los humedales 123|israelogas@gmail.com|56543581|1234|
+2
+b301
+b104
