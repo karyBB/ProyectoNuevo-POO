@@ -585,6 +585,7 @@ import java.util.StringTokenizer;
 					for(int i=0;i<cantidad;i++){
 						departamentoStr = buffer.readLine();
 					    Departamento deptNuevo = proyectos.busquedaDept(departamentoStr);
+					    
 						if(deptNuevo!=null)
 							vendedorNuevo.agregarDept(deptNuevo);
 					}

@@ -86,7 +86,6 @@ public class ListaVendedores extends ListaPersonas implements Lista,Cloneable{
 				 
 			     if(!existe(nuevoVendedor))
 				 {
-			    	 
 			    	 vendedores.put(nuevoVendedor.getClave(), nuevoVendedor);
 			    	 
 			      return true;

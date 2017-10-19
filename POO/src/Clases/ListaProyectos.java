@@ -503,7 +503,7 @@ public class ListaProyectos  implements Lista,Cloneable {
 					   }
 					  
 					  Proyecto proy=busqueda(id);
-					 Departamento dept= proy.buscarNumeroDepartamento(num);
+					 Departamento dept= proy.buscarNumeroDepartamento(departamentoStr);
 					return dept;
 				}
 			

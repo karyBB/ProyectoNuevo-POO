@@ -212,53 +212,52 @@ import Clases.Vendedor;
 		
 		private void mostrarEnJTextAreaVendedorRank(JTextArea datoVendedor,Empresa empresa) throws CloneNotSupportedException
 		{
-			int j = 1;
 			int i=0;
 			
 	      HashMap<String,Vendedor> vendedores=empresa.clonarVendedores();
 			
 					Iterator<Entry<String, Vendedor>> it = vendedores.entrySet().iterator();
 					ArrayList<Vendedor> vendedoresMax = new ArrayList<Vendedor>();
-					int suma=0, max=0,prom=0;
+					int suma=0,prom=0;
+					
+					//se obtiene el promedio de ventas de departamento
 					while(i<vendedores.size()) {
 						if (it.hasNext()) {
 						 Entry<String, Vendedor> e = it.next();
 						 Vendedor vendedor= e.getValue();
 						 suma+=vendedor.cantDept();
-						 
-						j++;
 						i++;
-							
+						
 					}}
 					prom=suma/vendedores.size();
-					
+					it = vendedores.entrySet().iterator();
+					i=0;
+					//se ingresan los que son mayores al promedio
 					while(i<vendedores.size()) {
 						if (it.hasNext()) {
 						 Entry<String, Vendedor> e = it.next();
 						 Vendedor vendedor= e.getValue();
 						 suma+=vendedor.cantDept();
-						 
-						 if(vendedor.cantDept()>=prom)
+
+						 if(vendedor.cantDept()>prom)
 						 {
 							 vendedoresMax.add(vendedor);
 						 }
-						j++;
 						i++;
 							
 					}}
-					while(i<vendedores.size()) {
-						if (it.hasNext()) {
-						 Entry<String, Vendedor> e = it.next();
-						 Vendedor vendedor= e.getValue();
-						 suma+=vendedor.cantDept();
+					
+					//se muestran los que son mayores al promedio
+					for(i=0;i<vendedoresMax.size();i++)
+					{
 						 
-						 datoVendedor.append("VENDEDOR \r\nNOMBRE : "+vendedor.getNombre()+
-									"\r\nRut : "+vendedor.getRut()+"\r\nCantidadVendida : "+vendedor.cantDept()+"\r\n\r\n");
-						j++;
-						i++;
+						 datoVendedor.append("VENDEDOR \r\nNOMBRE : "+vendedoresMax.get(i).getNombre()+
+									"\r\nRut : "+vendedoresMax.get(i).getRut()+
+									"\r\nCantidadVendida : "+vendedoresMax.get(i).cantDept()+"\r\n\r\n");
+						
 							
-					}}
-				
+					}
+
 		
 		}
 		

@@ -179,7 +179,7 @@ public class ListaDepartamentos {
 					if(Character.isDigit(ca[i]))//Si no es letra
 					        num=(""+ca[i]);   
 					   }
-				  agregar(id.toString(),num.toString());
+				  agregarSinArchivo(deptnuevo);
 				  }
 		    
 		    
