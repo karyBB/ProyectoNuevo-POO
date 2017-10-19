@@ -42,6 +42,13 @@ public class VentanaVendedor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblBienvenido = new JLabel("Bienvenido Vendedor/a "+user.getNombre());
+		lblBienvenido.setFont(new Font("Consolas", Font.PLAIN, 23));
+		lblBienvenido.setForeground(Color.WHITE);
+		lblBienvenido.setBounds(10, 33, 417, 28);
+		contentPane.add(lblBienvenido);
+		
+		
 		JPanel panelMostrarProyectos = new JPanel();		
 		panelMostrarProyectos.setBackground(new Color(0, 153, 255));
 		panelMostrarProyectos.setBorder(new LineBorder(new Color(255, 255, 255)));
@@ -81,7 +88,7 @@ public class VentanaVendedor extends JFrame {
 		JLabel lblUsuario = new JLabel("Men\u00FA Vendedor");
 		lblUsuario.setForeground(Color.WHITE);
 		lblUsuario.setFont(new Font("Cambria", Font.PLAIN, 20));
-		lblUsuario.setBounds(198, 11, 181, 47);
+		lblUsuario.setBounds(198, 0, 181, 41);
 		contentPane.add(lblUsuario);
 		
 		JButton btnRegresar = new JButton("CERRAR SESION");
