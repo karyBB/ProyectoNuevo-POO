@@ -111,7 +111,10 @@ public class Vendedor extends Persona {
 			}
 			
 			
-			
+			public int cantDept()
+			{
+				return departamentos.largo();
+			}
 			
 			
 			

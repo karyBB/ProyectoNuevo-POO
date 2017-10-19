@@ -49,14 +49,14 @@ public class VentanaAdministrador extends JFrame {
 		
 		
 		JButton botonReporte = new JButton("REPORTE PROYECTOS");
-		botonReporte.setBounds(35, 36, 202, 32);
+		botonReporte.setBounds(35, 28, 202, 32);
 		panelReportes.add(botonReporte);
 		botonReporte.setBackground(SystemColor.controlHighlight);
 		botonReporte.setForeground(Color.BLACK);
 		botonReporte.setFont(new Font("Consolas", Font.PLAIN, 13));
 		
 		JButton btnReporteAdministradores = new JButton("REPORTE ADMINISTRADORES");
-		btnReporteAdministradores.setBounds(35, 133, 202, 32);
+		btnReporteAdministradores.setBounds(35, 114, 202, 32);
 		panelReportes.add(btnReporteAdministradores);
 		btnReporteAdministradores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,7 +81,7 @@ public class VentanaAdministrador extends JFrame {
 		btnReporteAdministradores.setBackground(SystemColor.controlHighlight);
 		
 		JButton btnReporteVendedor = new JButton("REPORTE VENDEDORES");
-		btnReporteVendedor.setBounds(35, 90, 202, 32);
+		btnReporteVendedor.setBounds(35, 71, 202, 32);
 		panelReportes.add(btnReporteVendedor);
 		btnReporteVendedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -105,6 +105,32 @@ public class VentanaAdministrador extends JFrame {
 		btnReporteVendedor.setForeground(Color.BLACK);
 		btnReporteVendedor.setFont(new Font("Consolas", Font.PLAIN, 13));
 		btnReporteVendedor.setBackground(SystemColor.controlHighlight);
+		
+		JButton btnRankingVendedores = new JButton("RANKING VENDEDORES");
+		btnRankingVendedores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(empresa.sizeVendedores()!=0)
+                {
+                    setVisible(false);
+                    VentanaReporte reporte;
+					try {
+						reporte = new VentanaReporte(empresa,3,VentanaAdministrador.this);
+						reporte.setVisible(true);
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    
+                }else
+                    JOptionPane.showMessageDialog(VentanaAdministrador.this,"No existen  ingresados","Error al mostrar",0);
+				
+			}
+		});
+		btnRankingVendedores.setForeground(Color.BLACK);
+		btnRankingVendedores.setFont(new Font("Consolas", Font.PLAIN, 13));
+		btnRankingVendedores.setBackground(SystemColor.controlHighlight);
+		btnRankingVendedores.setBounds(35, 155, 202, 32);
+		panelReportes.add(btnRankingVendedores);
 		botonReporte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(empresa.sizeProyecto()!=0)
