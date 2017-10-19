@@ -93,7 +93,6 @@ public class VentanaModificarDepartamento extends JFrame {
                     modificado=true;
                     ventanaDepartamento.setVisible(true);
     				setVisible(false);
-    				System.out.println(estadoNuevoStr);
 				} 
 				
                if(usuario.getClass().getName().equals("Administrador")) { 
